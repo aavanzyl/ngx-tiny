@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MultiSelectAdvanceOptions } from '../../../../dist/ngx-multi-select/ngx-multi-select.options';
 
 @Component({
   selector: 'app-multi-select',
@@ -8,7 +7,7 @@ import { MultiSelectAdvanceOptions } from '../../../../dist/ngx-multi-select/ngx
 })
 export class MultiSelectComponent implements OnInit {
 
-  options = [{value: "test"}];
+  options = [{ value: 'test' }];
 
   constructor() { }
 

@@ -1,22 +1,27 @@
-export class MultiSelectAdvanceOptions {
-  id: any;
+
+export abstract class MultiSelectOption {
   value: any;
-  selected?: boolean;
-
-  constructor(id?, value?, selected = false) {
-    this.id = id;
+  constructor(value) {
     this.value = value;
-    this.selected = selected;
   }
-
 }
 
-export class MultiSelectSimpleOptions {
-  value: any;
-  selected?: boolean;
+export class MultiSelectAdvanceOption extends MultiSelectOption {
+  id: any;
 
-  constructor(value?, selected = false) {
-    this.value = value;
-    this.selected = selected;
+  constructor(id?, value?) {
+    super(value);
+    this.id = id;
+  }
+}
+
+export class MultiSelectSimpleOption extends MultiSelectOption {
+
+  constructor(value?) {
+    super(value);
+  }
+
+  get id() {
+    return this.value;
   }
 }

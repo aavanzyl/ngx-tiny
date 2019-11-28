@@ -5,8 +5,8 @@
   <div class="select-dropdown" [@openDropdown]="isOpen ? 'open' : 'closed'">
     <div class="select-dropdown-items-content">
       <span *ngFor="let option of options" class="select-dropdown-items" (click)="selectOption(option);">
-        <input type="checkbox" tabindex="-1" name="{{option.value}}" value="{{option.id}}"  [checked]="isSelected(option)" />
-        <span>{{option.value}}</span>
+        <input type="checkbox" tabindex="-1" [name]="getId(option)" [value]="getValue(option)"  [checked]="isSelected(option)" />
+        <span>{{getValue(option)}}</span>
       </span>
     </div>
   </div>

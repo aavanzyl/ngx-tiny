@@ -1,7 +1,7 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MultiSelectSimpleOption, MultiSelectAdvanceOption, MultiSelectOption } from './ngx-multi-select.options';
+import { MultiSelectOption } from './ngx-multi-select.options';
 
 let instanceId = 0;
 
@@ -50,15 +50,15 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
   private clickedInside = false;
 
   // tslint:disable-next-line:no-input-rename
-  @Input('selected') _selected: MultiSelectOption[] = [];
-  @Input() options: MultiSelectOption[] = [];
+  @Input('selected') _selected: MultiSelectOption[] | string[] = [];
+  @Input() options: MultiSelectOption[] | string[] = [];
   @Input() placeholder = '';
   @Input() deliminator = ', ';
 
   // When not using forms
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
 
-  get selected() {
+  get selected(): any[] {
     return this._selected;
   }
 
@@ -69,7 +69,7 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     this.valueChange.emit(val);
   }
 
-  onChange = (_value: MultiSelectOption[]) => { };
+  onChange = (_value: MultiSelectOption[] | string[]) => { };
   onTouched = () => { };
 
 
@@ -77,7 +77,13 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     let _displayText: string;
 
     if (this.selected && this.selected.length > 0) {
-      _displayText = this.selected.map(item => item.value).join(this.deliminator);
+      _displayText = this.selected.map(item => {
+        if (typeof item === 'string') {
+          return item;
+        } else if (typeof item === 'object') {
+          return item.value;
+        }
+      }).join(this.deliminator);
     } else {
       _displayText = this.placeholder;
     }
@@ -85,7 +91,7 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     return _displayText;
   }
 
-  selectOption(option: MultiSelectOption) {
+  selectOption(option: any) {
 
     const _selected = this.selected;
 
@@ -99,11 +105,27 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     this.selected = _selected;
   }
 
-  isSelected(option: MultiSelectOption) {
+  isSelected(option: any) {
     return this.selected.includes(option);
   }
 
-  writeValue(selected: MultiSelectSimpleOption[] | MultiSelectAdvanceOption[]): void {
+  getId(option: any) {
+    if (typeof option === 'string') {
+      return option;
+    } else if (typeof option === 'object') {
+      return option.id || option.value;
+    }
+  }
+
+  getValue(option: any) {
+    if (typeof option === 'string') {
+      return option;
+    } else if (typeof option === 'object') {
+      return option.value;
+    }
+  }
+
+  writeValue(selected: MultiSelectOption[] | string[]): void {
     if (selected !== this.selected) {
       this.selected = selected;
     }
@@ -113,7 +135,7 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  registerOnChange(fn: (value: MultiSelectSimpleOption[] | MultiSelectAdvanceOption[]) => void): void {
+  registerOnChange(fn: (value: MultiSelectOption[] | string[]) => void): void {
     this.onChange = fn;
   }
 

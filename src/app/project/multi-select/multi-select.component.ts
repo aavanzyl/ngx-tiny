@@ -7,15 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MultiSelectComponent implements OnInit {
 
-  options = [{ value: 'test' }];
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onChange(event) {
-
   }
 
 }

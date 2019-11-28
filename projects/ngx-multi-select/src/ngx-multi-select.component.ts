@@ -1,6 +1,7 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MultiSelectSimpleOptions, MultiSelectAdvanceOptions } from './ngx-multi-select.options';
 
 @Component({
   selector: 'ngx-multi-select',
@@ -38,14 +39,15 @@ import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular
     ])
   ]
 })
-export class NgxMultiSelectComponent implements ControlValueAccessor {
+export class NgxMultiSelectComponent implements OnInit, ControlValueAccessor {
 
   public isOpen = false;
-  public clickedInside = false;
-  public selectedOptions: any[];
+  private clickedInside = false;
+  private selectedOptions: any[];
 
   @Input() placeholder = '';
-  @Input() options: any[];
+  @Input() deliminator = ', ';
+  @Input() options: MultiSelectSimpleOptions[] | MultiSelectAdvanceOptions[];
 
   @Output()
   valueChange: EventEmitter<any> = new EventEmitter();
@@ -64,12 +66,13 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
   }
 
   get displayText() {
-    let _displayText = "";
 
-    this.selectedOptions = this.options ? this.options.filter(item => item.selected) : null;
+    let _displayText: string;
+
+    this.selectedOptions = this.options ? this.options.filter((item: MultiSelectSimpleOptions | MultiSelectAdvanceOptions) => item.selected) : null;
 
     if (this.selectedOptions && this.selectedOptions.length > 0) {
-      _displayText = this.selectedOptions.map(item => item.value).join(', ');
+      _displayText = this.selectedOptions.map(item => item.value).join(this.deliminator);
     } else {
       _displayText = this.placeholder;
     }
@@ -88,33 +91,37 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     this.isOpen = !this.isOpen;
   }
 
-  selectOption(option: string) {
+  selectOption(option: MultiSelectSimpleOptions | MultiSelectAdvanceOptions) {
     if (this.selectedOptions.includes(option)) {
       const indexRemove = this.selectedOptions.findIndex(x => x === option);
       this.selectedOptions.splice(indexRemove, 1);
-      option['selected'] = false;
+      option.selected = false;
     } else {
       this.selectedOptions.push(option);
-      option['selected'] = true;
+      option.selected = true;
     }
 
     this.valueChange.emit(this.selectedOptions);
   }
 
   writeValue(obj: any): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
-  
+
   registerOnChange(fn: any): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
   registerOnTouched(fn: any): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
 
 }
+
+
+
+

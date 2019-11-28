@@ -8,11 +8,11 @@ import { SwitchInputComponent } from './switch-input/switch-input.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 
 const routes: Routes = [
-    { path: "address-input", component: AddressInputComponent },
-    { path: "multi-select", component: MultiSelectComponent },
-    { path: "quill-input", component: QuillInputComponent },
-    { path: "switch-input", component: SwitchInputComponent },
-    { path: "tag-input", component: TagInputComponent },
+    { path: 'address-input', component: AddressInputComponent },
+    { path: 'multi-select', component: MultiSelectComponent },
+    { path: 'quill-input', component: QuillInputComponent },
+    { path: 'switch-input', component: SwitchInputComponent },
+    { path: 'tag-input', component: TagInputComponent },
 ];
 
 @NgModule({

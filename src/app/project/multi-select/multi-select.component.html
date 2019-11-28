@@ -1,5 +1,5 @@
 <p>multi-select works!</p>
 
-<ngx-multi-select>
-    
-</ngx-multi-select>
+<ngx-multi-select
+placeholder="Select a Country" [options]="options"
+(valueChange)="onChange($event)"></ngx-multi-select>

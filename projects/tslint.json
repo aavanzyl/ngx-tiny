@@ -7,11 +7,24 @@
         "ngx",
         "camelCase"
       ],
+      "variable-name": [
+        true,
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore"
+      ],
       "component-selector": [
         true,
         "element",
         "ngx",
         "kebab-case"
+      ],
+      "max-line-length": [
+        true, 
+        {
+          "limit": 180, 
+          "ignore-pattern": "^import [^,]+ from |^export | implements"
+        }
       ]
     }
   }

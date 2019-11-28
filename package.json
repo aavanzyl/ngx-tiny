@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run lint && ng build --prod && ng test @ngx-tiny/all --watch=false && npm run e2e && npm run package",
+    "build": "npm run lint && ng build --prod && npm run package",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

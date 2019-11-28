@@ -1,3 +1,9 @@
+# compiled output
+/dist
+/tmp
+/out-tsc
+/.firebase
+
 # Logs
 logs
 *.log

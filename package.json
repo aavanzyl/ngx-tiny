@@ -4,12 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run lint && ng build --prod && ng test @ngx-tiny/all --watch=false && npm run e2e && npm run package",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "package": "run-s package:*",
+    "package:multi-select": "ng build @ngx-tiny/multi-select"
   },
-  "private": true,
+  "repository": "https://github.com/aavanzyl/ngx-tiny",
+  "author": "Anton Van Zyl",
+  "license": "MIT",
+  "private": false,
   "dependencies": {
     "@angular/animations": "~8.2.13",
     "@angular/common": "~8.2.13",
@@ -25,6 +30,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.17",
+    "@angular-devkit/build-ng-packagr": "^0.803.20",
     "@angular/cli": "~8.3.17",
     "@angular/compiler-cli": "~8.2.13",
     "@angular/language-service": "~8.2.13",
@@ -35,10 +41,13 @@
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
+    "tsickle": "^0.35.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-packagr": "^5.7.1",
+    "npm-run-all": "^4.1.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",

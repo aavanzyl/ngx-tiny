@@ -1,0 +1,119 @@
+.select-dropdown-group {
+  position: relative;
+
+  .select-dropdown-control {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    background: url("/select-arrow.png") no-repeat 95% 50%;
+    border: 1px solid #d1d1d1;
+    min-height: 39px;
+
+    border-radius: 0;
+    padding: 0px 5px;
+
+    button {
+      margin-bottom: 0;
+      font-weight: 400;
+      cursor: pointer;
+      white-space: nowrap;
+      padding: 5px 10px 5px 10px;
+      overflow-x: hidden;
+      background-color: transparent;
+      color: #333;
+      border: 0px;
+      width: 100%;
+      outline: none;
+      span {
+        vertical-align: middle;
+        float: left;
+        max-width: 90%;
+        position: relative;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    .clearButton {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding-right: 5px;
+      .icon {
+        background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ljk3MSA0Ny45NzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ3Ljk3MSA0Ny45NzE7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMjguMjI4LDIzLjk4Nkw0Ny4wOTIsNS4xMjJjMS4xNzItMS4xNzEsMS4xNzItMy4wNzEsMC00LjI0MmMtMS4xNzItMS4xNzItMy4wNy0xLjE3Mi00LjI0MiwwTDIzLjk4NiwxOS43NDRMNS4xMjEsMC44OCAgIGMtMS4xNzItMS4xNzItMy4wNy0xLjE3Mi00LjI0MiwwYy0xLjE3MiwxLjE3MS0xLjE3MiwzLjA3MSwwLDQuMjQybDE4Ljg2NSwxOC44NjRMMC44NzksNDIuODVjLTEuMTcyLDEuMTcxLTEuMTcyLDMuMDcxLDAsNC4yNDIgICBDMS40NjUsNDcuNjc3LDIuMjMzLDQ3Ljk3LDMsNDcuOTdzMS41MzUtMC4yOTMsMi4xMjEtMC44NzlsMTguODY1LTE4Ljg2NEw0Mi44NSw0Ny4wOTFjMC41ODYsMC41ODYsMS4zNTQsMC44NzksMi4xMjEsMC44NzkgICBzMS41MzUtMC4yOTMsMi4xMjEtMC44NzljMS4xNzItMS4xNzEsMS4xNzItMy4wNzEsMC00LjI0MkwyOC4yMjgsMjMuOTg2eiIgZmlsbD0iIzY2NjY2NiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .select-dropdown {
+    margin-top: 1px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    z-index: 999999999;
+    background-clip: padding-box;
+    background: white;
+    max-height: 200px;
+    position: absolute;
+
+    .select-dropdown-items-content {
+      display: block;
+      height: 100%;
+      overflow-y: auto;
+
+      .select-dropdown-items {
+
+        padding-left: 0px;
+        display: block;
+        margin: 10px 0 0 0;
+        cursor: pointer;
+        padding-left: 10px;
+
+        border-bottom: 1px solid #d1d1d1;
+
+        input {
+          font-size: inherit;
+          padding-left: 0px;
+          padding-right: 25px;
+          clear: both;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #9e9e9e;
+          white-space: normal;
+        }
+        input[type="checkbox"] {
+          width: 18px;
+          height: 18px;
+          margin-right: 8px;
+          cursor: pointer;
+          font-size: 14px;
+          visibility: hidden;
+        }
+        input[type="checkbox"]:after {
+          content: " ";
+          background-color: #fff;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          visibility: visible;
+          border-radius: 0px;
+          border: 1px solid #9e9e9e;
+          position: relative;
+          top: 2px;
+        }
+        input[type="checkbox"]:checked:after {
+          content: "\2714";
+          font-weight: bold;
+          text-align: center;
+          background-color: #862237;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

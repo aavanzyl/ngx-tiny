@@ -1,0 +1,13 @@
+<div class="select-dropdown-group">
+  <div class="select-dropdown-control">
+    <button (click)="toggleButtonDropDown()" type="button"><span>{{displayText}} </span></button>
+  </div>
+  <div class="select-dropdown" [@openDropdown]="isOpen ? 'open' : 'closed'">
+    <div class="select-dropdown-items-content">
+      <span *ngFor="let option of options" class="select-dropdown-items" (click)="selectOption(option);">
+        <input type="checkbox" tabindex="-1" name="{{option.value}}" value="{{option.id}}"  [checked]="option.selected" />
+        <span>{{option.value}}</span>
+      </span>
+    </div>
+  </div>
+</div>

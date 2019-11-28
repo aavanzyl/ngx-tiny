@@ -1,0 +1,12 @@
+{
+    "name": "@ngx-tiny/tag-input",
+    "version": "0.0.1",
+    "repository": "https://github.com/aavanzyl/ngx-tiny",
+    "author": "Anton Van Zyl",
+    "license": "MIT",
+    "private": false,
+    "peerDependencies": {
+      "@angular/core": "^8.0.0",
+      "@angular/common": "^8.0.0"
+    }
+  }

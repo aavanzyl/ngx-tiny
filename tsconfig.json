@@ -25,6 +25,9 @@
       "@ngx-tiny/code-highlight": [
         "dist/ngx-code-highlight"
       ],
+      "@ngx-tiny/tabs": [
+        "dist/ngx-tabs"
+      ],
     }
   },
   "angularCompilerOptions": {

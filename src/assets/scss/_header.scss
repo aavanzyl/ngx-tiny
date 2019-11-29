@@ -6,6 +6,10 @@
     background-color: #1976d2;
     color: white;
     font-weight: 600;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
   }
 
   .toolbar img {

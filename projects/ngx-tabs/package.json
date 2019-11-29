@@ -1,13 +1,13 @@
 {
-  "name": "@ngx-tiny/multi-select",
+  "name": "@ngx-tiny/tabs",
   "version": "8.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/animations": "^8.0.0",
     "@angular/core": "^8.0.0",
-    "@angular/common": "^8.0.0"
+    "@angular/common": "^8.0.0",
+    "@angular/router": "^8.0.0"
   }
 }

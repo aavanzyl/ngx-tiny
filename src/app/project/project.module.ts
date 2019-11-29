@@ -12,6 +12,7 @@ import { DemoMultiSelectSimpleComponent } from './multi-select/demo-multi-select
 import { DemoMultiSelectFormComponent } from './multi-select/demo-multi-select-form/demo-multi-select-form.component';
 import { DemoMultiSelectDisabledComponent } from './multi-select/demo-multi-select-disabled/demo-multi-select-disabled.component';
 import { DemoMultiSelectAdvanceComponent } from './multi-select/demo-multi-select-advance/demo-multi-select-advance.component';
+import { CodeHighlightComponent } from './code-highlight/code-highlight.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
@@ -25,6 +26,7 @@ import { DemoMultiSelectAdvanceComponent } from './multi-select/demo-multi-selec
     DemoMultiSelectFormComponent,
     DemoMultiSelectDisabledComponent,
     DemoMultiSelectAdvanceComponent,
+    CodeHighlightComponent,
   ]
 })
 export class ProjectModule {}

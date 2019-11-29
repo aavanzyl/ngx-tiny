@@ -29,7 +29,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/highlight.js/styles/github.css",
               "./node_modules/prismjs/themes/prism.css"
             ],
             "scripts": []
@@ -93,7 +92,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "./node_modules/highlight.js/styles/github.css",
               "./node_modules/prismjs/themes/prism.css"
             ],
             "scripts": []
@@ -189,6 +187,26 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-code-highlight/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "@ngx-tiny/tabs": {
+      "root": "projects/ngx-tabs",
+      "sourceRoot": "projects/ngx-tabs/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-tabs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-tabs/ng-package.prod.json"
             }
           }
         }

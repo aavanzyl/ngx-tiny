@@ -1,6 +1,10 @@
 {
   "name": "@ngx-tiny/code-highlight",
-  "version": "0.0.1",
+  "version": "8.0.0",
+  "repository": "https://github.com/aavanzyl/ngx-tiny",
+  "author": "Anton Van Zyl",
+  "license": "MIT",
+  "private": false,
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",

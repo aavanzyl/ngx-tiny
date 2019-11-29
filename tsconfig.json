@@ -22,6 +22,9 @@
       "@ngx-tiny/multi-select": [
         "dist/ngx-multi-select"
       ],
+      "@ngx-tiny/code-highlight": [
+        "dist/ngx-code-highlight"
+      ],
     }
   },
   "angularCompilerOptions": {

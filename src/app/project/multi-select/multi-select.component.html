@@ -1,4 +1,32 @@
 <h1>ngx-multi-select</h1>
 
 
+To install this library
+
+<h2>Installation</h2>
+<!-- Terminal -->
+<div class="terminal">
+    <pre >npm install @ngx-tiny/multi-select --save</pre>
+</div>
+
+, run: npm install @ngx-lite/input-range --save and then from your Angular AppModule:
+
+<ngx-code-highlight>
+<![CDATA[
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxCodeExampleModule } from '@ngx-lite/code-example';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, NgxCodeExampleModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+]]>
+  </ngx-code-highlight> 
+
 <app-demo-multi-select-simple></app-demo-multi-select-simple>

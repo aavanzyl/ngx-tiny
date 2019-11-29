@@ -4,10 +4,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { NgxMultiSelectModule } from '@ngx-tiny/multi-select';
+import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
 
 
 const modules = [
-  NgxMultiSelectModule
+  NgxMultiSelectModule,
+  NgxCodeHighlightModule
 ];
 
 @NgModule({

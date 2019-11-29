@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "run-s package:*",
-    "package:multi-select": "ng build @ngx-tiny/multi-select"
+    "package:multi-select": "ng build @ngx-tiny/multi-select",
+    "package:code-highlight": "ng build @ngx-tiny/code-highlight"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl",
@@ -24,6 +25,9 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "highlight.js": "^9.16.2",
+    "ngx-highlightjs": "^4.0.0",
+    "prismjs": "^1.14.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

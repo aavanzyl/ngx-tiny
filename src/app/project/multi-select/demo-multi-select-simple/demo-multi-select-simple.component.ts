@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-demo-multi-select-simple',
-  templateUrl: './demo-multi-select-simple.component.html'
+  templateUrl: './demo-multi-select-simple.component.html',
+  preserveWhitespaces: true
 })
-export class DemoMultiSelectSimpleComponent implements OnInit {
+export class DemoMultiSelectSimpleComponent {
 
-  options = ['South Africa' ];
+  selected = [];
+  options = ['South Africa', 'United States', 'United Kingdom'];
 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  onChange(event) {
-
+  onChange(selection) {
+    this.selected = selection;
   }
 
 }

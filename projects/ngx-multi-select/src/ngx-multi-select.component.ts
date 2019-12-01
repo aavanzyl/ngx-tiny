@@ -51,12 +51,12 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
 
   // tslint:disable-next-line:no-input-rename
   @Input('selected') _selected: MultiSelectOption[] | string[] = [];
-  @Input() options: MultiSelectOption[] | string[] = [];
-  @Input() placeholder = '';
-  @Input() deliminator = ', ';
+  @Input('options') options: MultiSelectOption[] | string[] = [];
+  @Input('placeholder') placeholder = '';
+  @Input('deliminator') deliminator = ', ';
 
   // When not using forms
-  @Output() valueChange: EventEmitter<any> = new EventEmitter();
+  @Output('valueChange') valueChange: EventEmitter<MultiSelectOption[] | string[]> = new EventEmitter();
 
   get selected(): any[] {
     return this._selected;

@@ -1,3 +1,43 @@
+<h3>Simple</h3>
 
+<ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
+</ngx-multi-select>
 
-<ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)"></ngx-multi-select>
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<ngx-multi-select 
+    placeholder="Select a Country" 
+    [options]="options" 
+    (valueChange)="onChange($event)">
+</ngx-multi-select>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+<![CDATA[
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-multi-select-simple',
+    templateUrl: './demo-multi-select-simple.component.html',
+    preserveWhitespaces: true
+})
+export class DemoMultiSelectSimpleComponent {
+
+    selected = [];
+    options = ['South Africa', 'United States', 'United Kingdom'];
+
+    onChange(selection) {
+        this.selected = selection;
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

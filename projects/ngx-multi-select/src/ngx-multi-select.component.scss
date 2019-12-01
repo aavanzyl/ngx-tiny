@@ -8,6 +8,7 @@ $box-foreground-color: #FFFFFF;
 
 .select-dropdown-group {
   position: relative;
+  box-sizing: content-box;
 
   .select-dropdown-control {
     display: flex;

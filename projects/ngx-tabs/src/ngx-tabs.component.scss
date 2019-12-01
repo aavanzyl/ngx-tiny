@@ -1,4 +1,15 @@
-@import './../../styles/_base';
+$color-primary: #3d3d3d;
+$color-secondary: #db0b37;
+$color-grey: #ccc;
+$color-grey-light: #f2f2f2;
+$color-grey-dark: #2d2d2d;
+$color-white: #fff;
+$color-off-white: #f5f5f5;
+$color-type: #2d2d2d;
+$color-border: #dbdbdb;
+$color-transparent-grey: rgba(0, 0, 0, 0.5);
+$drop-shadow-z1: 0 2px 1px -2px rgba(0, 0, 0, 0.2),
+  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
 $color-active: $color-secondary;
 $color-hover: #a5a5a5;
@@ -102,14 +113,10 @@ ngx-tab-routes {
 
 .ngx-tab {
   &__content {
-    padding: 8px 0 0 0;
+    padding: 0;
     overflow: visible;
     min-height: 225px;
     border-top: $border;
     border-top: var(--border);
-
-    @media (min-width: $tab-breakpoint) {
-      padding: 20px 0 0 0;
-    }
   }
 }

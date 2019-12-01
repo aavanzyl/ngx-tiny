@@ -127,7 +127,11 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "https://aavanzyl.github.io/ngx-tiny/",
+            "name": "aavanzyl",
+            "email": "aavanzyl@gmail.com"
+          }
         }
       }
     },

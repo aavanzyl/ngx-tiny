@@ -1,1 +1,45 @@
-<p>demo-multi-select-advance works!</p>
+<h3>Advance</h3>
+
+<p>Use of a key/value object as options and selections</p>
+<br/>
+
+<ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
+</ngx-multi-select>
+
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<ngx-multi-select 
+    placeholder="Select a Country" 
+    [options]="options" 
+    (valueChange)="onChange($event)">
+</ngx-multi-select>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+<![CDATA[
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-multi-select-simple',
+    templateUrl: './demo-multi-select-simple.component.html'
+})
+export class DemoMultiSelectSimpleComponent {
+
+    selected = [];
+    options = [{id: "1", value: "South Africa"}, {id: "2", value: "United States"}, {id: "3", value: "United Kingdom"}];
+
+    onChange(selection) {
+        this.selected = selection;
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

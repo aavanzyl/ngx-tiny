@@ -16,11 +16,6 @@ let instanceId = 0;
       useExisting: forwardRef(() => NgxMultiSelectComponent),
       multi: true
     },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => NgxMultiSelectComponent),
-      multi: true
-    }
   ],
   encapsulation: ViewEncapsulation.None,
   animations: [
@@ -51,12 +46,12 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
 
   // tslint:disable-next-line:no-input-rename
   @Input('selected') _selected: MultiSelectOption[] | string[] = [];
-  @Input('options') options: MultiSelectOption[] | string[] = [];
-  @Input('placeholder') placeholder = '';
-  @Input('deliminator') deliminator = ', ';
+  @Input() options: MultiSelectOption[] | string[] = [];
+  @Input() placeholder = '';
+  @Input() deliminator = ', ';
 
   // When not using forms
-  @Output('valueChange') valueChange: EventEmitter<MultiSelectOption[] | string[]> = new EventEmitter();
+  @Output() valueChange: EventEmitter<MultiSelectOption[] | string[]> = new EventEmitter();
 
   get selected(): any[] {
     return this._selected;
@@ -93,9 +88,9 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
 
   selectOption(option: any) {
 
-    const _selected = this.selected;
+    const _selected = this.selected || [];
 
-    if (this.selected.includes(option)) {
+    if (_selected && _selected.includes(option)) {
       const indexRemove = _selected.findIndex(x => x === option);
       _selected.splice(indexRemove, 1);
     } else {
@@ -106,7 +101,7 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
   }
 
   isSelected(option: any) {
-    return this.selected.includes(option);
+    return this.selected ? this.selected.includes(option) : false;
   }
 
   getId(option: any) {

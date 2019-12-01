@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'tag-input', component: TagInputComponent },
   { path: 'code-highlight', component: CodeHighlightComponent },
   {
-    path: "tabs",
+    path: 'tabs',
     component: TabsComponent,
     children: [
       { path: 'demo-route-a', component: DemoRouteAComponent },
@@ -33,4 +33,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class ProjectRoutingModule { }
- 

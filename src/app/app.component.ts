@@ -14,10 +14,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
-        typeof window !== 'undefined' ? window.scrollTo(0, 0) : null;
+        if (typeof window !== 'undefined') {
+          window.scrollTo(0, 0);
+        }
       }
     });
 
   }
 }
-

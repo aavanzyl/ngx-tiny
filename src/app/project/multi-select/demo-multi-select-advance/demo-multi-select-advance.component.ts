@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-demo-multi-select-advance',
   templateUrl: './demo-multi-select-advance.component.html',
-  styleUrls: ['./demo-multi-select-advance.component.scss']
+  styleUrls: ['./demo-multi-select-advance.component.scss'],
+  preserveWhitespaces: true
 })
-export class DemoMultiSelectAdvanceComponent implements OnInit {
+export class DemoMultiSelectAdvanceComponent {
 
-  constructor() { }
+  selected = [];
+  options = [{id: "1", value: "South Africa"}, {id: "2", value: "United States"}, {id: "3", value: "United Kingdom"}];
 
-  ngOnInit() {
+  onChange(selection) {
+    this.selected = selection;
   }
-
 }

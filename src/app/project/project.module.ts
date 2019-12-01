@@ -10,7 +10,6 @@ import { TagInputComponent } from './tag-input/tag-input.component';
 import { ProjectRoutingModule } from './project-routing.module';
 import { DemoMultiSelectSimpleComponent } from './multi-select/demo-multi-select-simple/demo-multi-select-simple.component';
 import { DemoMultiSelectFormComponent } from './multi-select/demo-multi-select-form/demo-multi-select-form.component';
-import { DemoMultiSelectDisabledComponent } from './multi-select/demo-multi-select-disabled/demo-multi-select-disabled.component';
 import { DemoMultiSelectAdvanceComponent } from './multi-select/demo-multi-select-advance/demo-multi-select-advance.component';
 import { CodeHighlightComponent } from './code-highlight/code-highlight.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -27,7 +26,6 @@ import { DemoRouteBComponent } from './tabs/demo-route-b/demo-route-b.component'
     TagInputComponent,
     DemoMultiSelectSimpleComponent,
     DemoMultiSelectFormComponent,
-    DemoMultiSelectDisabledComponent,
     DemoMultiSelectAdvanceComponent,
     CodeHighlightComponent,
     TabsComponent,

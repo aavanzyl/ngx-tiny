@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deploy": "ng build --prod --base-href https://aavanzyl.github.io/ngx-tiny/ && angular-cli-ghpages --branch gh-pages --dir dist/ngx-tiny-docs",
     "package": "run-s package:*",
     "package:multi-select": "ng build @ngx-tiny/multi-select",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",

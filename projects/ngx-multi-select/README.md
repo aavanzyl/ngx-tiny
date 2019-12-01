@@ -23,17 +23,17 @@ $ npm i @ngx-tiny/multi-select
 
 1. Install with [npm](https://www.npmjs.com): `npm install @ngx-tiny/multi-select --save`
 
-2. Add __NgxCodeHighlightModule__ to your __@NgModule__ like example below
+2. Add __NgxMultiSelectModule__ to your __@NgModule__ like example below
     ```typescript
 
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
-    import { NgxCodeExampleModule } from '@ngx-lite/code-example';
+    import { NgxMultiSelectModule } from '@ngx-lite/multi-select';
 
     import { AppComponent } from './app.component';
 
     @NgModule({
-        imports: [BrowserModule, NgxCodeExampleModule],
+        imports: [BrowserModule, NgxMultiSelectModule],
         declarations: [AppComponent],
         bootstrap: [AppComponent]
     })

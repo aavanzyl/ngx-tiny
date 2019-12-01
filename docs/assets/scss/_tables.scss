@@ -1,0 +1,30 @@
+.table-api {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 1px;
+  border-color: #1976d2;
+  border-style: solid;
+  color: #000000;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.table-api td{
+  border-width: 1px;
+  border-color: #1976d2;
+  border-style: solid;
+  padding: 5px;
+}
+
+.table-api th {
+  border-width: 1px;
+  border-color: #1976d2;
+  color: #ffffff;
+  border-style: solid;
+  padding: 5px;
+}
+
+.table-api thead {
+  background-color: #1976d2;
+}

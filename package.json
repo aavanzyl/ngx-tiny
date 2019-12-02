@@ -1,6 +1,6 @@
 {
   "name": "ngx-tiny",
-  "version": "0.0.0",
+  "version": "8.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "docs:after-build": "node scripts/docs-prep",
+    "docs:build": "ng build --prod --output-path docs --base-href https://aavanzyl.github.io/ngx-tiny/",
+    "docs": "npm run docs:build && npm run docs:after-build",
     "package": "run-s package:*",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",
     "package:multi-select": "ng build @ngx-tiny/multi-select",
@@ -15,7 +18,20 @@
     "package:tabs": "ng build @ngx-tiny/tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
-  "author": "Anton Van Zyl",
+  "author": "Anton Van Zyl <aavanzyl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/aavanzyl/ngx-tiny/issues"
+  },
+  "homepage": "https://aavanzyl.github.io/ngx-tiny",
+  "keywords": [
+    "angular",
+    "ng",
+    "ng2",
+    "ngx",
+    "angular2",
+    "angular8",
+    "ngx-tiny"
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {
@@ -27,7 +43,7 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
-    "angular-cli-ghpages": "^0.6.0",
+    "fs-extra": "^8.1.0",
     "prismjs": "^1.14.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

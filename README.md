@@ -1,27 +1,43 @@
 # ngx-tiny
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.17.
+Production ready Angular components build for my personal project I am now open sourcing for use by the community. 
 
-## Development server
+* Light Weight Angular Component Library.
+* Angular 8 Implementation
+* Compatible with Angular SSR 
+* No Dependencies (Exception `ngx-code-highlight`)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Documentation can be found here : [Read ngx-tiny Docs](https://aavanzyl.github.io/ngx-tiny)
 
-## Code scaffolding
+Projects I use this:
+* [Advory Wedding Directory](https://advory.co.za)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Available Libs:
+* [ngx-multi-select][ngx-multi-select]
+* [ngx-code-highlight][ngx-multi-select]
+* [ngx-tabs][ngx-multi-select]
 
-## Build
+## Development
+#### Build
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### Serve
+Run `ng serve` to serve the project for docs development.
 
-## Running unit tests
+#### Docs
+Run `npm run docs` to build the docs for github pages.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Support
 
-## Running end-to-end tests
+Support me by [becoming a patron](https://www.patreon.com/bePatron?u=27640996) and buying me a beer :) 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## License
+See the [LICENSE][license] file.
 
-## Further help
+[license]: /LICENSE
+[contributing]: /CONTRIBUTING.md
+[docs]: /DOCUMENTATION.md 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+[ngx-multi-select]: projects/ngx-multi-select/README.md 
+[ngx-code-highlight]: projects/ngx-code-highlight/README.md
+[ngx-tabs]: projects/ngx-tabs/README.md

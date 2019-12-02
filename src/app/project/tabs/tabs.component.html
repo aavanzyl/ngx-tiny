@@ -1,22 +1,24 @@
-<h1>ngx-tabs</h1>
-<br />
+<div class="container">
+
+    <h1>ngx-tabs</h1>
+    <br />
 
 
 
-<ngx-tabs>
-    <ngx-tab [active]="true" name="Installation">
+    <ngx-tabs>
+        <ngx-tab [active]="true" name="Installation">
 
-        <h2>Installation</h2>
-        <p>To install this library, run:</p>
-        <!-- Terminal -->
-        <div class="terminal">
-            <pre>npm install @ngx-tiny/tabs --save</pre>
-        </div>
+            <h2>Installation</h2>
+            <p>To install this library, run:</p>
+            <!-- Terminal -->
+            <div class="terminal">
+                <pre>npm install @ngx-tiny/tabs --save</pre>
+            </div>
 
-        <p>and then add <code><b>NgxTabsModule </b></code> to you <code><b>AppModule</b></code></p>
+            <p>and then add <code><b>NgxTabsModule </b></code> to you <code><b>AppModule</b></code></p>
 
-        <ngx-code-highlight>
-            <![CDATA[
+            <ngx-code-highlight>
+                <![CDATA[
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxTabsModule  } from '@ngx-tiny/tabs';
@@ -30,17 +32,17 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
         ]]>
-        </ngx-code-highlight>
-    </ngx-tab>
-    <ngx-tab name="Usage">
+            </ngx-code-highlight>
+        </ngx-tab>
+        <ngx-tab name="Usage">
 
 
-        <h2>Usage</h2>
-        <h3>Simple Usage</h3>
+            <h2>Usage</h2>
+            <h3>Simple Usage</h3>
 
-        <p>Example Usage:</p>
-        <ngx-code-highlight>
-            <![CDATA[
+            <p>Example Usage:</p>
+            <ngx-code-highlight>
+                <![CDATA[
 <ngx-tabs>
     <ngx-tab [active]="true" name="Tab 1">
         Tab 1
@@ -53,27 +55,28 @@ export class AppModule { }
     </ngx-tab>
 </ngx-tabs>
         ]]>
-        </ngx-code-highlight>
+            </ngx-code-highlight>
 
-        <p>Demo:</p>
-        <ngx-tabs>
-            <ngx-tab [active]="true" name="Tab 1">
-                Tab 1
-            </ngx-tab>
-            <ngx-tab name="Tab 2">
-                Tab 2
-            </ngx-tab>
-            <ngx-tab name="Tab 3">
-                Tab 3
-            </ngx-tab>
-        </ngx-tabs>
+            <p>Demo:</p>
+            <ngx-tabs>
+                <ngx-tab [active]="true" name="Tab 1">
+                    Tab 1
+                </ngx-tab>
+                <ngx-tab name="Tab 2">
+                    Tab 2
+                </ngx-tab>
+                <ngx-tab name="Tab 3">
+                    Tab 3
+                </ngx-tab>
+            </ngx-tabs>
 
-        <h3>Router Usage</h3>
-        <p>To use tabs with routes, generate your components <code>ng g c path/to/component</code> and setup the routes.
-        </p>
-        <p>Example Route Setup:</p>
-        <ngx-code-highlight>
-            <![CDATA[
+            <h3>Router Usage</h3>
+            <p>To use tabs with routes, generate your components <code>ng g c path/to/component</code> and setup the
+                routes.
+            </p>
+            <p>Example Route Setup:</p>
+            <ngx-code-highlight>
+                <![CDATA[
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -98,68 +101,68 @@ const routes: Routes = [
 })
 export class ProjectRoutingModule {} 
 ]]>
-        </ngx-code-highlight>
+            </ngx-code-highlight>
 
-        <p>Inside your component HTML you can define the <code>ngx-tab-routes</code> and setup your tabs</p>
+            <p>Inside your component HTML you can define the <code>ngx-tab-routes</code> and setup your tabs</p>
 
-        <ngx-code-highlight>
-            <![CDATA[
+            <ngx-code-highlight>
+                <![CDATA[
 <ngx-tab-routes 
     [tabs]="[{ name: 'Demo Route A', path: './demo-route-a' }, { name: 'Demo Route B', path: './demo-route-b' }]">
     <router-outlet></router-outlet>
 </ngx-tab-routes>
     ]]>
-        </ngx-code-highlight>
+            </ngx-code-highlight>
 
-        <p>Demo:</p>
-        <ngx-tab-routes
-            [tabs]="[{ name: 'Demo Route A', path: './demo-route-a' }, { name: 'Demo Route B', path: './demo-route-b' }]">
-            <router-outlet></router-outlet>
-        </ngx-tab-routes>
-
-
-    </ngx-tab>
-    <ngx-tab name="API">
+            <p>Demo:</p>
+            <ngx-tab-routes
+                [tabs]="[{ name: 'Demo Route A', path: './demo-route-a' }, { name: 'Demo Route B', path: './demo-route-b' }]">
+                <router-outlet></router-outlet>
+            </ngx-tab-routes>
 
 
-        <h2>API</h2>
-
-        <h3>ngx-tabs</h3>
-
-        <table class="table-api">
-            <thead>
-                <tr>
-                    <th>Attribute</th>
-                    <th>Default</th>
-                    <th>Required</th>
-                    <th width="50%">Specification</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>active</td>
-                    <td><code>false</code></td>
-                    <td>optional</td>
-                    <td>
-                        <p>Type: Boolean</p>
-                        <p>Set the selected tab as active</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>activeTabIndex</td>
-                    <td><code>0</code></td>
-                    <td>optional</td>
-                    <td>
-                        <p>Type: Number</p>
-                        <p>Set a tab index as active</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        </ngx-tab>
+        <ngx-tab name="API">
 
 
-        <h3>ngx-tab-routes</h3>
-        <table class="table-api">
+            <h2>API</h2>
+
+            <h3>ngx-tabs</h3>
+
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Default</th>
+                        <th>Required</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>active</td>
+                        <td><code>false</code></td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: Boolean</p>
+                            <p>Set the selected tab as active</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>activeTabIndex</td>
+                        <td><code>0</code></td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: Number</p>
+                            <p>Set a tab index as active</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <h3>ngx-tab-routes</h3>
+            <table class="table-api">
                 <thead>
                     <tr>
                         <th>Attribute</th>
@@ -181,5 +184,7 @@ export class ProjectRoutingModule {}
                 </tbody>
             </table>
 
-    </ngx-tab>
-</ngx-tabs>
+        </ngx-tab>
+    </ngx-tabs>
+
+</div>

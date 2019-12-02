@@ -1,4 +1,4 @@
-# @ngx-tiny/multi select
+# @ngx-tiny/multi-select
 
 Angular multiple selection dropdown.
 
@@ -17,23 +17,31 @@ $ npm i @ngx-tiny/multi-select
 
 ## Example
 
-![Drag Racing](../assets/ngx-multi-select.png)
-
+![Drag Racing](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
 ## Documentation
+
+__Full Docs:__
+
+You can find the full documentation at https://aavanzyl.github.io/ngx-tiny which includes
+* Installation instructions
+* Usage and Demos
+* API Reference
+
+__Quick Start:__
 
 1. Install with [npm](https://www.npmjs.com): `npm install @ngx-tiny/multi-select --save`
 
-2. Add __NgxCodeHighlightModule__ to your __@NgModule__ like example below
+2. Add __NgxMultiSelectModule__ to your __@NgModule__ like example below
     ```typescript
 
     import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
-    import { NgxCodeExampleModule } from '@ngx-lite/code-example';
+    import { NgxMultiSelectModule } from '@ngx-tiny/multi-select';
 
     import { AppComponent } from './app.component';
 
     @NgModule({
-        imports: [BrowserModule, NgxCodeExampleModule],
+        imports: [BrowserModule, NgxMultiSelectModule],
         declarations: [AppComponent],
         bootstrap: [AppComponent]
     })
@@ -62,10 +70,9 @@ $ npm i @ngx-tiny/multi-select
     ```
     The examples above are quite basic. The picker has much more features and configurations. 
     
+## Support
 
-
-Full Docs:
-
+Support me by [becoming a patron](https://www.patreon.com/bePatron?u=27640996) and buying me a beer :) 
 
 ## License
 See the [LICENSE][license] file.

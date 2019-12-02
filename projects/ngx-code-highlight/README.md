@@ -15,7 +15,7 @@ $ npm i @ngx-tiny/code-highlight
 
 ## Example
 
-![Drag Racing](../assets/ngx-code-highlight.png)
+![Code Highlight Example](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-code-highlight.png)
 
 ## Documentation
 

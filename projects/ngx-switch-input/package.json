@@ -2,7 +2,23 @@
   "name": "@ngx-tiny/switch-input",
   "version": "8.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
-  "author": "Anton Van Zyl",
+  "author": "Anton Van Zyl <aavanzyl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/aavanzyl/ngx-tiny/issues"
+  },
+  "homepage": "https://aavanzyl.github.io/ngx-tiny",
+  "keywords": [
+    "angular",
+    "ng",
+    "ng2",
+    "ngx",
+    "angular2",
+    "angular8",
+    "ngx-switch-input",
+    "switch",
+    "switch-input",
+    "input"
+  ],
   "license": "MIT",
   "private": false,
   "peerDependencies": {

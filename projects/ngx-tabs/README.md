@@ -16,7 +16,7 @@ $ npm i @ngx-tiny/tabs
 
 ## Example
 
-![Drag Racing](../assets/ngx-tabs.png)
+![ngx-tabs example](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-tabs.png)
 
 ## Documentation
 

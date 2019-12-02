@@ -17,8 +17,7 @@ $ npm i @ngx-tiny/multi-select
 
 ## Example
 
-![Drag Racing](../assets/ngx-multi-select.png)
-
+![Drag Racing](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
 ## Documentation
 
 __Full Docs:__

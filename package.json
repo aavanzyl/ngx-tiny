@@ -1,6 +1,6 @@
 {
   "name": "ngx-tiny",
-  "version": "0.0.0",
+  "version": "8.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,20 @@
     "package:tabs": "ng build @ngx-tiny/tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
-  "author": "Anton Van Zyl",
+  "author": "Anton Van Zyl <aavanzyl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/aavanzyl/ngx-tiny/issues"
+  },
+  "homepage": "https://aavanzyl.github.io/ngx-tiny",
+  "keywords": [
+    "angular",
+    "ng",
+    "ng2",
+    "ngx",
+    "angular2",
+    "angular8",
+    "ngx-tiny"
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {

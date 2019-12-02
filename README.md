@@ -7,6 +7,8 @@ Production ready Angular components build for my personal project I am now open 
 * Compatible with Angular SSR 
 * No Dependencies (Exception `ngx-code-highlight`)
 
+Documentation can be found here : [Read ngx-tiny Docs](https://aavanzyl.github.io/ngx-tiny)
+
 Projects I use this:
 * [Advory Wedding Directory](https://advory.co.za)
 

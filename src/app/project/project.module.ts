@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AddressInputComponent } from './address-input/address-input.component';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
-import { QuillInputComponent } from './quill-input/quill-input.component';
+import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 import { SwitchInputComponent } from './switch-input/switch-input.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { ProjectRoutingModule } from './project-routing.module';
@@ -15,13 +15,14 @@ import { CodeHighlightComponent } from './code-highlight/code-highlight.componen
 import { TabsComponent } from './tabs/tabs.component';
 import { DemoRouteAComponent } from './tabs/demo-route-a/demo-route-a.component';
 import { DemoRouteBComponent } from './tabs/demo-route-b/demo-route-b.component';
+import { DemoQuillEditorFormComponent } from './quill-editor/demo-quill-editor-form/demo-quill-editor-form.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
   declarations: [
     AddressInputComponent,
     MultiSelectComponent,
-    QuillInputComponent,
+    QuillEditorComponent,
     SwitchInputComponent,
     TagInputComponent,
     DemoMultiSelectSimpleComponent,
@@ -31,6 +32,7 @@ import { DemoRouteBComponent } from './tabs/demo-route-b/demo-route-b.component'
     TabsComponent,
     DemoRouteAComponent,
     DemoRouteBComponent,
+    DemoQuillEditorFormComponent,
   ]
 })
 export class ProjectModule {}

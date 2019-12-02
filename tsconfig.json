@@ -28,6 +28,9 @@
       "@ngx-tiny/tabs": [
         "dist/ngx-tabs"
       ],
+      "@ngx-tiny/quill-editor": [
+        "dist/ngx-quill-editor"
+      ],
     }
   },
   "angularCompilerOptions": {

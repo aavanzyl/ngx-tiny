@@ -9,8 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "package": "run-s package:*",
-    "package:multi-select": "ng build @ngx-tiny/multi-select",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",
+    "package:multi-select": "ng build @ngx-tiny/multi-select",
+    "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:tabs": "ng build @ngx-tiny/tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",

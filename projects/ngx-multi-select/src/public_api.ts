@@ -1,5 +1,5 @@
 /*
- * Public API Surface of ngx-carbon-ad
+ * Public API Surface of ngx-multi-select
  */
 
 export * from './ngx-multi-select.component';

@@ -218,6 +218,26 @@
           }
         }
       }
+    },
+    "@ngx-tiny/quill-editor": {
+      "root": "projects/ngx-quill-editor",
+      "sourceRoot": "projects/ngx-quill-editor/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-quill-editor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-quill-editor/ng-package.prod.json"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-tiny-docs"

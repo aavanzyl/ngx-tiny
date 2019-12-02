@@ -1,0 +1,58 @@
+<h3>Angular Forms</h3>
+<p>Use of quill editor component with angular forms implementation</p>
+<br/>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ngx-quill-editor formControlName="content"></ngx-quill-editor>
+    <button class="btn" type="submit">Submit</button>
+</form>
+
+<br />
+<p>Implementation:</p>
+
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ngx-quill-editor formControlName="content"></ngx-quill-editor>
+    <button class="btn" type="submit">Submit</button>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+    selector: 'app-demo-quill-editor-form',
+    templateUrl: './demo-quill-editor-form.component.html',
+    styleUrls: ['./demo-quill-editor-form.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+})
+export class DemoQuillEditorFormComponent implements OnInit {
+
+    myForm: FormGroup;
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myForm = this._formBuilder.group({
+            content: [[]]
+        });
+    }
+
+    onSubmit() {
+        alert(JSON.stringify(this.myForm.value));
+    }
+    
+}            
+    ]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

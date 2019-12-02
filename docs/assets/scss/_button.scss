@@ -1,12 +1,15 @@
-.btn {
+.btn,
+a.btn,
+button.btn  {
 	background-color:#1976d2;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	padding:9px 23px;
     text-decoration:none;
-    margin: 10px 0;
+    margin: 10px 10px 10px 0;
 }
 .btn:hover {
 	background-color: rgba(25, 118, 210, 0.5);
 }
+

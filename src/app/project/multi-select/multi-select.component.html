@@ -1,23 +1,24 @@
-<h1>ngx-multi-select</h1>
-<br />
+<div class="container">
+  <h1>ngx-multi-select</h1>
+  <br />
 
-<ngx-tabs>
-  <ngx-tab [active]="true" name="Installation">
+  <ngx-tabs>
+    <ngx-tab [active]="true" name="Installation">
 
-    <h2>Installation</h2>
-    <p>To install this library, run:</p>
-    <!-- Terminal -->
-    <div class="terminal">
-      <pre>npm install @ngx-tiny/code-highlight prismjs --save</pre>
-    </div>
+      <h2>Installation</h2>
+      <p>To install this library, run:</p>
+      <!-- Terminal -->
+      <div class="terminal">
+        <pre>npm install @ngx-tiny/code-highlight prismjs --save</pre>
+      </div>
 
-    <p>and then add <code><b>NgxCodeHighlightModule</b></code> to you <code><b>AppModule</b></code></p>
+      <p>and then add <code><b>NgxCodeHighlightModule</b></code> to you <code><b>AppModule</b></code></p>
 
-    <ngx-code-highlight>
-      <![CDATA[
+      <ngx-code-highlight>
+        <![CDATA[
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxMultiSelectModule } from '@ngx-lite/multi-select';
+import { NgxMultiSelectModule } from '@ngx-tiny/multi-select';
 
 import { AppComponent } from './app.component';
 
@@ -29,110 +30,111 @@ import { AppComponent } from './app.component';
 
 export class AppModule { }
       ]]>
-    </ngx-code-highlight>
-  </ngx-tab>
-  <ngx-tab name="Usage">
+      </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Usage">
 
 
-    <h2>Usage</h2>
+      <h2>Usage</h2>
 
-    <app-demo-multi-select-simple></app-demo-multi-select-simple>
-    <app-demo-multi-select-advance></app-demo-multi-select-advance>
-    <app-demo-multi-select-form></app-demo-multi-select-form>
-
-
-  </ngx-tab>
-  <ngx-tab name="API">
+      <app-demo-multi-select-simple></app-demo-multi-select-simple>
+      <app-demo-multi-select-advance></app-demo-multi-select-advance>
+      <app-demo-multi-select-form></app-demo-multi-select-form>
 
 
-    <h2>API</h2>
+    </ngx-tab>
+    <ngx-tab name="API">
 
 
-    <h3>Input</h3>
-    <p>Output specification on <code>ngx-multi-select</code> component.</p>
-    <table class="table-api">
-      <thead>
-        <tr>
-          <th>Attribute</th>
-          <th>Default</th>
-          <th>Required</th>
-          <th width="50%">Specification</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>selected</td>
-          <td><code>[]</code></td>
-          <td>optional</td>
-          <td>
-            <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
-            <p>Array of selected options. Only required when not using forms.</p>
-          </td>
-        </tr>
-        <tr>
-          <td>options</td>
-          <td><code>[]</code></td>
-          <td>required</td>
-          <td>
-            <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
-            <p>Array of options to select from</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Output</h3>
-    <p>Output specification on <code>ngx-multi-select</code> component.</p>
-    <table class="table-api">
-      <thead>
-        <tr>
-          <th>Attribute</th>
-          <th>Required</th>
-          <th width="50%">Specification</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>valueChange</td>
-          <td>optional</td>
-          <td>
-            <p>Type: <code>EventEmitter</code></p>
-            <p><code>MultiSelectOption</code> or <code>string</code></p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>Properties</h3>
-    <p>Output specification on <code>ngx-multi-select</code> component.</p>
-    <table class="table-api">
-      <thead>
-        <tr>
-          <th>Attribute</th>
-          <th>Default</th>
-          <th width="50%">Specification</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>placeholder</td>
-          <td><code>''</code></td>
-          <td>
-            <p>Type: <code>string</code></p>
-            <p>String placed when no options is selected.</p>
-          </td>
-        </tr>
-        <tr>
-          <td>deliminator</td>
-          <td><code>', '</code></td>
-          <td>
-            <p>Type: <code>string</code></p>
-            <p>Deliminator between selected options.</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <h2>API</h2>
 
 
-  </ngx-tab>
-</ngx-tabs>
+      <h3>Input</h3>
+      <p>Output specification on <code>ngx-multi-select</code> component.</p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Required</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>selected</td>
+            <td><code>[]</code></td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
+              <p>Array of selected options. Only required when not using forms.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td><code>[]</code></td>
+            <td>required</td>
+            <td>
+              <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
+              <p>Array of options to select from</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Output</h3>
+      <p>Output specification on <code>ngx-multi-select</code> component.</p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Required</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>valueChange</td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>EventEmitter</code></p>
+              <p><code>MultiSelectOption</code> or <code>string</code></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Properties</h3>
+      <p>Output specification on <code>ngx-multi-select</code> component.</p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>placeholder</td>
+            <td><code>''</code></td>
+            <td>
+              <p>Type: <code>string</code></p>
+              <p>String placed when no options is selected.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>deliminator</td>
+            <td><code>', '</code></td>
+            <td>
+              <p>Type: <code>string</code></p>
+              <p>Deliminator between selected options.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </ngx-tab>
+  </ngx-tabs>
+</div>

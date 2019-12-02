@@ -16,11 +16,26 @@
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
+  .toolbar .toolbar-items{
+    position: relative;
+    width: 100%;
+    height: 60px;   
   }
 
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
+  .toolbar .toolbar-item {
+    padding: 21px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+
+    &:hover {
+      opacity: 0.8;
+      background: rgba(255,255,255, 0.4);
+    }
+
+  }
+
+  .toolbar-heading{
+    font-size: 18px;
+    width: 100px;
   }

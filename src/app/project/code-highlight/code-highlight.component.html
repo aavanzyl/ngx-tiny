@@ -1,21 +1,22 @@
-<h1>ngx-code-highlight</h1>
-<br />
+<div class="container">
+  <h1>ngx-code-highlight</h1>
+  <br />
 
 
-<ngx-tabs>
-  <ngx-tab [active]="true" name="Installation">
+  <ngx-tabs>
+    <ngx-tab [active]="true" name="Installation">
 
-    <h2>Installation</h2>
-    <p>To install this library, run:</p>
-    <!-- Terminal -->
-    <div class="terminal">
-      <pre>npm install @ngx-tiny/code-highlight prismjs --save</pre>
-    </div>
+      <h2>Installation</h2>
+      <p>To install this library, run:</p>
+      <!-- Terminal -->
+      <div class="terminal">
+        <pre>npm install @ngx-tiny/code-highlight prismjs --save</pre>
+      </div>
 
-    <p>and then add <code><b>NgxCodeHighlightModule</b></code> to you <code><b>AppModule</b></code></p>
+      <p>and then add <code><b>NgxCodeHighlightModule</b></code> to you <code><b>AppModule</b></code></p>
 
-    <ngx-code-highlight>
-      <![CDATA[
+      <ngx-code-highlight>
+        <![CDATA[
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
@@ -29,17 +30,17 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
         ]]>
-    </ngx-code-highlight>
-  </ngx-tab>
-  <ngx-tab name="Usage">
-    
-
-    <h2>Usage</h2>
+      </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Usage">
 
 
-    <p>Example Output:</p>
-    <ngx-code-highlight>
-      <![CDATA[
+      <h2>Usage</h2>
+
+
+      <p>Example Output:</p>
+      <ngx-code-highlight>
+        <![CDATA[
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
@@ -53,12 +54,12 @@ import { AppComponent } from './app.component';
 })
 export class AppModule { }
         ]]>
-    </ngx-code-highlight>
+      </ngx-code-highlight>
 
 
-    <p>Place the code between &lt;![CDATA[]]&gt; to ensure formatting and escaping of characters.  </p>
+      <p>Place the code between &lt;![CDATA[]]&gt; to ensure formatting and escaping of characters. </p>
 
-    <pre class="code" style="padding: 24px; line-height: 18px">
+      <pre class="code" style="padding: 24px; line-height: 18px">
       <code>
 &lt;ngx-code-example&gt;
   &lt;![CDATA[
@@ -80,11 +81,12 @@ export class AppModule { }
     </pre>
 
 
-    <p>To ensure angular keeps the white spaces, add <code><b>preserveWhitespaces : true</b></code> to <code><b>@Component</b></code>.</p>
-    <p>Example below:</p>
+      <p>To ensure angular keeps the white spaces, add <code><b>preserveWhitespaces : true</b></code> to
+        <code><b>@Component</b></code>.</p>
+      <p>Example below:</p>
 
-    <ngx-code-highlight>
-      <![CDATA[
+      <ngx-code-highlight>
+        <![CDATA[
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -102,40 +104,40 @@ export class CodeHighlightComponent implements OnInit {
 
 }
     ]]>
-    </ngx-code-highlight>
+      </ngx-code-highlight>
 
 
-  </ngx-tab>
-  <ngx-tab name="API">
-    
-    
-    <h2>API</h2>
+    </ngx-tab>
+    <ngx-tab name="API">
 
 
-  
-  <table class="table-api">
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Default</th>
-        <th>Required</th>
-        <th width="50%">Specification</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>language</td>
-        <td><code>javascript</code></td>
-        <td>optional</td>
-        <td>
-          <p>Type: <code>string</code></p>
-          <p>@see <a href="https://prismjs.com/#supported-languages" target="_blank">https://prismjs.com/#supported-languages</a></p></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+      <h2>API</h2>
 
 
-  </ngx-tab>
-</ngx-tabs>
+
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Required</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>language</td>
+            <td><code>javascript</code></td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>string</code></p>
+              <p>@see <a href="https://prismjs.com/#supported-languages"
+                  target="_blank">https://prismjs.com/#supported-languages</a></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </ngx-tab>
+  </ngx-tabs>
+</div>

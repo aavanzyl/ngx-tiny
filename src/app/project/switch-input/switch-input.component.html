@@ -1,1 +1,124 @@
-<p>switch-input works!</p>
+<div class="container">
+    <h1>ngx-switch-input</h1>
+    <br />
+  
+    <ngx-tabs>
+      <ngx-tab [active]="true" name="Installation">
+  
+        <h2>Installation</h2>
+        <p>To install this library, run:</p>
+        <!-- Terminal -->
+        <div class="terminal">
+          <pre>npm install @ngx-tiny/switch-input --save</pre>
+        </div>
+  
+        <p>and then add <code><b>NgxSwitchInputModule</b></code> to you <code><b>AppModule</b></code></p>
+  
+        <ngx-code-highlight>
+          <![CDATA[
+  import { NgModule } from '@angular/core';
+  import { BrowserModule } from '@angular/platform-browser';
+  import { NgxSwitchInputModule } from '@ngx-tiny/switch-input';
+  
+  import { AppComponent } from './app.component';
+  
+  @NgModule({
+    imports: [BrowserModule, NgxSwitchInputModule],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
+  })
+  
+  export class AppModule { }
+        ]]>
+        </ngx-code-highlight>
+      </ngx-tab>
+      <ngx-tab name="Usage">
+  
+  
+        <h2>Usage</h2>
+  
+        <app-demo-switch-input-simple></app-demo-switch-input-simple>
+        <app-demo-switch-input-form></app-demo-switch-input-form>
+  
+      </ngx-tab>
+      <ngx-tab name="API">
+  
+  
+        <h2>API</h2>
+  
+  
+        <h3>Input</h3>
+        <p>Output specification on <code>ngx-switch-input</code> component.</p>
+        <table class="table-api">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default</th>
+              <th>Required</th>
+              <th width="50%">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr>
+              <td>value</td>
+              <td><code>null</code></td>
+              <td>optional</td>
+              <td>
+                <p>Type: <code>boolean</code></p>
+                <p>Value of the switch, use when using as a standalone instance.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <h3>Output</h3>
+        <p>Output specification on <code>ngx-switch-input</code> component.</p>
+        <table class="table-api">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Required</th>
+              <th width="50%">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>valueChange</td>
+              <td>optional</td>
+              <td>
+                <p>Type: <code>EventEmitter</code></p>
+                <p>Emits a <code>boolean</code> if the switch value changes.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <h3>Properties</h3>
+        <p>Output specification on <code>ngx-switch-input</code> component.</p>
+        <table class="table-api">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Default</th>
+              <th>Required</th>
+              <th width="50%">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>label</td>
+              <td><code>null</code></td>
+              <td>optional</td>
+              <td>
+                <p>Type: <code>string</code></p>
+                <p>Optional Label for the switch, displayed on the left of the switch.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+  
+      </ngx-tab>
+    </ngx-tabs>
+  </div>

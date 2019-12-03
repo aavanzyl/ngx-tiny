@@ -14,6 +14,7 @@
     "package": "run-s package:*",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",
     "package:multi-select": "ng build @ngx-tiny/multi-select",
+    "package:switch-input": "ng build @ngx-tiny/switch-input",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:tabs": "ng build @ngx-tiny/tabs"
   },

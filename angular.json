@@ -35,12 +35,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -50,8 +48,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
+              "budgets": [{
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -238,6 +235,26 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-quill-editor/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "@ngx-tiny/switch-input": {
+      "root": "projects/ngx-switch-input",
+      "sourceRoot": "projects/ngx-switch-input/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-switch-input/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-switch-input/ng-package.prod.json"
             }
           }
         }

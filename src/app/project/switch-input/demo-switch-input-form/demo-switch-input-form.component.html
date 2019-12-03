@@ -1,0 +1,69 @@
+<h3>Angular Forms</h3>
+<p>Use Switch Input with angular forms</p>
+<br/>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ngx-switch-input label="Toggle Me" formControlName="isActive"></ngx-switch-input>
+    <br/>
+    <button class="btn" type="submit">Submit</button>
+</form>
+
+<br/>
+<br/>
+<p><b>Output:</b></p>
+<p>isActive : {{isActive}}</p>
+<br />
+
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ngx-switch-input label="Toggle Me" formControlName="isActive"></ngx-switch-input>
+    <br/>
+    <button class="btn" type="submit">Submit</button>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+<![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+  selector: 'app-demo-switch-input-form',
+  templateUrl: './demo-switch-input-form.component.html',
+  styleUrls: ['./demo-switch-input-form.component.scss'],
+  preserveWhitespaces: true
+})
+export class DemoSwitchInputFormComponent implements OnInit {
+
+  myForm: FormGroup;
+
+  get isActive() {
+    return this.myForm ? this.myForm.get('isActive').value : null;
+  }
+
+  constructor(
+    private _formBuilder: FormBuilder
+  ) { }
+
+  ngOnInit() {
+    this.myForm = this._formBuilder.group({
+      isActive: [false]
+    });
+  }
+
+  onSubmit() {
+    alert(JSON.stringify(this.myForm.value));
+  }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

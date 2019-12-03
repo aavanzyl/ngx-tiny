@@ -12,6 +12,8 @@ import { AboutComponent } from './view/about/about.component';
 import { SupportComponent } from './view/support/support.component';
 import { GettingStartedComponent } from './view/getting-started/getting-started.component';
 
+import { NgxGtagModule } from 'ngx-gtag';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { GettingStartedComponent } from './view/getting-started/getting-started.
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
+
+    NgxGtagModule.forRoot({trackingId: 'UA-153776925-1'})
   ],
   providers: [],
   bootstrap: [AppComponent]

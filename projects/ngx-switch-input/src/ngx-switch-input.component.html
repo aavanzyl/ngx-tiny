@@ -1,0 +1,8 @@
+<label [for]="instanceId" class="ngx-switch-input">
+  <span *ngIf="label" class="ngx-switch-input-label">{{label}}</span>
+  <div class="ngx-switch-input-wrap" [ngClass]="{ 'ngx-switch-input-checked': value }">
+    <input type="checkbox" [id]="instanceId" class="ngx-switch-input-input" [checked]="value" (change)="switch()" [attr.aria-label]="label">
+    <span class="ngx-switch-input-background"></span>
+    <span class="ngx-switch-input-handle"></span>
+  </div>
+</label>

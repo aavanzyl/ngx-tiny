@@ -1,0 +1,52 @@
+<h3>Simple</h3>
+<p>Use Switch Input as a stand alone component.</p>
+<br/>
+
+<ngx-switch-input label="Toggle Me" [value]="isActive" (valueChange)="onChange($event)"></ngx-switch-input>
+
+<br/>
+<br/>
+<p><b>Output:</b></p>
+<p>isActive : {{isActive}}</p>
+<br />
+
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<ngx-switch-input 
+    label="Toggle Me" 
+    [value]="isActive" 
+    (valueChange)="onChange($event)">
+</ngx-switch-input>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+<![CDATA[
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-demo-switch-input-simple',
+  templateUrl: './demo-switch-input-simple.component.html',
+  styleUrls: ['./demo-switch-input-simple.component.scss'],
+  preserveWhitespaces: true
+})
+export class DemoSwitchInputSimpleComponent {
+
+  isActive = false;
+
+  constructor() { }
+
+  onChange(event) {
+    this.isActive = event;
+  }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

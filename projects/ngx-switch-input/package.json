@@ -17,7 +17,8 @@
     "ngx-switch-input",
     "switch",
     "switch-input",
-    "input"
+    "input",
+    "toggle"
   ],
   "license": "MIT",
   "private": false,

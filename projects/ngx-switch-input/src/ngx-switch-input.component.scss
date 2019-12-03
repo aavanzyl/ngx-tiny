@@ -1,0 +1,92 @@
+$color-handle: #fff;
+$color-background: #ccc;
+$color-selected: #3d3d3d;
+
+ngx-switch-input {
+  display: inline-block;
+  --color-handle: #{$color-handle};
+  --color-background: #{$color-background};
+  --color-selected: #{$color-selected};
+}
+
+.ngx-switch-input {
+
+  padding: 5px 0px;
+
+  &-wrap {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 1px 0;
+    overflow: visible;
+    cursor: pointer;
+  }
+
+  &-label {
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    padding-right: 5px;
+    padding-top: 5px;
+  }
+
+  &-handle {
+    position: absolute;
+    top: 6px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: $color-handle;
+    background: var(--color-handle);
+    border-radius: 100%;
+    transition: left 0.15s ease-out;
+  }
+
+  &-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  &-background {
+    position: relative;
+    display: block;
+    height: 26px;
+    width: 45px;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    background: $color-background;
+    background: var(--color-background);
+    transition: 0.15s ease-out;
+    transition-property: opacity background;
+    border-radius: 15px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      margin-top: -7px;
+      line-height: 1;
+      transition: inherit;
+    }
+  }
+}
+
+.ngx-switch-input-checked .ngx-switch-input-background {
+  background: $color-selected;
+  background: var(--color-selected);
+}
+
+.ngx-switch-input-checked .ngx-switch-input-background::before {
+  opacity: 0;
+}
+
+.ngx-switch-input-checked .ngx-switch-input-background::after {
+  opacity: 1;
+}
+
+.ngx-switch-input-checked .ngx-switch-input-handle {
+  left: 25px;
+}

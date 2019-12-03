@@ -31,6 +31,9 @@
       "@ngx-tiny/quill-editor": [
         "dist/ngx-quill-editor"
       ],
+      "@ngx-tiny/switch-input": [
+        "dist/ngx-switch-input"
+      ],
     }
   },
   "angularCompilerOptions": {

@@ -16,6 +16,7 @@ Available Libs:
 * [ngx-multi-select][ngx-multi-select]
 * [ngx-code-highlight][ngx-multi-select]
 * [ngx-tabs][ngx-multi-select]
+* [ngx-quill-editor][ngx-quill-editor]
 
 ## Development
 #### Build
@@ -40,4 +41,5 @@ See the [LICENSE][license] file.
 
 [ngx-multi-select]: projects/ngx-multi-select/README.md 
 [ngx-code-highlight]: projects/ngx-code-highlight/README.md
+[ngx-quill-editor]: projects/ngx-quill-editor/README.md
 [ngx-tabs]: projects/ngx-tabs/README.md

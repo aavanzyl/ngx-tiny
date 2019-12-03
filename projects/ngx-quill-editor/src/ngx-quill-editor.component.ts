@@ -35,7 +35,8 @@ export class NgxQuillEditorComponent implements OnInit, OnChanges, ControlValueA
 
   quillEditor: any;
   editorElem: HTMLElement;
-  content: any;
+  _options: object;
+
   defaultModules = {
     toolbar: [
       [{ 'size': ['small', false, 'large', 'huge'] }],
@@ -49,6 +50,7 @@ export class NgxQuillEditorComponent implements OnInit, OnChanges, ControlValueA
   };
 
   @Input() options: object;
+  @Input() content: any;
 
   @Output() blurred: EventEmitter<any> = new EventEmitter();
   @Output() focused: EventEmitter<any> = new EventEmitter();
@@ -65,7 +67,17 @@ export class NgxQuillEditorComponent implements OnInit, OnChanges, ControlValueA
   ) { }
 
   ngOnInit() {
-    this.svc.lazyLoadQuill().subscribe(_ => {
+
+    this._options = Object.assign({
+      modules: this.defaultModules,
+      placeholder: 'Insert text here ...',
+      readOnly: false,
+      theme: 'snow',
+      boundary: document.body
+    }, this.options || {});
+
+
+    this.svc.lazyLoadQuill(this._options).subscribe(_ => {
       if (!Quill) {
         Quill = this.document.defaultView.Quill;
       }
@@ -76,14 +88,7 @@ export class NgxQuillEditorComponent implements OnInit, OnChanges, ControlValueA
   initQuill() {
     this.editorElem = this.elementRef.nativeElement.children[0];
 
-    this.quillEditor = new Quill(this.editorElem, Object.assign({
-      modules: this.defaultModules,
-      placeholder: 'Insert text here ...',
-      readOnly: false,
-      theme: 'snow',
-      boundary: document.body
-    }, this.options || {}));
-
+    this.quillEditor = new Quill(this.editorElem, this._options);
 
     if (this.content) {
       this.quillEditor.pasteHTML(this.content);

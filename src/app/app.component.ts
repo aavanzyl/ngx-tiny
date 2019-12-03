@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +7,8 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private router: Router) {
-  }
+  constructor() { }
 
-  ngOnInit() {
-    this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationEnd) {
-        if (typeof window !== 'undefined') {
-          window.scrollTo(0, 0);
-        }
-      }
-    });
+  ngOnInit() { }
 
-  }
 }

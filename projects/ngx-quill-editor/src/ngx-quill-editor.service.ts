@@ -13,10 +13,21 @@ export class NgxQuillEditorService {
 
     constructor(@Inject(DOCUMENT) private readonly document: any) { }
 
-    lazyLoadQuill(): Observable<any> {
+    lazyLoadQuill(options): Observable<any> {
+
+        let _style = '';
+
+        if (options && options.theme === 'snow') {
+            _style = '//cdn.quilljs.com/1.3.6/quill.snow.css';
+        } else if (options && options.theme === 'bubble') {
+            _style = '//cdn.quilljs.com/1.3.6/quill.bubble.css';
+        } else {
+            _style = '//cdn.quilljs.com/1.3.6/quill.core.css';
+        }
+
         return forkJoin([
             this.loadScript('//cdn.quilljs.com/1.3.6/quill.min.js'),
-            this.loadStyle('//cdn.quilljs.com/1.3.6/quill.snow.css'),
+            this.loadStyle(_style)
         ]);
     }
 

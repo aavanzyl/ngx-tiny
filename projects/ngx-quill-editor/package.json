@@ -2,9 +2,6 @@
   "name": "@ngx-tiny/quill-editor",
   "version": "8.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
-<<<<<<< Updated upstream:projects/ngx-quill-input/package.json
-  "author": "Anton Van Zyl",
-=======
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
     "url": "https://github.com/aavanzyl/ngx-tiny/issues"
@@ -22,9 +19,10 @@
     "editor",
     "wysiwyg",
     "ngx-quill",
-    "ngx-quill-input"
+    "ngx-quill-input",
+    "lazy-load",
+    "lazy"
   ],
->>>>>>> Stashed changes:projects/ngx-quill-editor/package.json
   "license": "MIT",
   "private": false,
   "peerDependencies": {

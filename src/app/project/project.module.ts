@@ -16,6 +16,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { DemoRouteAComponent } from './tabs/demo-route-a/demo-route-a.component';
 import { DemoRouteBComponent } from './tabs/demo-route-b/demo-route-b.component';
 import { DemoQuillEditorFormComponent } from './quill-editor/demo-quill-editor-form/demo-quill-editor-form.component';
+import { DemoQuillEditorSimpleComponent } from './quill-editor/demo-quill-editor-simple/demo-quill-editor-simple.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
@@ -33,6 +34,7 @@ import { DemoQuillEditorFormComponent } from './quill-editor/demo-quill-editor-f
     DemoRouteAComponent,
     DemoRouteBComponent,
     DemoQuillEditorFormComponent,
+    DemoQuillEditorSimpleComponent,
   ]
 })
 export class ProjectModule {}

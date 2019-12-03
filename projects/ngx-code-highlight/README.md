@@ -50,24 +50,24 @@ __Quick Start:__
     ```
  4. Add the component to your view for basic
     ```html
-    <ngx-multi-select 
-        placeholder="Select a Country" 
-        [options]="options" 
-        (valueChange)="onChange($event)">
-    </ngx-multi-select>
+    <ngx-code-example>
+    <![CDATA[
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+    import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
+    
+    import { AppComponent } from './app.component';
+    
+    @NgModule({
+        imports: [BrowserModule, NgxCodeHighlightModule],
+        declarations: [AppComponent],
+        bootstrap: [AppComponent]
+    })
+    export class AppModule {
+    ]]>
+    </ngx-code-example>   
     ```
-    or for Angular forms
-    ```html 
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <ngx-multi-select 
-            formControlName="country" 
-            [options]="options" 
-            placeholder="Select a Country" >
-        </ngx-multi-select>
-        <button class="btn" type="submit">Submit</button>
-    </form>
-    ```
-    The examples above are quite basic. The picker has much more features and configurations. 
+    The examples above are quite basic. See the docs for more examples
     
 
 

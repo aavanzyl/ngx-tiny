@@ -47,6 +47,9 @@ MIT
 @ngx-tiny/multi-select
 MIT
 
+@ngx-tiny/quill-editor
+MIT
+
 @ngx-tiny/tabs
 MIT
 

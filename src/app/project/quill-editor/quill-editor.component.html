@@ -40,12 +40,46 @@
          <li>cdn.quilljs.com/1.3.6/quill.min.js</li>
          <li>cdn.quilljs.com/1.3.6/quill.snow.css</li>
        </ul>
+
      </ngx-tab>
      <ngx-tab name="Usage">
 
 
        <h2>Usage</h2>
+       <br />
 
+       <b>Using angular [innerHTML]</b>
+       <p>To render custom html with angular you should use the [innerHTML] attribute.</p>
+       <p>
+         But there are some pitfalls: <br />
+
+         You need to have the quill css files loaded, when using classes and not inline styling
+         (<a href="https://quilljs.com/guides/how-to-customize-quill/#class-vs-inline"
+           target="_blank">https://quilljs.com/guides/how-to-customize-quill/#class-vs-inline</a>)
+         When using classes use a div-tag that has the innerHTML attribute and add the ql-editor class. Wrap your div in
+         another div-tag with css classes ql-container and your theme, e.g. ql-snow.:</p>
+
+       <ngx-code-highlight>
+         <![CDATA[
+<div class="ql-container ql-snow" style="border-width: 0;">
+  <div class="ql-editor" [innerHTML]="byPassedHTMLString">
+  </div>
+</div>
+          ]]>
+       </ngx-code-highlight>
+
+       <p>Angular has html sanitation, so it will strip unkown or not trusted parts of your HTML - just mark your html
+         as
+         trusted (DomSanitizer). <br />
+         After that your content should look like what you expected.</p>
+
+
+
+
+       <br />
+       <br />
+       <br />
+       <app-demo-quill-editor-simple></app-demo-quill-editor-simple>
        <app-demo-quill-editor-form></app-demo-quill-editor-form>
 
 
@@ -72,7 +106,7 @@
              <td>options</td>
              <td>
                <ngx-code-highlight>
-                  <![CDATA[
+                 <![CDATA[
 defaultModules = {
   toolbar: [
     [{ 'size': ['small', false, 'large', 'huge'] }],
@@ -85,12 +119,23 @@ defaultModules = {
   ]
 };
               ]]>
-            </ngx-code-highlight>
+               </ngx-code-highlight>
              </td>
              <td>optional</td>
              <td>
                <p>Type: <code>object</code></p>
-               <p>@see <a href="https://quilljs.com/docs/configuration/" target="_blank">https://quilljs.com/docs/configuration/</a></p>
+               <p>@see <a href="https://quilljs.com/docs/configuration/"
+                   target="_blank">https://quilljs.com/docs/configuration/</a></p>
+             </td>
+           </tr>
+           <tr>
+             <td>content</td>
+             <td>
+             </td>
+             <td>optional</td>
+             <td>
+               <p>Type: <code>string | html</code></p>
+               <p>Content input if not using Angular Forms</p>
              </td>
            </tr>
          </tbody>
@@ -116,33 +161,33 @@ defaultModules = {
              </td>
            </tr>
            <tr>
-            <td>focused</td>
-            <td>optional</td>
-            <td>
-              <p>Type: <code>EventEmitter</code></p>
-              <p>Emits event on input focus</p>
-            </td>
-          </tr>
-          <tr>
-            <td>ready</td>
-            <td>optional</td>
-            <td>
-              <p>Type: <code>EventEmitter</code></p>
-              <p>Emits event on input ready</p>
-            </td>
-          </tr>
-          <tr>
-            <td>changed</td>
-            <td>optional</td>
-            <td>
-              <p>Type: <code>EventEmitter</code></p>
-              <p>Emits event on input changed with <code>editor, html &amp; text</code> as output in object form.</p>
-            </td>
-          </tr>
+             <td>focused</td>
+             <td>optional</td>
+             <td>
+               <p>Type: <code>EventEmitter</code></p>
+               <p>Emits event on input focus</p>
+             </td>
+           </tr>
+           <tr>
+             <td>ready</td>
+             <td>optional</td>
+             <td>
+               <p>Type: <code>EventEmitter</code></p>
+               <p>Emits event on input ready</p>
+             </td>
+           </tr>
+           <tr>
+             <td>changed</td>
+             <td>optional</td>
+             <td>
+               <p>Type: <code>EventEmitter</code></p>
+               <p>Emits event on input changed with <code>editor, html &amp; text</code> as output in object form.</p>
+             </td>
+           </tr>
          </tbody>
        </table>
 
-       
+
 
 
      </ngx-tab>

@@ -50,6 +50,9 @@ MIT
 @ngx-tiny/quill-editor
 MIT
 
+@ngx-tiny/switch-input
+MIT
+
 @ngx-tiny/tabs
 MIT
 

@@ -1,0 +1,119 @@
+<div class="container">
+    <h1>ngx-clipboard</h1>
+    <br />
+
+
+    <ngx-tabs>
+        <ngx-tab [active]="true" name="Installation">
+
+            <h2>Installation</h2>
+            <p>To install this library, run:</p>
+            <!-- Terminal -->
+            <div class="terminal">
+                <pre>npm install @ngx-tiny/clipboard --save</pre>
+            </div>
+
+            <p>and then add <code><b>NgxClipboardModule</b></code> to you <code><b>AppModule</b></code></p>
+
+            <ngx-code-highlight>
+                <![CDATA[
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxClipboardModule } from '@ngx-tiny/clipboard';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+imports: [BrowserModule, NgxClipboardModule],
+declarations: [AppComponent],
+bootstrap: [AppComponent]
+})
+export class AppModule { }
+          ]]>
+            </ngx-code-highlight>
+        </ngx-tab>
+        <ngx-tab name="Usage">
+
+
+            <h2>Usage</h2>
+
+            <h3>Simple</h3>
+            <p>Use of a value array as selection options</p>
+            <br />
+
+            <p class="copy-example" [ngxClipboard]="content" (copied)="onCopy($event)">{{content}}</p>
+            <br />
+
+
+            <br />
+            <p>Implementation:</p>
+            <ngx-tabs>
+                <ngx-tab [active]="true" name="Template">
+                    <ngx-code-highlight>
+                        <![CDATA[
+<p [ngxClipboard]="content" (copied)="onCopy($event)">{ {content} }</p>
+            ]]>
+                    </ngx-code-highlight>
+                </ngx-tab>
+                <ngx-tab name="Component">
+                    <ngx-code-highlight class="no-margin">
+                        <![CDATA[
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-clipboard',
+  templateUrl: './clipboard.component.html',
+  styleUrls: ['./clipboard.component.scss'],
+  preserveWhitespaces: true
+})
+export class ClipboardComponent{
+
+  content = "This is some text you can copy, just click on it to copy";
+
+  onCopy(event) {
+    alert(`Copied to Clipboard : ${event}`);
+  }
+
+}
+]]>
+                    </ngx-code-highlight>
+                </ngx-tab>
+            </ngx-tabs>
+
+
+
+
+
+
+        </ngx-tab>
+        <ngx-tab name="API">
+
+            <h2>API</h2>
+
+
+            <h3>Output</h3>
+            <p>Output specification on <code>ngx-clipboard</code> directive.</p>
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Required</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>copied</td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: <code>EventEmitter</code></p>
+                            <p><code>string</code></p>
+                            <p>String that was copied.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </ngx-tab>
+    </ngx-tabs>
+</div>

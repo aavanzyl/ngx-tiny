@@ -259,6 +259,26 @@
           }
         }
       }
+    },
+    "@ngx-tiny/clipboard": {
+      "root": "projects/ngx-clipboard",
+      "sourceRoot": "projects/ngx-clipboard/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-clipboard/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-clipboard/ng-package.prod.json"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-tiny-docs"

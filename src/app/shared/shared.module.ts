@@ -8,6 +8,7 @@ import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
 import { NgxTabsModule } from '@ngx-tiny/tabs';
 import { NgxQuillEditorModule } from '@ngx-tiny/quill-editor';
 import { NgxSwitchInputModule } from '@ngx-tiny/switch-input';
+import { NgxClipboardModule } from '@ngx-tiny/clipboard';
 
 
 const modules = [
@@ -15,7 +16,8 @@ const modules = [
   NgxCodeHighlightModule,
   NgxTabsModule,
   NgxQuillEditorModule,
-  NgxSwitchInputModule
+  NgxSwitchInputModule,
+  NgxClipboardModule
 ];
 
 @NgModule({

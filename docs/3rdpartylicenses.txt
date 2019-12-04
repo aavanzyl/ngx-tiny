@@ -41,6 +41,9 @@ MIT
 @angular/router
 MIT
 
+@ngx-tiny/clipboard
+MIT
+
 @ngx-tiny/code-highlight
 MIT
 

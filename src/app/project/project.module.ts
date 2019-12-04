@@ -19,6 +19,7 @@ import { DemoQuillEditorFormComponent } from './quill-editor/demo-quill-editor-f
 import { DemoQuillEditorSimpleComponent } from './quill-editor/demo-quill-editor-simple/demo-quill-editor-simple.component';
 import { DemoSwitchInputSimpleComponent } from './switch-input/demo-switch-input-simple/demo-switch-input-simple.component';
 import { DemoSwitchInputFormComponent } from './switch-input/demo-switch-input-form/demo-switch-input-form.component';
+import { ClipboardComponent } from './clipboard/clipboard.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
@@ -39,6 +40,7 @@ import { DemoSwitchInputFormComponent } from './switch-input/demo-switch-input-f
     DemoQuillEditorSimpleComponent,
     DemoSwitchInputSimpleComponent,
     DemoSwitchInputFormComponent,
+    ClipboardComponent,
   ]
 })
 export class ProjectModule {}

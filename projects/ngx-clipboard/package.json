@@ -1,0 +1,28 @@
+{
+  "name": "@ngx-tiny/clipboard",
+  "version": "8.0.0",
+  "repository": "https://github.com/aavanzyl/ngx-tiny",
+  "author": "Anton Van Zyl <aavanzyl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/aavanzyl/ngx-tiny/issues"
+  },
+  "homepage": "https://aavanzyl.github.io/ngx-tiny",
+  "keywords": [
+    "angular",
+    "ng",
+    "ng2",
+    "ngx",
+    "angular2",
+    "angular8",
+    "ngx-clipboard",
+    "clipboard",
+    "copy"
+  ],
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "@angular/animations": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "@angular/common": "^8.0.0"
+  }
+}

@@ -34,6 +34,9 @@
       "@ngx-tiny/switch-input": [
         "dist/ngx-switch-input"
       ],
+      "@ngx-tiny/clipboard": [
+        "dist/ngx-clipboard"
+      ],
     }
   },
   "angularCompilerOptions": {

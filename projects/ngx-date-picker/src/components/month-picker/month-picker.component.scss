@@ -1,0 +1,23 @@
+.month-picker-wrapper {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+
+    .month-picker-button {
+        height: 30px;
+        background-color: #fff;
+        border-radius: 3px;
+        border: 1px solid #c4c4c4;
+        background-color: transparent;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .month-picker-button.active,
+    .month-picker-button:hover {
+        background-color: #eaeaea;
+    }
+
+}

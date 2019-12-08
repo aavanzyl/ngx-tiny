@@ -23,7 +23,7 @@ import { DefaultDirectiveOptions } from './config/datepicker.options';
 @Directive({
     selector: '[ngxDatepicker]'
 })
-export class NgxDatepickerDirective {
+export class NgxDatePickerDirective {
 
     datepicker: any = null; // TODO: fix types: DatepickerComponent | AnimatepickerComponent
     clickListener;

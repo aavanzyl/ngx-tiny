@@ -1,0 +1,3 @@
+<div class="month-picker-wrapper">
+  <button *ngFor="let month of months; let i = index" [className]="isActive(i) ? 'month-picker-button active' : 'month-picker-button'" type="button" (click)="selectMonth(i)">{{month}}</button>
+</div>

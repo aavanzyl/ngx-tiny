@@ -1,8 +1,10 @@
 <div class="datepicker__wrapper" [ngStyle]="datepickerPosition">
 	<div #calendarTopContainer>
+
 		<div class="datepicker__header" #header>
 			<ng-content select="header"></ng-content>
 		</div>
+
 		<ngx-internal-navigation
 				(previousClick)="goToPreviousMonth()"
 				(nextClick)="goToNextMonth()"
@@ -15,6 +17,9 @@
 				[hideNavigation]="options.hideNavigation"
 				[totalYearMonth]="totalYearMonth"
 		></ngx-internal-navigation>
+
+
+
 
 		<div class="datepicker__weekdays-wrapper">
 			<div 	*ngFor="let month of numberOfMonths"
@@ -29,10 +34,13 @@
 				</table>
 			</div>
 		</div>
+
+
 	</div>
 	<div class="datepicker__main" [ngStyle]="{
 		'height.px': calendarHeight}">
-		<div class="datepicker__calendar-wrapper" #calendarContainer [ngStyle]="{
+
+		<!-- <div class="datepicker__calendar-wrapper" #calendarContainer [ngStyle]="{
 					'transform': 'translateX(' + translateX + '%)',
 					'transition': transition,
 					'left.%': leftInnerPosition
@@ -67,8 +75,15 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
+		</div> -->
+
+		<!-- <ngx-internal-month-picker></ngx-internal-month-picker> -->
+		<ngx-internal-year-picker></ngx-internal-year-picker>
+
 	</div>
+
+
+
 	<div class="datepicker__footer" #footer>
 		<ng-content select="footer"></ng-content>
 	</div>

@@ -1,0 +1,7 @@
+<div class="year-picker-wrapper">
+  <div #scrollPane class="year-picker-scroll-pane">
+      <button *ngFor="let year of years; let i = index"
+      [className]="isActive(i) ? 'year-picker-button active' : 'year-picker-button'" type="button"
+      (click)="selectYear(i)">{{year}}</button>
+  </div>
+</div>

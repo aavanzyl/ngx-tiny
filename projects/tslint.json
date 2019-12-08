@@ -12,15 +12,17 @@
         true,
         "ban-keywords",
         "check-format",
-        "allow-leading-underscore"
+        "allow-leading-underscore",
+        "allow-pascal-case"
       ],
       "object-literal-key-quotes": [true, "consistent"],
       "component-selector": [
         true,
         "element",
-        "ngx",
+        ["ngx", "ngx-internal"],
         "kebab-case"
       ],
+      "prefer-for-of": false,
       "max-line-length": [
         true, 
         {

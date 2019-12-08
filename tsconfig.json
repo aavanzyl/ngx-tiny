@@ -37,6 +37,9 @@
       "@ngx-tiny/clipboard": [
         "dist/ngx-clipboard"
       ],
+      "@ngx-tiny/date-picker": [
+        "dist/ngx-date-picker"
+      ],
     }
   },
   "angularCompilerOptions": {

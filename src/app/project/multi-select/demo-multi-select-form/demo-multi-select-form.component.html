@@ -1,10 +1,13 @@
 <h3>Angular Forms</h3>
 <p>Use of selection component with angular forms implementation</p>
 <br/>
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <ngx-multi-select formControlName="country" [options]="options" placeholder="Select a Country"></ngx-multi-select>
-    <button class="btn" type="submit">Submit</button>
-</form>
+
+<app-example-area addedHeight="140" [enableAbsolute]="false">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <ngx-multi-select formControlName="country" [options]="options" placeholder="Select a Country"></ngx-multi-select>
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</app-example-area>
 
 <br />
 <p>Implementation:</p>

@@ -17,6 +17,7 @@
     "package:switch-input": "ng build @ngx-tiny/switch-input",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:clipboard": "ng build @ngx-tiny/clipboard",
+    "package:date-picker": "ng build @ngx-tiny/date-picker",
     "package:tabs": "ng build @ngx-tiny/tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",

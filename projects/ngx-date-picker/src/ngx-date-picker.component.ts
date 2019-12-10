@@ -52,6 +52,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
     @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
+    @Input() value: Date;
     @Input() options: DatePickerOptions;
 
     /**
@@ -133,11 +134,13 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             start: new Date(),
             end: new Date(),
         };
-        this.viewingDate = new Date();
+        this.viewingDate = this.value || new Date();
 
         this.initDayNames();
         this.initYears();
         this.initMonths();
+        
+        this.init();
     }
 
     ngOnChanges(changes: SimpleChanges) {

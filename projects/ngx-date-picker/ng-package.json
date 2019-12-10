@@ -3,6 +3,9 @@
   "dest": "../../dist/ngx-date-picker",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "date-fns" : "DateFns"
+    }
   }
 }

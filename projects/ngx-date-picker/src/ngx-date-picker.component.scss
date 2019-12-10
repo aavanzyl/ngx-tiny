@@ -101,11 +101,12 @@ $color: #0186FF;
   width: calc(100% / 7);
   text-transform: uppercase;
   text-align: center;
+  margin: 5px 5px 0 0;
 }
 
 .main-calendar-days {
 
-  padding: 15px 0 0 0;
+  padding: 15px 0;
   width: 100%;
   display: inline-block;
   overflow: hidden;
@@ -123,17 +124,19 @@ $color: #0186FF;
 .year-unit,
 .month-unit {
 
+  margin: 5px 5px 0 0;
   position: relative;
-  width: calc(100% / 7);
+  width: calc(100% / 7 - 5px);
   font-size: 14px;
   font-weight: 400;
-  height: 40px;
+  height: 35px;
   display: inline-flex;
   float: left;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   user-select: none;
+
 }
 
 .day-background-upper {
@@ -143,7 +146,7 @@ $color: #0186FF;
   z-index: 1;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 5px;
   align-items: center;
   justify-content: center;
 
@@ -212,18 +215,18 @@ $color: #0186FF;
 
 .month-unit {
 
-  width: calc(100% / 4);
+  width: calc(100% / 4 - 5px);
   height: 54px;
 }
 
 .year-unit {
-  width: calc(100% / 3);
+  width: calc(100% / 3 - 5px);
 }
 
 .year-unit,
 .month-unit {
 
-  border-radius: 10px;
+  border-radius: 5px;
 
   &.is-selected {
 

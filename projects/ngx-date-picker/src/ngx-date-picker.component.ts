@@ -1,367 +1,448 @@
 import {
-    AfterViewInit,
     Component,
-    ElementRef,
-    HostBinding,
-    Input,
     OnInit,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    ElementRef,
+    HostListener,
+    forwardRef,
     ViewChild,
+    TemplateRef
 } from '@angular/core';
-import { YearMonth, Month } from './models/datepicker.model';
-import { DatepickerService } from './services/datepicker.service';
-import { UtilitiesService } from './services/utilities.service';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+import {
+    startOfMonth,
+    endOfMonth,
+    addMonths,
+    subMonths,
+    setYear,
+    eachDayOfInterval,
+    getDate,
+    getMonth,
+    getYear,
+    isToday,
+    isSameMonth,
+    format,
+    getDay,
+    subDays,
+    setDay,
+    isAfter, isBefore, addDays, setMonth,
+} from 'date-fns';
+
+import { isSameDate, createDateRange, isNull } from './helpers';
+import { DateRange, Day } from './models';
+import { DatePickerOptions, PickerPosition, AddClass } from './ngx-date-picker.options';
+
+
+// Counter for calculating the auto-incrementing field ID
+let counter = 0;
 
 @Component({
     selector: 'ngx-date-picker',
-    templateUrl: './ngx-date-picker.component.html',
-    styleUrls: ['./components/datepicker/datepicker.component.scss']
+    templateUrl: 'ngx-date-picker.component.html',
+    styleUrls: ['ngx-date-picker.component.scss'],
+    providers: [
+        { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxDatePickerComponent), multi: true }
+    ]
 })
-export class NgxDatePickerComponent extends DatepickerComponent implements OnInit, AfterViewInit {
-    /* ==============================================
-     * Internal Properties
-     * ============================================== */
+export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnChanges {
 
-    public animate = true;
-    public initialWidth: number;
-    public calendarWidth: number;
-    public isAnimating = false;
-    public leftInnerPosition = 0;
-    public transition: string;
-    public translateX: number;
-    public currentYearMonth: object = null;
-    public datepickerPosition: object;
-    public initialised = false;
-    public calendarHeight: number;
+    @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
+    @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
 
-    /* ==============================================
-     * External Properties
-     * ============================================== */
+    @Input() options: DatePickerOptions;
 
     /**
-     * Number of months: the number of months displayed
+     * Disable datepicker's input
      */
-    private _numberOfMonths: any = new Array(1);
+    @Input() headless = false;
 
-    @Input()
-    set numberOfMonths(value) {
-        if (value === undefined || value === this._numberOfMonths.length) {
-            return;
-        }
-        this._numberOfMonths = new Array(value);
-        this.setDatePickerDimension();
+    /**
+     * Set datepicker's visibility state
+     */
+    @Input() isOpened = false;
 
-        this.goToDate(this.date);
+    /**
+     * Datepicker dropdown position
+     */
+    @Input() position: PickerPosition = 'bottom-right';
+
+    @Input() previousMonthButtonTemplate: TemplateRef<any>;
+    @Input() nextMonthButtonTemplate: TemplateRef<any>;
+
+    currentOptions: DatePickerOptions = {
+        closeOnClickOutside: true,
+        closeOnSelection: true,
+        includeDays: 'previous-month',
+        includeNextMonthsFirstFullWeek: true,
+        minYear: 1970,
+        maxYear: 2030,
+        displayFormat: 'MMM d, yyyy',
+        barTitleFormat: 'MMMM yyyy',
+        dayNamesFormat: 'EEEEEE',
+        rangeSeparator: '-',
+        selectRange: false,
+        firstCalendarDay: 0,
+        barTitleIfEmpty: 'Click to select a date',
+        locale: {},
+        placeholder: '',
+        addClass: {},
+        addStyle: {},
+        fieldId: this.defaultFieldId,
+        useEmptyBarTitle: true,
+    };
+
+    displayValue: string;
+    viewingDate: Date;
+    barTitle: string;
+    view: 'days' | 'months' | 'years';
+    years: { year: number; isThisYear: boolean }[];
+    months: { month: number; name: string; isSelected: boolean }[];
+    dayNames: string[];
+    days: Day[];
+    fieldId: string;
+    disabled: boolean;
+
+    private _range: DateRange;
+
+    private onTouchedCallback: () => void = () => { };
+    private onChangeCallback: (_: any) => void = () => { };
+
+    public setDisabledState(isDisabled: boolean) {
+        this.disabled = isDisabled;
     }
 
-    get numberOfMonths(): number[] {
-        return this._numberOfMonths;
+    set range(val: DateRange | undefined) {
+        this._range = val;
+
+        this.onChangeCallback(this.getValueToEmit(val));
     }
 
-    /* ==============================================
-     * Bindings and Children
-     * ============================================== */
+    get range(): DateRange | undefined {
+        return this._range;
+    }
 
-    @ViewChild('calendarContainer', { static: true }) public calendarContainer: ElementRef;
-    @ViewChild('calendarTopContainer', { static: true }) public calendarTopContainer: ElementRef;
-    @ViewChild('footer', { static: true }) public footer: ElementRef;
-
-    @HostBinding('style.width.px') public datepickerWidth: number;
-    @HostBinding('style.height.px') public datepickerHeight: number;
-
-    constructor(public elementRef: ElementRef, public utilities: UtilitiesService) {
-        super(utilities, elementRef);
+    constructor() {
     }
 
     ngOnInit() {
-        // Get the computed width from the calendar. Set the initial width
-        const computedWidth = window
-            .getComputedStyle(this.elementRef.nativeElement, null)
-            .getPropertyValue('width');
-        this.initialWidth = parseInt(computedWidth, 10);
-        this.initialised = true;
+        this.view = 'days';
+        this.range = {
+            start: new Date(),
+            end: new Date(),
+        };
+        this.viewingDate = new Date();
 
-        // Set the current year and month object
-        if (!this.month && !this.year) {
-            this.goToDate(this.options.currentDate);
+        this.initDayNames();
+        this.initYears();
+        this.initMonths();
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if ('options' in changes) {
+            this.updateOptions(changes.options.currentValue);
+            this.initDayNames();
+            this.init();
+            this.initYears();
+            this.initMonths();
         }
     }
 
-    ngAfterViewInit() {
-        setTimeout(() => {
-            this.setDatePickerDimension();
-            this.setDatepickerHeight(true);
-        });
+    get defaultFieldId(): string {
+        // Only evaluate and increment if required
+        const value = `datepicker-${counter++}`;
+        Object.defineProperty(this, 'defaultFieldId', { value });
+
+        return value;
     }
 
-    /**
-     * Set the height and the width properties
-     */
-    setDatePickerDimension(): void {
-        this.datepickerHeight =
-            this.calendarContainer.nativeElement.offsetHeight +
-            this.calendarTopContainer.nativeElement.offsetHeight +
-            this.footer.nativeElement.offsetHeight;
-        this.calendarHeight = this.calendarContainer.nativeElement.offsetHeight;
-        this.datepickerWidth = this.initialWidth * this._numberOfMonths.length;
+    updateOptions(options: DatePickerOptions): void {
+        this.currentOptions = {
+            ...this.currentOptions,
+            ...options,
+        };
     }
 
-    /**
-     * Go to a specific month
-     *
-     * @param date - optional
-     */
-    goToDate(date?: Date): void {
-
-        if (date) {
-            this.currentYearMonth = this.getNextYearMonthArray(date.getFullYear(), date.getMonth());
-            this.months = this.getNextMonthArray(this.currentYearMonth, true);
-        }
-        this.calendarWidth = 50 / this._numberOfMonths.length;
-        this.resetStyle();
+    nextMonth(): void {
+        this.viewingDate = addMonths(this.viewingDate, 1);
+        this.init();
     }
 
-    /**
-     * Create an array of the next year and months
-     */
-    getNextYearMonthArray(year: number, month: number): YearMonth[] {
-
-        const array = [];
-
-        for (let index = 0; index < this._numberOfMonths.length; index++) {
-            array.push({ year, month });
-            year = DatepickerService.getYearOfNextMonth(year, month);
-            month = DatepickerService.getNextMonth(month);
-        }
-        return array;
+    prevMonth(): void {
+        this.viewingDate = subMonths(this.viewingDate, 1);
+        this.init();
     }
 
-    /**
-     * Create an array of the previous year and months
-     */
-    getPreviousYearMonthArray(year: number, month: number): YearMonth[] {
-        const array = [];
-        // @ts-ignore
-        for (let index = 0; index < this._numberOfMonths.length; index++) {
-            array.unshift({ year, month });
-            year = DatepickerService.getYearOfPreviousMonth(year, month);
-            month = DatepickerService.getPreviousMonth(month);
-        }
-        return array;
-    }
+    setDate(i: number): void {
+        const date = this.days[i].date;
 
-    /**
-     * Set the datepicker height, used when animating
-     *
-     * @param directionRight - Set optional when sliding to the right
-     */
-    setDatepickerHeight(directionRight?: boolean): void {
-        let indexArray: number[];
-
-        // TODO: Seperate this logic for readability purpose
-        if (this._numberOfMonths.length > 1) {
-            const start = directionRight ? 0 : this._numberOfMonths.length;
-            const end = directionRight
-                ? this._numberOfMonths.length - 1
-                : this._numberOfMonths.length + this._numberOfMonths.length - 1;
-            indexArray = this.utilities.createArray(start, end);
-        } else {
-            indexArray = directionRight ? [0] : [1];
-        }
-
-        const that = this;
-        setTimeout(() => {
-            const calendarArray = that.elementRef.nativeElement.querySelectorAll(
-                '.datepicker__calendar-container'
-            );
-            let offsetHeight = 0;
-            indexArray.forEach(el => {
-                if (calendarArray[el].offsetHeight > offsetHeight) {
-                    offsetHeight = calendarArray[el].offsetHeight;
-                }
-            });
-
-            // TODO: Merge with setHeight function.
-            that.datepickerHeight =
-                offsetHeight + that.calendarTopContainer.nativeElement.offsetHeight + that.footer.nativeElement.offsetHeight;
-            that.calendarHeight = offsetHeight;
-        });
-    }
-
-    /**
-     * Get next month array, gets multiple months.
-     * Used when the options animate is set or multiple months are visable
-     */
-    getNextMonthArray(currentYearMonth, keepDate = false, nextMonthsYearMonthArray?): Month[] {
-        // Get the last index, used for selecting the right year month object
-        const lastIndex = this._numberOfMonths.length - 1;
-
-        // Get next year and month in an Object
-        const nextMonths =
-            nextMonthsYearMonthArray ||
-            this.getNextYearMonthArray(
-                DatepickerService.getYearOfNextMonth(
-                    currentYearMonth[lastIndex].year,
-                    currentYearMonth[lastIndex].month
-                ),
-                DatepickerService.getNextMonth(currentYearMonth[lastIndex].month)
-            );
-
-        // Concatenates the two objects to create a total year and month object
-        this.totalYearMonth = currentYearMonth.concat(nextMonths);
-
-        // Create the calendar array using the total year and month Object
-        const monthArray = [];
-        this.totalYearMonth.forEach(e =>
-            monthArray.push(this.createCalendarArray(e.year, e.month))
-        );
-
-        // Set the new current year and month object.
-        if (!keepDate) {
-            this.currentYearMonth = nextMonths;
-        }
-
-        return [].concat.apply([], monthArray);
-    }
-
-    /**
-     * Gets an array of previous months.
-     * Used for animation and when more months are displayed
-     */
-    getPreviousMonthArray(currentYearMonth, keepDate = false): Month[] {
-        // Get previous year and month in an Object
-        const previousMonths = this.getPreviousYearMonthArray(
-            DatepickerService.getYearOfPreviousMonth(
-                currentYearMonth[0].year,
-                currentYearMonth[0].month
-            ),
-            DatepickerService.getPreviousMonth(currentYearMonth[0].month)
-        );
-
-        // Concatenates the two objects to create a total year and month object
-        this.totalYearMonth = previousMonths.concat(currentYearMonth);
-
-        // Create the calendar array using the total year and month Object
-        const monthArray = [];
-        this.totalYearMonth.forEach(e => {
-            monthArray.push(this.createCalendarArray(e['year'], e['month']));
-        });
-
-        // Set the new current year and month object.
-        if (!keepDate) {
-            this.currentYearMonth = previousMonths;
-        }
-
-        return [].concat.apply([], monthArray);
-    }
-
-    /**
-     * Update value is being triggered
-     */
-    updateValue(date: Date): void {
-        if (this.options.range) {
-            this.selectRange(date);
-        } else if (!this.isSelected(date)) {
-            if (this.options.selectMultiple) {
-                this.selectDate(date);
+        if (this.currentOptions.selectRange) {
+            if (!this.range.start && !this.range.end) {
+                this.range.start = date;
+            } else if (this.range.start && !this.range.end && isAfter(date, this.range.start)) {
+                this.range.end = date;
             } else {
-                this.toggleDate(date);
-            }
-
-            if (this.options.closeOnSelect) {
-                this.close(true);
+                this.range.end = undefined;
+                this.range.start = date;
             }
         } else {
-            this.deselectDate(date);
+            this.range.start = this.range.end = date;
+        }
 
-            if (this.options.closeOnSelect) {
-                this.close(true);
+        this.init();
+        this.onChangeCallback(this.getValueToEmit(this.range));
+
+        if (this.currentOptions.closeOnSelection && this.range.end) {
+            this.close();
+        }
+    }
+
+    setYear(i: number): void {
+        this.viewingDate = setYear(this.viewingDate, this.years[i].year);
+        this.init();
+        this.initYears();
+        this.view = 'months';
+    }
+
+    setMonth(i: number): void {
+        this.viewingDate = setMonth(this.viewingDate, this.months[i].month);
+        this.init();
+        this.initMonths();
+        this.view = 'days';
+    }
+
+    init(): void {
+        if (!this.viewingDate) {
+            return;
+        }
+
+        const start = startOfMonth(this.viewingDate);
+        const end = endOfMonth(this.viewingDate);
+
+        this.days = eachDayOfInterval({ start: start, end: end }).map((date) => this.formatDay(date));
+
+        const firstMonthDay = getDay(start) - this.currentOptions.firstCalendarDay;
+        const prevDays = firstMonthDay < 0 ? 7 - this.currentOptions.firstCalendarDay : firstMonthDay;
+        let nextDays = (this.currentOptions.firstCalendarDay === 1 ? 7 : 6) - getDay(end);
+
+        const showPrevMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'previous-month';
+        const showNextMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'next-month';
+
+        if (showNextMonthDays && this.currentOptions.includeNextMonthsFirstFullWeek) {
+            nextDays += 7;
+        }
+
+        for (let i = 1; i <= prevDays; i++) {
+            this.days.unshift(this.formatDay(subDays(start, i), showPrevMonthDays));
+        }
+
+        new Array(nextDays).fill(undefined)
+            .forEach((_, i) => this.days.push(this.formatDay(addDays(end, i + 1), showNextMonthDays)));
+
+
+        this.displayValue = this.formatDisplay();
+
+        if (this.range) {
+            this.barTitle = format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
+        } else {
+            this.barTitle = this.currentOptions.useEmptyBarTitle ?
+                this.currentOptions.barTitleIfEmpty :
+                format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
+        }
+    }
+
+    initYears(): void {
+        const range = this.currentOptions.maxYear - this.currentOptions.minYear;
+
+        this.years = Array.from(new Array(range), (x, i) => i + this.currentOptions.minYear).map((year) => {
+            return { year: year, isThisYear: year === getYear(this.viewingDate) };
+        });
+    }
+
+    initMonths(): void {
+        this.months = Array.from(new Array(12), (x, i) => setMonth(new Date(), i + 1))
+            .map((date) => {
+                return { month: date.getMonth(), name: format(date, 'MMM'), isSelected: date.getMonth() === getMonth(this.viewingDate) };
+            });
+    }
+
+    initDayNames(): void {
+        this.dayNames = [];
+        const start = this.currentOptions.firstCalendarDay;
+
+        for (let i = start; i <= 6 + start; i++) {
+            const date = setDay(new Date(), i);
+
+            this.dayNames.push(format(date, this.currentOptions.dayNamesFormat, this.currentOptions.locale));
+        }
+    }
+
+    toggleView(): void {
+        this.view = this.view === 'days' ? 'years' : 'days';
+    }
+
+    toggle(): void {
+        this.isOpened = !this.isOpened;
+
+        if (!this.isOpened && this.view === 'years') {
+            this.toggleView();
+        }
+    }
+
+    close(): void {
+        this.isOpened = false;
+
+        if (this.view === 'years') {
+            this.toggleView();
+        }
+    }
+
+    reset(): void {
+        this.range = {
+            start: new Date(),
+            end: new Date(),
+        };
+        this.init();
+    }
+
+    writeValue(val: DateRange | Date | string | undefined) {
+        if (val) {
+            if (typeof val === 'string') {
+                this.range.start = this.range.end = new Date(val);
+            } else if (val instanceof Date) {
+                this.range.start = this.range.end = val;
+            } else if (val.start) { // Checking if it's instance of DateRange
+                this.range = val;
+            } else {
+                throw Error('Invalid input data type');
             }
+
+            this.viewingDate = this.range.start || this.viewingDate || new Date();
+
+            this.init();
         }
-        this.months = this.getNextMonthArray(this.currentYearMonth, true);
-        this.resetStyle();
     }
 
-    /**
-     * Go to the next month
-     */
-    goToNextMonth(): void {
-        if (this.isAnimating) {
+    registerOnChange(fn: any) {
+        this.onChangeCallback = fn;
+    }
+
+    registerOnTouched(fn: any) {
+        this.onTouchedCallback = fn;
+    }
+
+    @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
+        if (!this.isOpened || !this.currentOptions.closeOnClickOutside) {
             return;
         }
 
-        this.months = this.getNextMonthArray(this.currentYearMonth);
-        this.resetStyle();
-        this.setDatepickerHeight();
-        this.slideLeft();
-    }
-
-    /**
-     * Go to the previous month
-     */
-    goToPreviousMonth(): void {
-        if (this.isAnimating) {
+        if (this.inputElement == null) {
             return;
         }
 
-        this.months = this.getPreviousMonthArray(this.currentYearMonth);
-        this.resetStyle(true);
-        this.setDatepickerHeight(true);
-        this.slideRight();
+        if (e.target === this.inputElement.nativeElement ||
+            this.inputElement.nativeElement.contains(<any>e.target) ||
+            ((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))
+        ) {
+            return;
+        }
+
+        if (this.calendarContainerElement.nativeElement !== e.target &&
+            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
+            !(<any>e.target).classList.contains('year-unit') &&
+            !(<any>e.target).classList.contains('month-unit')
+        ) {
+            this.close();
+        }
+    }
+
+
+    formatDay = (date: Date, isVisible: boolean = true): Day => (
+        {
+            date: date,
+            day: getDate(date),
+            month: getMonth(date),
+            year: getYear(date),
+            inThisMonth: isSameMonth(date, this.viewingDate),
+            isToday: isVisible && isToday(date),
+            isSelected: isVisible && this.isDateSelected(date),
+            isInRange: isVisible && this.isInRange(date),
+            isSelectable: isVisible && this.isDateSelectable(date),
+            isStart: isVisible && this.isRangeBoundary(date, 'start'),
+            isEnd: isVisible && this.isRangeBoundary(date, 'end'),
+            isVisible,
+        }
+    )
+
+    getDayClasses(day: Day): AddClass {
+        return {
+            'is-prev-month': !day.inThisMonth,
+            'is-today': day.isToday,
+            'is-selected': day.isSelected,
+            'is-in-range': day.isInRange,
+            'is-disabled': !day.isSelectable,
+            'range-start': day.isStart,
+            'range-end': day.isEnd,
+            'is-visible': day.isVisible,
+        };
     }
 
     /**
-     * Go to a specific month
-     * TODO: WIP Check if date is in current range, or if it is later or earlier
+     * Checks if specified date is in range of min and max dates
+     * @param date
      */
-    goToMonth(date: Date): void {
-        const nextMonths = this.getNextYearMonthArray(date.getFullYear(), date.getMonth());
-        this.months = this.getNextMonthArray(this.totalYearMonth, false, nextMonths);
-        this.resetStyle();
-        this.setDatepickerHeight();
-        this.slideRight();
+    private isDateSelectable(date: Date): boolean {
+        const minDateSet = !isNull(this.currentOptions.minDate);
+        const maxDateSet = !isNull(this.currentOptions.maxDate);
+        const timestamp = date.valueOf();
+
+        return (!(minDateSet && timestamp < this.currentOptions.minDate.valueOf()) ||
+            (!(maxDateSet && timestamp > this.currentOptions.maxDate.valueOf())));
     }
 
-    /**
-     * Slide to the right
-     */
-    slideRight(): void {
-        this.setIsAnimating();
-        setTimeout(() => {
-            this.transition =
-                'transform ' + this.options.animationSpeed + 'ms ' + this.options.easing;
-            this.translateX = 50;
-        });
+    private isDateSelected(date: Date): boolean {
+        return isSameDate(date, this.range.start) || isSameDate(date, this.range.end);
     }
 
-    /**
-     * Slide to the left (criss cross)
-     */
-    slideLeft(): void {
-        this.setIsAnimating();
-        setTimeout(() => {
-            this.transition =
-                'transform ' + this.options.animationSpeed + 'ms ' + this.options.easing;
-            this.translateX = -50;
-        });
+    private isInRange(date: Date): boolean {
+        return this.isDateSelected(date) || (isAfter(date, this.range.start) && isBefore(date, this.range.end));
     }
 
-    /**
-     * Set animating state
-     */
-    setIsAnimating(): void {
-        this.isAnimating = true;
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, this.options.animationSpeed);
+    private formatDisplay(): string {
+        if (!this.range) {
+            return '';
+        }
+
+        const formattedStartDate = format(this.range.start, this.currentOptions.displayFormat, this.currentOptions.locale);
+
+        if (this.currentOptions.selectRange) {
+            const formattedEndDate = format(
+                this.range.end || this.range.start,
+                this.currentOptions.displayFormat,
+                this.currentOptions.locale
+            );
+
+            return `${formattedStartDate}${this.currentOptions.rangeSeparator}${formattedEndDate}`;
+        }
+
+        return formattedStartDate;
     }
 
-    /**
-     * Reset Style
-     */
-    resetStyle(resetForPrevious?: boolean) {
-        this.transition = 'transform 0ms ease-in';
-        this.translateX = 0;
-        this.leftInnerPosition = resetForPrevious ? -100 : 0;
+    private isRangeBoundary(date: Date, boundary: 'start' | 'end'): boolean {
+        return !this.range[boundary] || isSameDate(date, this.range[boundary]);
+    }
+
+    private getValueToEmit(range: DateRange): DateRange | Date {
+        if (!this.currentOptions.selectRange) {
+            return new Date(range.start.getTime());
+        }
+
+        if (range.end) {
+            return createDateRange(range.start, range.end);
+        }
+
+        return createDateRange(range.start, range.start);
     }
 }

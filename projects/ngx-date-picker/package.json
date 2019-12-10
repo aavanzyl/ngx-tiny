@@ -15,13 +15,19 @@
     "angular2",
     "angular8",
     "ngx-date-picker",
+    "ngx-date-select",
     "date-picker",
+    "date-select",
     "calandar-picker",
-    "calandar"
+    "calandar-select",
+    "picker",
+    "calandar",
+    "select"
   ],
   "private": false,
   "peerDependencies": {
     "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0"
+    "@angular/core": "^8.0.0",
+    "date-fns": "^2.8.1"
   }
 }

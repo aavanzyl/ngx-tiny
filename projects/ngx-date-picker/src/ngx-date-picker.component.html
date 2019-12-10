@@ -1,91 +1,118 @@
-<div class="datepicker__wrapper" [ngStyle]="datepickerPosition">
-	<div #calendarTopContainer>
+<div class="ngx-dates-picker-container">
+  <input *ngIf="!headless"
+         #inputElement
+         type="text"
+         class="ngx-dates-picker-input"
+         [(ngModel)]="displayValue"
+         readonly
+         [placeholder]="currentOptions.placeholder"
+         [ngClass]="currentOptions.addClass"
+         [ngStyle]="currentOptions.addStyle"
+         [id]="fieldId"
+         [disabled]="disabled"
+		 (click)="toggle()" />
+		 
+  <ng-content></ng-content>
 
-		<div class="datepicker__header" #header>
-			<ng-content select="header"></ng-content>
-		</div>
-
-		<ngx-internal-navigation
-				(previousClick)="goToPreviousMonth()"
-				(nextClick)="goToNextMonth()"
-				(subNavigationClick)="goToDate($event)"
-				[language]="language"
-				[animate]="animate"
-				[translateX]="translateX"
-				[transition]="transition"
-				[leftPosition]="leftInnerPosition"
-				[hideNavigation]="options.hideNavigation"
-				[totalYearMonth]="totalYearMonth"
-		></ngx-internal-navigation>
-
-
-
-
-		<div class="datepicker__weekdays-wrapper">
-			<div 	*ngFor="let month of numberOfMonths"
-					[ngStyle]="{
-				'width.%': (100 / numberOfMonths.length)
-				}"
-					class="datepicker__weekdays-container">
-				<table class="datepicker__weekdays">
-					<thead>
-					<td class="datepicker__weekday" *ngFor="let weekday of weekdays; index as i">{{weekday}}</td>
-					</thead>
-				</table>
-			</div>
-		</div>
-
-
-	</div>
-	<div class="datepicker__main" [ngStyle]="{
-		'height.px': calendarHeight}">
-
-		<!-- <div class="datepicker__calendar-wrapper" #calendarContainer [ngStyle]="{
-					'transform': 'translateX(' + translateX + '%)',
-					'transition': transition,
-					'left.%': leftInnerPosition
-					}"
-		>
-			<div
-					*ngFor="let month of months;"
-					class="datepicker__calendar-container"
-					[ngStyle]="{'width.%': calendarWidth}"
-			>
-				<table class="datepicker__calendar">
-					<tbody>
-					<tr *ngFor="let week of month.weeks; index as i" class="datepicker__week">
-						<td class="datepicker__day" *ngFor="let day of week.days; index as i"
-							[ngClass]="{
-						'is-first': day.isFirst,
-						'is-last': day.isLast,
-						'is-hidden': day.isHidden,
-						'is-disabled': day.isDisabled,
-						'is-today': day.isToday,
-						'is-selected': day.isSelected,
-						'is-in-range': day.isInRange,
-						'is-start-date': day.isStartDate,
-						'is-end-date': day.isEndDate,
-						'is-rest': day.isRest
-						}">
-							<button class="datepicker__button" [disabled]="day.isDisabled || day.isHidden"
-									(click)="updateValue(day.date)">{{day.dayNumber}}
-							</button>
-						</td>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-		</div> -->
-
-		<!-- <ngx-internal-month-picker></ngx-internal-month-picker> -->
-		<ngx-internal-year-picker></ngx-internal-year-picker>
-
-	</div>
-
-
-
-	<div class="datepicker__footer" #footer>
-		<ng-content select="footer"></ng-content>
-	</div>
+  <div class="ngx-dates-picker-calendar-container ngx-dates-picker-position-{{position}}"
+       *ngIf="isOpened"
+       #container>
+    <div class="topbar-container">
+      <div (click)="prevMonth()">
+        <ng-template [ngTemplateOutlet]="previousMonthButtonTemplate || defaultPreviousMonthTemplate"></ng-template>
+      </div>
+      <ng-template #defaultPreviousMonthTemplate>
+        <svg width="7px"
+             height="10px"
+             viewBox="0 0 7 10"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-923.000000, -1882.000000)" fill="#CED0DA">
+              <g transform="translate(80.000000, 1361.000000)">
+                <g transform="translate(0.000000, 430.000000)">
+                  <g transform="translate(825.000000, 0.000000)">
+                    <g transform="translate(0.000000, 72.000000)">
+                      <g transform="translate(18.000000, 15.000000)">
+                        <polygon id="Back" points="6.015 4 0 9.013 6.015 14.025"></polygon>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </ng-template>
+      <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
+      <div (click)="nextMonth()">
+        <ng-template [ngTemplateOutlet]="nextMonthButtonTemplate || defaultNextMonthTemplate"></ng-template>
+      </div>
+      <ng-template #defaultNextMonthTemplate>
+        <svg width="7px"
+             height="10px"
+             viewBox="0 0 6 10"
+             version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Source-Sans---UI-Elements-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="White-Layout" transform="translate(-1182.000000, -1882.000000)" fill="#CED0DA">
+              <g id="Dropdowns-&amp;-Selector" transform="translate(80.000000, 1361.000000)">
+                <g id="Dropdowns" transform="translate(0.000000, 430.000000)">
+                  <g id="Calendar" transform="translate(825.000000, 0.000000)">
+                    <g transform="translate(0.000000, 72.000000)" id="Top-Bar-Nav">
+                      <g transform="translate(18.000000, 15.000000)">
+                        <polygon id="Forward"
+                                 transform="translate(262.007500, 9.012500) scale(-1, 1) translate(-262.007500, -9.012500) "
+                                 points="265.015 4 259 9.013 265.015 14.025">
+                        </polygon>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </ng-template>
+    </div>
+    <div class="main-calendar-container">
+      <ng-container *ngIf="view === 'days'">
+        <div class="main-calendar-day-names">
+          <span class="day-name-unit" *ngFor="let name of dayNames">{{ name }}</span>
+        </div>
+        <div class="main-calendar-days">
+          <span class="day-unit"
+                *ngFor="let day of days; let i = index;"
+                (click)="day.isSelectable && setDate(i)">
+            <span class="day-background-upper"
+                  [ngClass]="this.getDayClasses(day)">{{ day.isVisible ? day.day : '' }}</span>
+            <span class="day-background-lower"
+                  [ngClass]="this.getDayClasses(day)"></span>
+          </span>
+        </div>
+      </ng-container>
+      <div *ngIf="view === 'years'">
+        <div class="main-calendar-years" >
+          <span *ngFor="let year of years; let i = index;"
+                class="year-unit"
+                [ngClass]="{ 'is-selected': year.isThisYear }"
+                (click)="setYear(i)"
+          >
+            {{ year.year }}
+          </span>
+        </div>
+        </div>
+      <div *ngIf="view === 'months'" class="main-calendar-months">
+        <span *ngFor="let month of months; let i = index;"
+              class="month-unit"
+              [ngClass]="{ 'is-selected': month.isSelected}"
+              (click)="setMonth(i)"
+        >
+          {{ month.name }}
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
-		

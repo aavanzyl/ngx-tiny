@@ -46,6 +46,7 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "date-fns": "^2.8.1",
     "fs-extra": "^8.1.0",
     "ngx-gtag": "^7.0.2",
     "prismjs": "^1.14.0",

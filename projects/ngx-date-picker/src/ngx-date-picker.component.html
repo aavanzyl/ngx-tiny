@@ -1,22 +1,11 @@
 <div class="ngx-dates-picker-container">
-  <input *ngIf="!headless"
-         #inputElement
-         type="text"
-         class="ngx-dates-picker-input"
-         [(ngModel)]="displayValue"
-         readonly
-         [placeholder]="currentOptions.placeholder"
-         [ngClass]="currentOptions.addClass"
-         [ngStyle]="currentOptions.addStyle"
-         [id]="fieldId"
-         [disabled]="disabled"
-		 (click)="toggle()" />
-		 
+  <input *ngIf="!headless" #inputElement type="text" class="ngx-dates-picker-input" [(ngModel)]="displayValue" readonly
+    [placeholder]="currentOptions.placeholder" [ngClass]="currentOptions.addClass" [ngStyle]="currentOptions.addStyle"
+    [id]="fieldId" [disabled]="disabled" (click)="toggle()" />
+
   <ng-content></ng-content>
 
-  <div class="ngx-dates-picker-calendar-container ngx-dates-picker-position-{{position}}"
-       *ngIf="isOpened"
-       #container>
+  <div class="ngx-dates-picker-calendar-container ngx-dates-picker-position-{{position}}" *ngIf="isOpened" #container>
 
     <div class="topbar-container">
 
@@ -27,49 +16,52 @@
       <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
 
       <div class="topbar-container-nav" (click)="nextMonth()">
-          <i class="arrow right"></i>
+        <i class="arrow right"></i>
       </div>
-      
+
     </div>
 
 
 
     <div class="main-calendar-container">
-      <ng-container *ngIf="view === 'days'">
+
+
+
+      <!-- Days -->
+      <div [ngClass]="{ 'show': view === 'days', 'hidden': view !== 'days' }">
         <div class="main-calendar-day-names">
           <span class="day-name-unit" *ngFor="let name of dayNames">{{ name }}</span>
         </div>
         <div class="main-calendar-days">
-          <span class="day-unit"
-                *ngFor="let day of days; let i = index;"
-                (click)="day.isSelectable && setDate(i)">
+          <span class="day-unit" *ngFor="let day of days; let i = index;" (click)="day.isSelectable && setDate(i)">
             <span class="day-background-upper"
-                  [ngClass]="this.getDayClasses(day)">{{ day.isVisible ? day.day : '' }}</span>
-            <span class="day-background-lower"
-                  [ngClass]="this.getDayClasses(day)"></span>
+              [ngClass]="this.getDayClasses(day)">{{ day.isVisible ? day.day : '' }}</span>
+            <span class="day-background-lower" [ngClass]="this.getDayClasses(day)"></span>
           </span>
         </div>
-      </ng-container>
-      <div *ngIf="view === 'years'">
-        <div #calendarYearsContainer class="main-calendar-years" >
-          <span *ngFor="let year of years; let i = index;"
-                class="year-unit"
-                [ngClass]="{ 'is-selected': year.isThisYear }"
-                (click)="setYear(i)"
-          >
+      </div>
+
+      <!-- Months -->
+      <div [ngClass]="{ 'show': view === 'months', 'hidden': view !== 'months' }">
+        <div class="main-calendar-months">
+          <span *ngFor="let month of months; let i = index;" class="month-unit"
+            [ngClass]="{ 'is-selected': month.isSelected}" (click)="setMonth(i)">
+            {{ month.name }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Years -->
+      <div [ngClass]="{ 'show': view === 'years', 'hidden': view !== 'years' }">
+        <div #calendarYearsContainer class="main-calendar-years">
+          <span *ngFor="let year of years; let i = index;" class="year-unit"
+            [ngClass]="{ 'is-selected': year.isThisYear }" (click)="setYear(i)">
             {{ year.year }}
           </span>
         </div>
-        </div>
-      <div *ngIf="view === 'months'" class="main-calendar-months">
-        <span *ngFor="let month of months; let i = index;"
-              class="month-unit"
-              [ngClass]="{ 'is-selected': month.isSelected}"
-              (click)="setMonth(i)"
-        >
-          {{ month.name }}
-        </span>
       </div>
+
+
     </div>
   </div>
 </div>

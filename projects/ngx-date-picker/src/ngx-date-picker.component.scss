@@ -99,6 +99,14 @@ $color: #0186ff;
   font-size: 12px;
   font-weight: 500;
   box-sizing: border-box;
+
+  .show {
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
 }
 
 .main-calendar-day-names {

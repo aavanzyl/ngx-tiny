@@ -51,25 +51,24 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
     @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
-    @ViewChild('calendarYearsContainer', { static: true }) calendarYearsContainer: ElementRef;
-    
+    @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
 
 
     @Input() value: Date;
     @Input() options: DatePickerOptions;
 
     /**
-     * Disable datepicker's input
+     * Disable date picker's input
      */
     @Input() headless = false;
 
     /**
-     * Set datepicker's visibility state
+     * Set date picker's visibility state
      */
     @Input() isOpened = false;
 
     /**
-     * Datepicker dropdown position
+     * Date picker dropdown position
      */
     @Input() position: PickerPosition = 'bottom-right';
 
@@ -128,9 +127,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         return this._range;
     }
 
-    constructor() {
-    }
-
     ngOnInit() {
         this.view = 'days';
         this.range = {
@@ -158,7 +154,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     get defaultFieldId(): string {
         // Only evaluate and increment if required
-        const value = `datepicker-${instanceID++}`;
+        const value = `ngx-date-picker-${instanceID++}`;
         Object.defineProperty(this, 'defaultFieldId', { value });
 
         return value;
@@ -169,16 +165,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             ...this.currentOptions,
             ...options,
         };
-    }
-
-    nextMonth(): void {
-        this.viewingDate = addMonths(this.viewingDate, 1);
-        this.init();
-    }
-
-    prevMonth(): void {
-        this.viewingDate = subMonths(this.viewingDate, 1);
-        this.init();
     }
 
     setDate(i: number): void {
@@ -203,130 +189,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         if (this.currentOptions.closeOnSelection && this.range.end) {
             this.close();
         }
-    }
-
-    setYear(i: number): void {
-        this.viewingDate = setYear(this.viewingDate, this.years[i].year);
-        this.init();
-        this.initYears();
-        this.view = 'months';
-    }
-
-    setMonth(i: number): void {
-        this.viewingDate = setMonth(this.viewingDate, this.months[i].month);
-        this.init();
-        this.initMonths();
-        this.view = 'days';
-    }
-
-    init(): void {
-        if (!this.viewingDate) {
-            return;
-        }
-
-        const start = startOfMonth(this.viewingDate);
-        const end = endOfMonth(this.viewingDate);
-
-        this.days = eachDayOfInterval({ start: start, end: end }).map((date) => this.formatDay(date));
-
-        const firstMonthDay = getDay(start) - this.currentOptions.firstCalendarDay;
-        const prevDays = firstMonthDay < 0 ? 7 - this.currentOptions.firstCalendarDay : firstMonthDay;
-        let nextDays = (this.currentOptions.firstCalendarDay === 1 ? 7 : 6) - getDay(end);
-
-        const showPrevMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'previous-month';
-        const showNextMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'next-month';
-
-        if (showNextMonthDays && this.currentOptions.includeNextMonthsFirstFullWeek) {
-            nextDays += 7;
-        }
-
-        for (let i = 1; i <= prevDays; i++) {
-            this.days.unshift(this.formatDay(subDays(start, i), showPrevMonthDays));
-        }
-
-        new Array(nextDays).fill(undefined)
-            .forEach((_, i) => this.days.push(this.formatDay(addDays(end, i + 1), showNextMonthDays)));
-
-
-        this.displayValue = this.formatDisplay();
-
-        if (this.range) {
-            this.barTitle = format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
-        } else {
-            this.barTitle = this.currentOptions.useEmptyBarTitle ?
-                this.currentOptions.barTitleIfEmpty :
-                format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
-        }
-    }
-
-    initYears(): void {
-        const range = this.currentOptions.maxYear - this.currentOptions.minYear;
-
-        this.years = Array.from(new Array(range), (x, i) => { return {index : i, year: i + this.currentOptions.minYear}}).map(({index, year}) => {
-            return { index: index, year: year, isThisYear: year === getYear(this.viewingDate) };
-        });
-
-    }
-
-    scrollYears(): void {
-        console.log("Scrolling");
-
-        let _heightOfYearElement = 35;
-
-        let _yearIndex = this.years.filter(item => item.isThisYear)[0];
-
-
-        let _scrollPosition = (_yearIndex.index / 3) * _heightOfYearElement;
-
-        this.calendarYearsContainer.nativeElement.scroll(_scrollPosition, 0)
-
-    }
-
-    initMonths(): void {
-        this.months = Array.from(new Array(12), (x, i) => setMonth(new Date(), i + 1))
-            .map((date) => {
-                return { month: date.getMonth(), name: format(date, 'MMM'), isSelected: date.getMonth() === getMonth(this.viewingDate) };
-            });
-    }
-
-    initDayNames(): void {
-        this.dayNames = [];
-        const start = this.currentOptions.firstCalendarDay;
-
-        for (let i = start; i <= 6 + start; i++) {
-            const date = setDay(new Date(), i);
-
-            this.dayNames.push(format(date, this.currentOptions.dayNamesFormat, this.currentOptions.locale));
-        }
-    }
-
-    toggleView(): void {
-        this.view = this.view === 'days' ? 'years' : 'days';
-        setTimeout(()=>{this.scrollYears()}, 100);
-    }
-
-    toggle(): void {
-        this.isOpened = !this.isOpened;
-
-        if (!this.isOpened && this.view === 'years') {
-            this.toggleView();
-        }
-    }
-
-    close(): void {
-        this.isOpened = false;
-
-        if (this.view === 'years') {
-            this.toggleView();
-        }
-    }
-
-    reset(): void {
-        this.range = {
-            start: new Date(),
-            end: new Date(),
-        };
-        this.init();
     }
 
     writeValue(val: DateRange | Date | string | undefined) {
@@ -354,32 +216,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     registerOnTouched(fn: any) {
         this.onTouchedCallback = fn;
     }
-
-    @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
-        if (!this.isOpened || !this.currentOptions.closeOnClickOutside) {
-            return;
-        }
-
-        if (this.inputElement == null) {
-            return;
-        }
-
-        if (e.target === this.inputElement.nativeElement ||
-            this.inputElement.nativeElement.contains(<any>e.target) ||
-            ((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))
-        ) {
-            return;
-        }
-
-        if (this.calendarContainerElement.nativeElement !== e.target &&
-            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
-            !(<any>e.target).classList.contains('year-unit') &&
-            !(<any>e.target).classList.contains('month-unit')
-        ) {
-            this.close();
-        }
-    }
-
 
     formatDay = (date: Date, isVisible: boolean = true): Day => (
         {
@@ -467,4 +303,169 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
         return createDateRange(range.start, range.start);
     }
+
+    // ############### Day #################
+
+    init(): void {
+        if (!this.viewingDate) {
+            return;
+        }
+
+        const start = startOfMonth(this.viewingDate);
+        const end = endOfMonth(this.viewingDate);
+
+        this.days = eachDayOfInterval({ start: start, end: end }).map((date) => this.formatDay(date));
+
+        const firstMonthDay = getDay(start) - this.currentOptions.firstCalendarDay;
+        const prevDays = firstMonthDay < 0 ? 7 - this.currentOptions.firstCalendarDay : firstMonthDay;
+        let nextDays = (this.currentOptions.firstCalendarDay === 1 ? 7 : 6) - getDay(end);
+
+        const showPrevMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'previous-month';
+        const showNextMonthDays = this.currentOptions.includeDays === 'all' || this.currentOptions.includeDays === 'next-month';
+
+        if (showNextMonthDays && this.currentOptions.includeNextMonthsFirstFullWeek) {
+            nextDays += 7;
+        }
+
+        for (let i = 1; i <= prevDays; i++) {
+            this.days.unshift(this.formatDay(subDays(start, i), showPrevMonthDays));
+        }
+
+        new Array(nextDays).fill(undefined)
+            .forEach((_, i) => this.days.push(this.formatDay(addDays(end, i + 1), showNextMonthDays)));
+
+
+        this.displayValue = this.formatDisplay();
+
+        if (this.range) {
+            this.barTitle = format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
+        } else {
+            this.barTitle = this.currentOptions.useEmptyBarTitle ?
+                this.currentOptions.barTitleIfEmpty :
+                format(this.viewingDate, this.currentOptions.barTitleFormat, this.currentOptions.locale);
+        }
+    }
+
+    initDayNames(): void {
+        this.dayNames = [];
+        const start = this.currentOptions.firstCalendarDay;
+
+        for (let i = start; i <= 6 + start; i++) {
+            const date = setDay(new Date(), i);
+
+            this.dayNames.push(format(date, this.currentOptions.dayNamesFormat, this.currentOptions.locale));
+        }
+    }
+
+
+
+    // ############### Month ###############
+
+    setMonth(i: number): void {
+        this.viewingDate = setMonth(this.viewingDate, this.months[i].month);
+        this.init();
+        this.initMonths();
+        this.view = 'days';
+    }
+
+    initMonths(): void {
+        this.months = Array.from(new Array(12), (x, i) => setMonth(new Date(), i + 1))
+            .map((date) => {
+                return { month: date.getMonth(), name: format(date, 'MMM'), isSelected: date.getMonth() === getMonth(this.viewingDate) };
+            });
+    }
+
+    nextMonth(): void {
+        this.viewingDate = addMonths(this.viewingDate, 1);
+        this.init();
+    }
+
+    prevMonth(): void {
+        this.viewingDate = subMonths(this.viewingDate, 1);
+        this.init();
+    }
+
+
+    // ############### Year ################
+
+
+    initYears(): void {
+        const range = this.currentOptions.maxYear - this.currentOptions.minYear;
+
+        this.years = Array.from(new Array(range), (x, i) => { return { index: i, year: i + this.currentOptions.minYear } }).map(({ index, year }) => {
+            return { index: index, year: year, isThisYear: year === getYear(this.viewingDate) };
+        });
+
+    }
+
+    scrollYears(): void {
+        let _heightOfYearElement = 40;
+        let _yearIndex = this.years.filter(item => item.isThisYear)[0];
+        let _scrollPosition = ((_yearIndex.index / 3) * _heightOfYearElement) - 30;
+        this.calendarYearsContainer.nativeElement.scroll(0, _scrollPosition);
+    }
+
+    setYear(i: number): void {
+        this.viewingDate = setYear(this.viewingDate, this.years[i].year);
+        this.init();
+        this.initYears();
+        this.view = 'months';
+    }
+
+    // ############### Container ################
+    @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
+        if (!this.isOpened || !this.currentOptions.closeOnClickOutside) {
+            return;
+        }
+
+        if (this.inputElement == null) {
+            return;
+        }
+
+        if (e.target === this.inputElement.nativeElement ||
+            this.inputElement.nativeElement.contains(<any>e.target) ||
+            ((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))
+        ) {
+            return;
+        }
+
+        if (this.calendarContainerElement.nativeElement !== e.target &&
+            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
+            !(<any>e.target).classList.contains('year-unit') &&
+            !(<any>e.target).classList.contains('month-unit')
+        ) {
+            this.close();
+        }
+    }
+
+    toggleView(): void {
+        this.view = this.view === 'days' ? 'years' : 'days';
+        setTimeout(() => { this.scrollYears() }, 100);
+    }
+
+    toggle(): void {
+        this.isOpened = !this.isOpened;
+
+        if (!this.isOpened && this.view === 'years') {
+            this.toggleView();
+        }
+    }
+
+    close(): void {
+        this.isOpened = false;
+
+        if (this.view === 'years') {
+            this.toggleView();
+        }
+    }
+
+    reset(): void {
+        this.range = {
+            start: new Date(),
+            end: new Date(),
+        };
+        this.init();
+    }
+
+    // ############### Misc ################
 }

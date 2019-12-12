@@ -36,8 +36,8 @@ import { DateRange, Day } from './models';
 import { DatePickerOptions, PickerPosition, AddClass } from './ngx-date-picker.options';
 
 
-// Counter for calculating the auto-incrementing field ID
-let counter = 0;
+// instanceID for calculating the auto-incrementing field ID
+let instanceID = 0;
 
 @Component({
     selector: 'ngx-date-picker',
@@ -51,6 +51,9 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
     @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
+    @ViewChild('calendarYearsContainer', { static: true }) calendarYearsContainer: ElementRef;
+    
+
 
     @Input() value: Date;
     @Input() options: DatePickerOptions;
@@ -78,8 +81,8 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         closeOnSelection: true,
         includeDays: 'previous-month',
         includeNextMonthsFirstFullWeek: true,
-        minYear: 1970,
-        maxYear: 2030,
+        minYear: 1900,
+        maxYear: 2050,
         displayFormat: 'MMM d, yyyy',
         barTitleFormat: 'MMMM yyyy',
         dayNamesFormat: 'EEEEEE',
@@ -99,7 +102,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     viewingDate: Date;
     barTitle: string;
     view: 'days' | 'months' | 'years';
-    years: { year: number; isThisYear: boolean }[];
+    years: { index: number, year: number; isThisYear: boolean }[];
     months: { month: number; name: string; isSelected: boolean }[];
     dayNames: string[];
     days: Day[];
@@ -139,7 +142,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         this.initDayNames();
         this.initYears();
         this.initMonths();
-        
+
         this.init();
     }
 
@@ -155,7 +158,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     get defaultFieldId(): string {
         // Only evaluate and increment if required
-        const value = `datepicker-${counter++}`;
+        const value = `datepicker-${instanceID++}`;
         Object.defineProperty(this, 'defaultFieldId', { value });
 
         return value;
@@ -259,9 +262,24 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     initYears(): void {
         const range = this.currentOptions.maxYear - this.currentOptions.minYear;
 
-        this.years = Array.from(new Array(range), (x, i) => i + this.currentOptions.minYear).map((year) => {
-            return { year: year, isThisYear: year === getYear(this.viewingDate) };
+        this.years = Array.from(new Array(range), (x, i) => { return {index : i, year: i + this.currentOptions.minYear}}).map(({index, year}) => {
+            return { index: index, year: year, isThisYear: year === getYear(this.viewingDate) };
         });
+
+    }
+
+    scrollYears(): void {
+        console.log("Scrolling");
+
+        let _heightOfYearElement = 35;
+
+        let _yearIndex = this.years.filter(item => item.isThisYear)[0];
+
+
+        let _scrollPosition = (_yearIndex.index / 3) * _heightOfYearElement;
+
+        this.calendarYearsContainer.nativeElement.scroll(_scrollPosition, 0)
+
     }
 
     initMonths(): void {
@@ -284,6 +302,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     toggleView(): void {
         this.view = this.view === 'days' ? 'years' : 'days';
+        setTimeout(()=>{this.scrollYears()}, 100);
     }
 
     toggle(): void {

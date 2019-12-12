@@ -17,66 +17,23 @@
   <div class="ngx-dates-picker-calendar-container ngx-dates-picker-position-{{position}}"
        *ngIf="isOpened"
        #container>
+
     <div class="topbar-container">
-      <div (click)="prevMonth()">
-        <ng-template [ngTemplateOutlet]="previousMonthButtonTemplate || defaultPreviousMonthTemplate"></ng-template>
+
+      <div class="topbar-container-nav" (click)="prevMonth()">
+        <i class="arrow left"></i>
       </div>
-      <ng-template #defaultPreviousMonthTemplate>
-        <svg width="7px"
-             height="10px"
-             viewBox="0 0 7 10"
-             version="1.1"
-             xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g transform="translate(-923.000000, -1882.000000)" fill="#CED0DA">
-              <g transform="translate(80.000000, 1361.000000)">
-                <g transform="translate(0.000000, 430.000000)">
-                  <g transform="translate(825.000000, 0.000000)">
-                    <g transform="translate(0.000000, 72.000000)">
-                      <g transform="translate(18.000000, 15.000000)">
-                        <polygon id="Back" points="6.015 4 0 9.013 6.015 14.025"></polygon>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </ng-template>
+
       <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
-      <div (click)="nextMonth()">
-        <ng-template [ngTemplateOutlet]="nextMonthButtonTemplate || defaultNextMonthTemplate"></ng-template>
+
+      <div class="topbar-container-nav" (click)="nextMonth()">
+          <i class="arrow right"></i>
       </div>
-      <ng-template #defaultNextMonthTemplate>
-        <svg width="7px"
-             height="10px"
-             viewBox="0 0 6 10"
-             version="1.1"
-             xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g id="Source-Sans---UI-Elements-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="White-Layout" transform="translate(-1182.000000, -1882.000000)" fill="#CED0DA">
-              <g id="Dropdowns-&amp;-Selector" transform="translate(80.000000, 1361.000000)">
-                <g id="Dropdowns" transform="translate(0.000000, 430.000000)">
-                  <g id="Calendar" transform="translate(825.000000, 0.000000)">
-                    <g transform="translate(0.000000, 72.000000)" id="Top-Bar-Nav">
-                      <g transform="translate(18.000000, 15.000000)">
-                        <polygon id="Forward"
-                                 transform="translate(262.007500, 9.012500) scale(-1, 1) translate(-262.007500, -9.012500) "
-                                 points="265.015 4 259 9.013 265.015 14.025">
-                        </polygon>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </ng-template>
+      
     </div>
+
+
+
     <div class="main-calendar-container">
       <ng-container *ngIf="view === 'days'">
         <div class="main-calendar-day-names">
@@ -94,7 +51,7 @@
         </div>
       </ng-container>
       <div *ngIf="view === 'years'">
-        <div class="main-calendar-years" >
+        <div #calendarYearsContainer class="main-calendar-years" >
           <span *ngFor="let year of years; let i = index;"
                 class="year-unit"
                 [ngClass]="{ 'is-selected': year.isThisYear }"

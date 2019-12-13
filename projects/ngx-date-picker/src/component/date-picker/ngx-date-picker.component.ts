@@ -5,7 +5,6 @@ import {
     OnChanges,
     SimpleChanges,
     ElementRef,
-    HostListener,
     forwardRef,
     ViewChild,
     TemplateRef,
@@ -52,7 +51,6 @@ let instanceID = 0;
 export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnChanges {
 
     @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
-    @ViewChild('inputElement', { static: true }) inputElement: ElementRef;
     @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
 
 
@@ -73,14 +71,12 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     @Input() nextMonthButtonTemplate: TemplateRef<any>;
 
     currentOptions: DatePickerOptions = {
-        closeOnClickOutside: true,
-        closeOnSelection: true,
         includeDays: 'previous-month',
         includeNextMonthsFirstFullWeek: true,
         minYear: 1900,
         maxYear: 2050,
         displayFormat: 'MMM d, yyyy',
-        barTitleFormat: 'MMMM yyyy',
+        barTitleFormat: 'MMM yyyy',
         dayNamesFormat: 'EEEEEE',
         rangeSeparator: '-',
         selectRange: false,
@@ -164,29 +160,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         };
     }
 
-    setDate(i: number): void {
-        const date = this.days[i].date;
-
-        if (this.currentOptions.selectRange) {
-            if (!this.range.start && !this.range.end) {
-                this.range.start = date;
-            } else if (this.range.start && !this.range.end && isAfter(date, this.range.start)) {
-                this.range.end = date;
-            } else {
-                this.range.end = undefined;
-                this.range.start = date;
-            }
-        } else {
-            this.range.start = this.range.end = date;
-        }
-
-        this.init();
-        this.onChangeCallback(this.getValueToEmit(this.range));
-
-        if (this.currentOptions.closeOnSelection && this.range.end) {
-            this.close();
-        }
-    }
+    
 
     writeValue(val: DateRange | Date | string | undefined) {
         if (val) {
@@ -343,6 +317,26 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         }
     }
 
+    setDate(i: number): void {
+        const date = this.days[i].date;
+
+        if (this.currentOptions.selectRange) {
+            if (!this.range.start && !this.range.end) {
+                this.range.start = date;
+            } else if (this.range.start && !this.range.end && isAfter(date, this.range.start)) {
+                this.range.end = date;
+            } else {
+                this.range.end = undefined;
+                this.range.start = date;
+            }
+        } else {
+            this.range.start = this.range.end = date;
+        }
+
+        this.init();
+        this.onChangeCallback(this.getValueToEmit(this.range));
+    }
+
     initDayNames(): void {
         this.dayNames = [];
         const start = this.currentOptions.firstCalendarDay;
@@ -366,7 +360,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     initMonths(): void {
-        this.months = Array.from(new Array(12), (x, i) => setMonth(new Date(), i + 1))
+        this.months = Array.from(new Array(12), (x, i) => setMonth(new Date(), i))
             .map((date) => {
                 return { month: date.getMonth(), name: format(date, 'MMM'), isSelected: date.getMonth() === getMonth(this.viewingDate) };
             });
@@ -410,30 +404,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     // ############### Container ################
-    @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
-        if (!this.isOpened || !this.currentOptions.closeOnClickOutside) {
-            return;
-        }
-
-        if (this.inputElement == null) {
-            return;
-        }
-
-        if (e.target === this.inputElement.nativeElement ||
-            this.inputElement.nativeElement.contains(<any>e.target) ||
-            ((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))
-        ) {
-            return;
-        }
-
-        if (this.calendarContainerElement.nativeElement !== e.target &&
-            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
-            !(<any>e.target).classList.contains('year-unit') &&
-            !(<any>e.target).classList.contains('month-unit')
-        ) {
-            this.close();
-        }
-    }
 
     toggleView(): void {
         this.view = this.view === 'days' ? 'years' : 'days';
@@ -444,14 +414,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         this.isOpened = !this.isOpened;
 
         if (!this.isOpened && this.view === 'years') {
-            this.toggleView();
-        }
-    }
-
-    close(): void {
-        this.isOpened = false;
-
-        if (this.view === 'years') {
             this.toggleView();
         }
     }

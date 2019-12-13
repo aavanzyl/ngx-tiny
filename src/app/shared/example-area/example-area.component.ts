@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewEncapsulation, ViewChild, ElementRef, AfterViewChecked, Input } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, ElementRef, AfterViewChecked, Input } from '@angular/core';
 
 @Component({
   selector: 'app-example-area',
@@ -18,7 +18,14 @@ export class ExampleAreaComponent implements AfterViewChecked {
   constructor() { }
 
   ngAfterViewChecked() {
-    this.outer.nativeElement.style.height = (Number(this.inner.nativeElement.offsetHeight) + Number(this.addedHeight)) + 'px';
+
+    if (this.enableAbsolute) {
+      let _childElement = this.inner.nativeElement.children[0];
+
+      this.inner.nativeElement.style.width = Number(_childElement.offsetWidth) + 'px';
+      this.inner.nativeElement.style.height = Number(_childElement.offsetHeight) + 'px';
+      this.outer.nativeElement.style.height = (Number(this.inner.nativeElement.offsetHeight) + Number(this.addedHeight)) + 'px';
+    }
   }
 
   get isAbsolute() {

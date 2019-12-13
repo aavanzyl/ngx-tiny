@@ -9,13 +9,15 @@ $text-secondary: #cbcbcb;
 $hover-background: #f0f0f0;
 $color: #0186ff;
 
-
-
-.ngx-dates-picker-container {
+ngx-date-picker {
   position: absolute;
+  width: 300px;
+  display: block;
+  height: 322px;
 }
 
-.ngx-dates-picker-input {
+
+.ngx-date-picker-input {
   padding: 5px 10px;
   font-size: 14px;
   width: 200px;
@@ -23,7 +25,7 @@ $color: #0186ff;
   border: 1px solid $border;
 }
 
-.ngx-dates-picker-calendar-container {
+.ngx-date-picker-calendar-container {
   position: absolute;
   width: 300px;
   background: $background;

@@ -1,10 +1,4 @@
 <div class="ngx-dates-picker-container">
-  <input *ngIf="!headless" #inputElement type="text" class="ngx-dates-picker-input" [(ngModel)]="displayValue" readonly
-    [placeholder]="currentOptions.placeholder" [ngClass]="currentOptions.addClass" [ngStyle]="currentOptions.addStyle"
-    [id]="fieldId" [disabled]="disabled" (click)="toggle()" />
-
-  <ng-content></ng-content>
-
   <div #container *ngIf="isOpened" class="ngx-dates-picker-calendar-container ngx-dates-picker-position-{{position}}">
 
     <!-- Top Bar -->
@@ -21,7 +15,6 @@
       </div>
 
     </div>
-
 
 
     <div class="main-calendar-container">

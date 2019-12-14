@@ -8,9 +8,13 @@ import {
     forwardRef,
     ViewChild,
     TemplateRef,
-    ViewEncapsulation
+    ViewEncapsulation,
+    HostListener,
+    Output,
+    EventEmitter
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
 
 import {
     startOfMonth,
@@ -70,7 +74,11 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     @Input() previousMonthButtonTemplate: TemplateRef<any>;
     @Input() nextMonthButtonTemplate: TemplateRef<any>;
 
+    @Output() onChange: EventEmitter<Date | DateRange> = new EventEmitter();
+
     currentOptions: DatePickerOptions = {
+        closeOnClickOutside: false,
+        closeOnSelection: false,
         includeDays: 'previous-month',
         includeNextMonthsFirstFullWeek: true,
         minYear: 1900,
@@ -104,7 +112,9 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     private _range: DateRange;
 
     private onTouchedCallback: () => void = () => { };
-    private onChangeCallback: (_: any) => void = () => { };
+    private onChangeCallback: (_: Date | DateRange) => void = (_) => {
+        this.onChange.emit(_);
+    };
 
     public setDisabledState(isDisabled: boolean) {
         this.disabled = isDisabled;
@@ -160,7 +170,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         };
     }
 
-    
+
 
     writeValue(val: DateRange | Date | string | undefined) {
         if (val) {
@@ -335,6 +345,10 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
         this.init();
         this.onChangeCallback(this.getValueToEmit(this.range));
+
+        if (this.currentOptions.closeOnSelection && this.range.end) {
+            this.close();
+        }
     }
 
     initDayNames(): void {
@@ -427,4 +441,30 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     // ############### Misc ################
+
+    @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
+        if (!this.isOpened || !this.currentOptions.closeOnClickOutside || !this.calendarContainerElement) {
+            return;
+        }
+
+        if (((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))) {
+            return;
+        }
+
+        if (this.calendarContainerElement.nativeElement !== e.target &&
+            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
+            !(<any>e.target).classList.contains('year-unit') &&
+            !(<any>e.target).classList.contains('month-unit')
+        ) {
+            this.close();
+        }
+    }
+
+    close(): void {
+        this.isOpened = false;
+
+        if (this.view === 'years') {
+            this.toggleView();
+        }
+    }
 }

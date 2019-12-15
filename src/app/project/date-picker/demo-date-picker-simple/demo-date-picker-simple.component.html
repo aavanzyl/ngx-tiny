@@ -1,11 +1,22 @@
-<app-example-area>
-    <ngx-date-picker ></ngx-date-picker>
-</app-example-area>
+<h3>Simple</h3>
+<p>Use of a value array as selection options</p>
+<br />
 
 
-<div>
+<div class="row">
 
-    <input type="text" [ngx-date-picker]="dateInstanceOne" />
-    <ngx-date-picker #dateInstanceOne ></ngx-date-picker>
+    <div class="col-5">
+            <div class="form-group">
+                    <label>Single Date</label>
+                    <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne"  required>
+                    <ngx-date-picker #dateInstanceOne></ngx-date-picker>
+                </div>
+
+    </div>
+    <div class="col-5">
+
+        test
+    </div>
 
 </div>
+

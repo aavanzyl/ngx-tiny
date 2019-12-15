@@ -1,13 +1,21 @@
-$white: #ffffff;
-$background: $white;
-$range-background: rgba(1, 134, 255, 0.1);
+
+// Container
+$container-background: #FFFFFF;
+$container-foreground: #3d495c;
+$container-foreground-secondary: #cbcbcb;
+$border-radius: 4px;
 $border: #dfe3e9;
 $shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
-$radius: 4px;
-$text: #3d495c;
-$text-secondary: #cbcbcb;
-$hover-background: #f0f0f0;
-$color: #0186ff;
+
+// Selections
+$selection-background : #f0f0f0;
+$selection-foreground: #333;
+$selection-selected-background: rgb(255, 0, 0);
+$selection-selected-foreground: #f0f0f0;
+$selection-hover-background: rgba(255, 0, 0, 0.6);
+$selection-hover-foreground: #f0f0f0;
+$selection-range-background: rgba(255, 0, 0, 0.6);
+$selection-range-foreground: #f0f0f0;
 
 ngx-date-picker {
   position: absolute;
@@ -28,10 +36,10 @@ ngx-date-picker {
 .ngx-date-picker-calendar-container {
   position: absolute;
   width: 300px;
-  background: $background;
+  background: $container-background;
   box-shadow: $shadow;
   border: 1px solid $border;
-  border-radius: $radius;
+  border-radius: $border-radius;
 }
 
 .topbar-container {
@@ -66,7 +74,7 @@ ngx-date-picker {
 }
 
 .topbar-title {
-  color: $text;
+  color: $container-foreground;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -90,7 +98,7 @@ ngx-date-picker {
 }
 
 .main-calendar-day-names {
-  color: $text-secondary;
+  color: $container-foreground-secondary;
   width: 100%;
   display: flex;
   align-items: center;
@@ -156,60 +164,44 @@ ngx-date-picker {
   z-index: 1;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
+  border-radius: $border-radius;
   align-items: center;
   justify-content: center;
+
+  
+  background: $selection-background ;
+  color: $selection-foreground;
 
   &:not(.is-visible) {
     cursor: default;
   }
 
-  &.is-visible,
   &:hover {
-    background: $hover-background;
-    color: black;
+    background: $selection-hover-background;
+    color: $selection-hover-foreground;
   }
 
   &.is-prev-month {
-    color: $text-secondary;
+    color: $container-foreground-secondary;
   }
 
   &.is-disabled {
     cursor: not-allowed;
-    color: $text-secondary;
+    color: $container-foreground-secondary;
+  }
+
+  &.is-in-range {
+    background: $selection-range-background;
+    color: $selection-range-foreground;
   }
 
   &.is-selected {
-    background: red;
-    color: $white;
+    background: $selection-selected-background;
+    color: $selection-selected-foreground;
   }
+
 }
 
-.day-background-lower {
-  display: inline-flex;
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-
-  &.is-in-range {
-    background: $range-background;
-  }
-
-  &.range-start {
-    border-bottom-left-radius: 50%;
-    border-top-left-radius: 50%;
-  }
-
-  &.range-end {
-    border-bottom-right-radius: 50%;
-    border-top-right-radius: 50%;
-  }
-}
 
 .main-calendar-years {
   height: 210px;
@@ -228,16 +220,16 @@ ngx-date-picker {
 
 .year-unit,
 .month-unit {
-  border-radius: 5px;
+  border-radius: $border-radius;
 
   &.is-selected {
-    background: $color;
-    color: $white;
+    background: $selection-selected-background;
+    color: $selection-selected-foreground;
   }
 
   &:hover {
-    background: $hover-background;
-    color: black;
+    background: $selection-hover-background;
+    color: $selection-hover-foreground;
   }
 }
 

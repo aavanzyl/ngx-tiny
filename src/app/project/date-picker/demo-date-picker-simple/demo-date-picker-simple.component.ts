@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePickerOptions } from 'dist/ngx-date-picker/ngx-date-picker.options';
 
 @Component({
   selector: 'app-demo-date-picker-simple',
@@ -7,22 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DemoDatePickerSimpleComponent implements OnInit {
 
-  datepickerOptions = {
-    selectMultiple: false, // Select multiple dates
-    closeOnSelect: false, // Close datepicker when date(s) selected
-    animationSpeed: 400, // Animation speed in ms
-    easing: 'ease-in', // Easing type string
-    hideRestDays: false, // Hide the rest days
-    disableRestDays: true, // Disable the click on rest days
-    hideNavigation: false, // Hide the navigation
-    range: false, // Use range functionality
-    currentDate: new Date(), // Tne current displayed date (month, year)
-    timeoutBeforeClosing: 5000, // The timeout / delay before closing
-    weekdayFormat: 'short', // "narrow", "short", "long"
-    weekStart: 'monday' // Set the week start day
+  singleDatePickerOptions: DatePickerOptions = {
+    closeOnClickOutside: false,
+    closeOnSelection: false,
+    includeDays: 'previous-month',
+    includeNextMonthsFirstFullWeek: true,
+    minYear: 1900,
+    maxYear: 2050,
+    displayFormat: 'MMM d, yyyy',
+    barTitleFormat: 'MMM yyyy',
+    dayNamesFormat: 'EEEEEE',
+    rangeSeparator: '-',
+    selectRange: false,
+    firstCalendarDay: 0,
+    locale: {},
+    useEmptyBarTitle: true,
+    barTitleIfEmpty: 'Click to select a date',
   };
 
-  dates = [];
+  rangeDatePickerOptions: DatePickerOptions = {
+    closeOnClickOutside: false,
+    closeOnSelection: false,
+    includeDays: 'previous-month',
+    includeNextMonthsFirstFullWeek: true,
+    minYear: 1900,
+    maxYear: 2050,
+    displayFormat: 'MMM d, yyyy',
+    barTitleFormat: 'MMM yyyy',
+    dayNamesFormat: 'EEEEEE',
+    rangeSeparator: '-',
+    selectRange: true,
+    firstCalendarDay: 0,
+    locale: {},
+    useEmptyBarTitle: true,
+    barTitleIfEmpty: 'Click to select a date',
+  };
+
 
   constructor() { }
 

@@ -66,15 +66,12 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
      */
     @Input() isOpened = true;
 
-    @Input() previousMonthButtonTemplate: TemplateRef<any>;
-    @Input() nextMonthButtonTemplate: TemplateRef<any>;
-
     @Output() onChange: EventEmitter<Date | DateRange> = new EventEmitter();
 
     currentOptions: DatePickerOptions = {
         closeOnClickOutside: false,
         closeOnSelection: false,
-        includeDays: 'previous-month',
+        includeDays: 'all',
         includeNextMonthsFirstFullWeek: true,
         minYear: 1900,
         maxYear: 2050,
@@ -242,7 +239,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         return this.isDateSelected(date) || (isAfter(date, this.range.start) && isBefore(date, this.range.end));
     }
 
-    private formatDisplay(): string {
+    public formatDisplay(): string {
         if (!this.range) {
             return '';
         }
@@ -256,7 +253,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
                 this.currentOptions.locale
             );
 
-            return `${formattedStartDate}${this.currentOptions.rangeSeparator}${formattedEndDate}`;
+            return `${formattedStartDate} ${this.currentOptions.rangeSeparator} ${formattedEndDate}`;
         }
 
         return formattedStartDate;

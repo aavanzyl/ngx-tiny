@@ -1,22 +1,18 @@
 <h3>Simple - Single Date</h3>
 <p>Date selection of a single date</p>
 <br />
-
-<app-example-area addedHeight="140" [enableAbsolute]="false">
-
-    <div class="form-group">
-        <label>Single Date</label>
-        <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne" [value]="singleDate"
-            (valueChange)="onChangeSingle($event)" required>
-        <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
-    </div>
-
-</app-example-area>
-
-<br />
-<p>Implementation:</p>
 <ngx-tabs>
-    <ngx-tab [active]="true" name="Template">
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <div class="form-group">
+                <label>Single Date</label>
+                <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne"
+                    [value]="singleDate" (valueChange)="onChangeSingle($event)" required>
+                <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
+            </div>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
             <![CDATA[
 <div class="form-group">
@@ -33,14 +29,14 @@
     <ngx-tab name="Component">
         <ngx-code-highlight class="no-margin">
             <![CDATA[
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-demo-date-picker-simple',
     templateUrl: './demo-date-picker-simple.component.html',
     styleUrls: ['./demo-date-picker-simple.component.scss']
 })
-export class DemoDatePickerSimpleComponent implements OnInit {
+export class DemoDatePickerSimpleComponent {
 
     singleDate: Date = new Date("10/10/1988");
 
@@ -55,25 +51,22 @@ export class DemoDatePickerSimpleComponent implements OnInit {
     </ngx-tab>
 </ngx-tabs>
 
-<br/>
+<br />
 <h3>Simple - Date Range</h3>
 <p>Date range selection between a start and end date</p>
 
-<app-example-area addedHeight="140" [enableAbsolute]="false">
-
-    <div class="form-group">
-        <label>Range Date</label>
-        <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceTwo" [value]="rangeDate"
-            (valueChange)="onChangeRange($event)" required>
-        <ngx-date-picker #dateInstanceTwo [options]="rangeDatePickerOptions"></ngx-date-picker>
-    </div>
-
-</app-example-area>
-
-<br />
-<p>Implementation:</p>
 <ngx-tabs>
-    <ngx-tab [active]="true" name="Template">
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <div class="form-group">
+                <label>Range Date</label>
+                <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceTwo"
+                    [value]="rangeDate" (valueChange)="onChangeRange($event)" required>
+                <ngx-date-picker #dateInstanceTwo [options]="rangeDatePickerOptions"></ngx-date-picker>
+            </div>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
             <![CDATA[
 <div class="form-group">
@@ -90,7 +83,7 @@ export class DemoDatePickerSimpleComponent implements OnInit {
     <ngx-tab name="Component">
         <ngx-code-highlight class="no-margin">
             <![CDATA[
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
 
 @Component({
@@ -98,7 +91,7 @@ import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
     templateUrl: './demo-date-picker-simple.component.html',
     styleUrls: ['./demo-date-picker-simple.component.scss']
 })
-export class DemoDatePickerSimpleComponent implements OnInit {
+export class DemoDatePickerSimpleComponent {
 
     rangeDate: DateRange = { start: new Date(), end: new Date() };
     

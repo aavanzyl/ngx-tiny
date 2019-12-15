@@ -9,8 +9,8 @@ import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
 })
 export class DemoDatePickerSimpleComponent implements OnInit {
 
-  singleDate: Date = new Date("10/10/1988");
-  rangeDate: DateRange = { start: new Date(), end: new Date() };
+  singleDate: Date = new Date("01/01/2020");
+  rangeDate: DateRange = { start: new Date("01/01/2020"), end: new Date("01/10/2020") };
 
   singleDatePickerOptions: DatePickerOptions = {
     selectRange: false,

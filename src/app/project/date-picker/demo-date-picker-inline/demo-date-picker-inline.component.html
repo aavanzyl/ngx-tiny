@@ -1,0 +1,53 @@
+<h3>Inline Date</h3>
+<p>Display the calendar inline with other components</p>
+<br />
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area [enableAbsolute]="true">
+
+                <ngx-date-picker [value]="rangeDate" [options]="rangeDatePickerOptions" ></ngx-date-picker>
+
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<div class="form-group">
+    <label>Single Date</label>
+    <input class="form-control" placeholder="Select Date" 
+        [ngx-date-picker]="dateInstanceSingle" 
+        [value]="singleDate"
+        (valueChange)="onChangeSingle($event)">
+    <ngx-date-picker #dateInstanceSingle [options]="singleDatePickerOptions"></ngx-date-picker>
+</div>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component } from '@angular/core';
+import { DateRange, DatePickerOptions } from "@ngx-tiny/date-picker"
+
+@Component({
+    selector: 'app-demo-date-picker-inline',
+    templateUrl: './demo-date-picker-inline.component.html',
+    styleUrls: ['./demo-date-picker-inline.component.scss']
+})
+export class DemoDatePickerInlineComponent {
+
+    rangeDate: DateRange = { start: new Date("01/01/2020"), end: new Date("01/10/2020") };
+    
+    rangeDatePickerOptions: DatePickerOptions = {
+        selectRange: true,
+    };
+
+    onChangeRange(value: DateRange) {
+        this.rangeDate = value;
+        console.log(this.rangeDate);
+    }
+}            
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

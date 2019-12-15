@@ -1,15 +1,15 @@
 <div #container *ngIf="isOpened" class="ngx-date-picker-calendar-container">
 
   <!-- Top Bar -->
-  <div class="topbar-container">
+  <div class="ngx-date-picker-navbar">
 
-    <div class="topbar-container-nav" (click)="prevMonth()">
+    <div class="ngx-date-picker-navbar-item" (click)="prevMonth()">
       <i class="arrow left"></i>
     </div>
 
-    <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
+    <span class="ngx-date-picker-title" (click)="toggleView()">{{ barTitle }}</span>
 
-    <div class="topbar-container-nav" (click)="nextMonth()">
+    <div class="ngx-date-picker-navbar-item" (click)="nextMonth()">
       <i class="arrow right"></i>
     </div>
 

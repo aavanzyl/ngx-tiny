@@ -58,7 +58,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
 
 
-    @Input() value: Date;
+    @Input() value: Date | DateRange;
     @Input() options: DatePickerOptions;
 
     /**
@@ -128,7 +128,20 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             start: new Date(),
             end: new Date(),
         };
-        this.viewingDate = this.value || new Date();
+
+        if (this.value && !(this.value instanceof Date)) {
+
+            this.range = this.value;
+            this.viewingDate = this.range.start;
+
+
+
+        } else if (this.value && this.value instanceof Date) {
+            this.viewingDate = this.value || new Date();
+        } else {
+            this.viewingDate = new Date();
+        }
+
 
         this.initDayNames();
         this.initYears();

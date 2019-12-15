@@ -5,7 +5,7 @@ $container-foreground: #3d495c;
 $container-foreground-secondary: #cbcbcb;
 $border-radius: 4px;
 $border: #dfe3e9;
-$shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+$shadow: 0px 10px 14px 10px rgba(0,0,0,.08);
 
 // Selections
 $selection-background : #f0f0f0;
@@ -17,12 +17,7 @@ $selection-hover-foreground: #f0f0f0;
 $selection-range-background: rgba(255, 0, 0, 0.6);
 $selection-range-foreground: #f0f0f0;
 
-ngx-date-picker {
-  position: absolute;
-  width: 300px;
-  display: block;
-  height: 322px;
-}
+
 
 
 .ngx-date-picker-input {
@@ -40,9 +35,10 @@ ngx-date-picker {
   box-shadow: $shadow;
   border: 1px solid $border;
   border-radius: $border-radius;
+  z-index: 100;
 }
 
-.topbar-container {
+.ngx-date-picker-navbar {
   height: 50px;
   border-bottom: 1px solid $border;
   display: flex;
@@ -50,7 +46,7 @@ ngx-date-picker {
   align-items: center;
   user-select: none;
 
-  .topbar-container-nav {
+  .ngx-date-picker-navbar-item {
     padding: 16px;
     cursor: pointer;
 
@@ -73,7 +69,7 @@ ngx-date-picker {
   }
 }
 
-.topbar-title {
+.ngx-date-picker-title {
   color: $container-foreground;
   font-size: 14px;
   font-weight: 600;

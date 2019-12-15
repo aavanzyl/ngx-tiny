@@ -72,7 +72,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         closeOnClickOutside: false,
         closeOnSelection: false,
         includeDays: 'all',
-        includeNextMonthsFirstFullWeek: true,
+        includeNextMonthsFirstFullWeek: false,
         minYear: 1900,
         maxYear: 2050,
         displayFormat: 'MMM d, yyyy',
@@ -115,7 +115,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     set range(val: DateRange | undefined) {
         this._range = val;
 
-        this.onChangeCallback(this.getValueToEmit(val));
+        this.onChangeCallback(this.getValueToEmit(this._range));
     }
 
     get range(): DateRange | undefined {

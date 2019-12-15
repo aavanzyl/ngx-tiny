@@ -1,23 +1,118 @@
-<h3>Simple</h3>
-<p>Use of a value array as selection options</p>
+<h3>Simple - Single Date</h3>
+<p>Date selection of a single date</p>
 <br />
 
+<app-example-area addedHeight="140" [enableAbsolute]="false">
 
-<div class="row">
-
-    <div class="col-5">
-        <div class="form-group">
-            <label>Single Date</label>
-            <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne" required>
-            <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
-        </div>
-    </div>
-    <div class="col-5">
-        <div class="form-group">
-            <label>Range Date</label>
-            <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceTwo" required>
-            <ngx-date-picker #dateInstanceTwo [options]="rangeDatePickerOptions"></ngx-date-picker>
-        </div>
+    <div class="form-group">
+        <label>Single Date</label>
+        <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne" [value]="singleDate"
+            (valueChange)="onChangeSingle($event)" required>
+        <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
     </div>
 
+</app-example-area>
+
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<div class="form-group">
+    <label>Single Date</label>
+    <input class="form-control" placeholder="Select Date" 
+        [ngx-date-picker]="dateInstanceSingle" 
+        [value]="singleDate"
+        (valueChange)="onChangeSingle($event)">
+    <ngx-date-picker #dateInstanceSingle [options]="singleDatePickerOptions"></ngx-date-picker>
 </div>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-date-picker-simple',
+    templateUrl: './demo-date-picker-simple.component.html',
+    styleUrls: ['./demo-date-picker-simple.component.scss']
+})
+export class DemoDatePickerSimpleComponent implements OnInit {
+
+    singleDate: Date = new Date("10/10/1988");
+
+    onChangeSingle(value: Date) {
+        this.singleDate = value;
+        console.log(this.singleDate);
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>
+
+<br/>
+<h3>Simple - Date Range</h3>
+<p>Date range selection between a start and end date</p>
+
+<app-example-area addedHeight="140" [enableAbsolute]="false">
+
+    <div class="form-group">
+        <label>Range Date</label>
+        <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceTwo" [value]="rangeDate"
+            (valueChange)="onChangeRange($event)" required>
+        <ngx-date-picker #dateInstanceTwo [options]="rangeDatePickerOptions"></ngx-date-picker>
+    </div>
+
+</app-example-area>
+
+<br />
+<p>Implementation:</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<div class="form-group">
+    <label>Range Date</label>
+    <input class="form-control" placeholder="Select Date" 
+        [ngx-date-picker]="dateInstanceRange" 
+        [value]="rangeDate"
+        (valueChange)="onChangeRange($event)">
+    <ngx-date-picker #dateInstanceRange [options]="rangeDatePickerOptions"></ngx-date-picker>
+</div>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
+
+@Component({
+    selector: 'app-demo-date-picker-simple',
+    templateUrl: './demo-date-picker-simple.component.html',
+    styleUrls: ['./demo-date-picker-simple.component.scss']
+})
+export class DemoDatePickerSimpleComponent implements OnInit {
+
+    rangeDate: DateRange = { start: new Date(), end: new Date() };
+    
+    rangeDatePickerOptions: DatePickerOptions = {
+        selectRange: true,
+    };
+
+    onChangeRange(value: DateRange) {
+        this.rangeDate = value;
+        console.log(this.rangeDate);
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

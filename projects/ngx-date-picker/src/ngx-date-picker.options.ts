@@ -28,4 +28,3 @@ export interface DatePickerOptions {
 }
 
 export type AddClass = string | string[] | { [k: string]: boolean } | null;
-export type PickerPosition = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right' | 'static';

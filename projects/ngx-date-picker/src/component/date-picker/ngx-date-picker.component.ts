@@ -37,7 +37,7 @@ import {
 
 import { isSameDate, createDateRange, isNull } from '../../helpers';
 import { DateRange, Day } from '../../models';
-import { DatePickerOptions, PickerPosition, AddClass } from '../../ngx-date-picker.options';
+import { DatePickerOptions, AddClass } from '../../ngx-date-picker.options';
 
 
 // instanceID for calculating the auto-incrementing field ID
@@ -54,7 +54,7 @@ let instanceID = 0;
 })
 export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnChanges {
 
-    @ViewChild('container', { static: true }) calendarContainerElement: ElementRef;
+    @ViewChild('container', { static: false }) calendarContainerElement: ElementRef;
     @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
 
 
@@ -65,11 +65,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
      * Set date picker's visibility state
      */
     @Input() isOpened = true;
-
-    /**
-     * Date picker dropdown position
-     */
-    @Input() position: PickerPosition = 'bottom-right';
 
     @Input() previousMonthButtonTemplate: TemplateRef<any>;
     @Input() nextMonthButtonTemplate: TemplateRef<any>;
@@ -169,8 +164,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             ...options,
         };
     }
-
-
 
     writeValue(val: DateRange | Date | string | undefined) {
         if (val) {
@@ -362,8 +355,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         }
     }
 
-
-
     // ############### Month ###############
 
     setMonth(i: number): void {
@@ -390,7 +381,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         this.init();
     }
 
-
     // ############### Year ################
 
 
@@ -404,10 +394,12 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     scrollYears(): void {
-        let _heightOfYearElement = 40;
-        let _yearIndex = this.years.filter(item => item.isThisYear)[0];
-        let _scrollPosition = ((_yearIndex.index / 3) * _heightOfYearElement) - 30;
-        this.calendarYearsContainer.nativeElement.scroll(0, _scrollPosition);
+        setTimeout(() => {
+            let _heightOfYearElement = 40;
+            let _yearIndex = this.years.filter(item => item.isThisYear)[0];
+            let _scrollPosition = ((_yearIndex.index / 3) * _heightOfYearElement) - 30;
+            this.calendarYearsContainer.nativeElement.scroll(0, _scrollPosition);
+        }, 100);
     }
 
     setYear(i: number): void {
@@ -421,7 +413,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     toggleView(): void {
         this.view = this.view === 'days' ? 'years' : 'days';
-        setTimeout(() => { this.scrollYears() }, 100);
+        this.scrollYears()
     }
 
     toggle(): void {
@@ -429,6 +421,11 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
         if (!this.isOpened && this.view === 'years') {
             this.toggleView();
+        }
+
+        if (this.isOpened && this.view === 'days') {
+            this.viewingDate = this.range.start || this.viewingDate || new Date();
+            this.init();
         }
     }
 
@@ -443,7 +440,8 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     // ############### Misc ################
 
     @HostListener('document:click', ['$event']) onBlur(e: MouseEvent) {
-        if (!this.isOpened || !this.currentOptions.closeOnClickOutside || !this.calendarContainerElement) {
+
+        if (!this.isOpened || !this.currentOptions.closeOnClickOutside) {
             return;
         }
 

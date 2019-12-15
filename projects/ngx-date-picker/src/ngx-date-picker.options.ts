@@ -15,12 +15,6 @@ export interface DatePickerOptions {
     locale?: object;
     minDate?: Date;
     maxDate?: Date;
-    /** Placeholder for the input field */
-    placeholder?: string;
-    /** [ngClass] to add to the input field */
-    addClass?: AddClass;
-    /** [ngStyle] to add to the input field */
-    addStyle?: { [k: string]: any } | null;
     /** ID to assign to the input field */
     fieldId?: string;
     /** If false, barTitleIfEmpty will be disregarded and a date will always be shown. Default: true */

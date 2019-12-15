@@ -7,7 +7,6 @@ import {
     ElementRef,
     forwardRef,
     ViewChild,
-    TemplateRef,
     ViewEncapsulation,
     HostListener,
     Output,
@@ -66,7 +65,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
      */
     @Input() isOpened = true;
 
-    @Output() onChange: EventEmitter<Date | DateRange> = new EventEmitter();
+    @Output() valueChange: EventEmitter<Date | DateRange> = new EventEmitter();
 
     currentOptions: DatePickerOptions = {
         closeOnClickOutside: false,
@@ -83,9 +82,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         firstCalendarDay: 0,
         barTitleIfEmpty: 'Click to select a date',
         locale: {},
-        placeholder: '',
-        addClass: {},
-        addStyle: {},
         fieldId: this.defaultFieldId,
         useEmptyBarTitle: true,
     };
@@ -105,7 +101,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     private onTouchedCallback: () => void = () => { };
     private onChangeCallback: (_: Date | DateRange) => void = (_) => {
-        this.onChange.emit(_);
+        this.valueChange.emit(_);
     };
 
     public setDisabledState(isDisabled: boolean) {
@@ -114,7 +110,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     set range(val: DateRange | undefined) {
         this._range = val;
-
         this.onChangeCallback(this.getValueToEmit(this._range));
     }
 
@@ -124,24 +119,19 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     ngOnInit() {
         this.view = 'days';
-        this.range = {
+        this.range = this.range || {
             start: new Date(),
             end: new Date(),
         };
 
         if (this.value && !(this.value instanceof Date)) {
-
             this.range = this.value;
             this.viewingDate = this.range.start;
-
-
-
         } else if (this.value && this.value instanceof Date) {
-            this.viewingDate = this.value || new Date();
+            this.viewingDate = this.value;
         } else {
-            this.viewingDate = new Date();
+            this.viewingDate = this.range.start;
         }
-
 
         this.initDayNames();
         this.initYears();

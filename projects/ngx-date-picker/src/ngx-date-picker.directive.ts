@@ -1,13 +1,16 @@
-import { Directive, OnInit, Input, ElementRef, HostListener, OnDestroy, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Directive, OnInit, Input, ElementRef, HostListener, OnDestroy, Output, EventEmitter, AfterViewInit, forwardRef } from '@angular/core';
 import { NgxDatePickerComponent } from './component/date-picker/ngx-date-picker.component';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DateRange } from './models';
 import { createDateRange } from './helpers';
 
 
 @Directive({
-    selector: '[ngx-date-picker]'
+    selector: '[ngx-date-picker]',
+    providers: [
+        { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxDatePickerDirective), multi: true }
+    ]
 })
 export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
 
@@ -30,13 +33,18 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
         this.datePickerInstance.currentOptions.closeOnSelection = true;
         this.datePickerInstance.currentOptions.closeOnClickOutside = false;
 
-        this.onChangeSubscription = this.datePickerInstance.onChange.subscribe((value: Date | DateRange) => {
+        this.onChangeSubscription = this.datePickerInstance.valueChange.subscribe((value: Date | DateRange) => {
             this._el.nativeElement.value = this.datePickerInstance.formatDisplay();
             this.valueChange.emit(value);
+            this.onChange(value);
         });
     }
 
     ngAfterViewInit(): void {
+
+        if (!this.value) {
+            return;
+        }
 
         if (this.value instanceof Date) {
             this.datePickerInstance.range = createDateRange(this.value, this.value);
@@ -54,8 +62,15 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
 
     // ############# ControlValueAccessor #############
 
-    writeValue(obj: any): void {
-        throw new Error("Method not implemented.");
+    writeValue(value: Date | DateRange): void {
+
+        if (value instanceof Date) {
+            this.datePickerInstance.range = createDateRange(value, value);
+        } else {
+            this.datePickerInstance.range = value;
+        }
+
+        this.datePickerInstance.init();
     }
 
     registerOnChange(fn: any): void {

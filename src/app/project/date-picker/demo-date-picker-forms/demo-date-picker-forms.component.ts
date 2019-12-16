@@ -35,11 +35,14 @@ export class DemoDatePickerFormsComponent implements OnInit {
   }
 
   onSubmitSingle() {
-    alert(JSON.stringify(this.myFormSingle.value));
+    alert(this.myFormSingle.get('singleDate').value);
   }
 
   onSubmitRange() {
-    alert(JSON.stringify(this.myFormRange.value));
+
+    let _start = this.myFormRange.get('rangeDate').value.start;
+    let _end = this.myFormRange.get('rangeDate').value.end;
+    alert(`${_start} - ${_end}`);
   }
 
 

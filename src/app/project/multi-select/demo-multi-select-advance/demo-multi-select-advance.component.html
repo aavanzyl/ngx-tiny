@@ -2,15 +2,15 @@
 
 <p>Use of a key/value object as options and selections</p>
 <br/>
-<app-example-area addedHeight="140" [enableAbsolute]="false">
-    <ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
-    </ngx-multi-select>
-</app-example-area>
 
-<br />
-<p>Implementation:</p>
 <ngx-tabs>
-    <ngx-tab [active]="true" name="Template">
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
+            </ngx-multi-select>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
             <![CDATA[
 <ngx-multi-select 

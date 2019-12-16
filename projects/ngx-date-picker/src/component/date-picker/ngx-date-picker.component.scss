@@ -1,46 +1,36 @@
 
 // Container
-$container-background: #FFFFFF;
-$container-foreground: #3d495c;
-$container-foreground-secondary: #cbcbcb;
-$border-radius: 4px;
-$border: #dfe3e9;
-$shadow: 0px 10px 14px 10px rgba(0,0,0,.08);
+$container-background: #FFFFFF!default;
+$container-foreground: #3d495c!default;
+$container-foreground-secondary: #cbcbcb!default;
+$border-radius: 4px!default;
+$border-color: #dfe3e9!default;
+$shadow: 0px 10px 14px 10px rgba(0,0,0,.08)!default;
 
 // Selections
-$selection-background : #f0f0f0;
-$selection-foreground: #333;
-$selection-selected-background: rgb(255, 0, 0);
-$selection-selected-foreground: #f0f0f0;
-$selection-hover-background: rgba(255, 0, 0, 0.6);
-$selection-hover-foreground: #f0f0f0;
-$selection-range-background: rgba(255, 0, 0, 0.6);
-$selection-range-foreground: #f0f0f0;
+$selection-background : #f0f0f0!default;
+$selection-foreground: #333!default;
+$selection-selected-background: rgb(255, 0, 0)!default;
+$selection-selected-foreground: #f0f0f0!default;
+$selection-hover-background: rgba(255, 0, 0, 0.6)!default;
+$selection-hover-foreground: #f0f0f0!default;
+$selection-range-background: rgba(255, 0, 0, 0.6)!default;
+$selection-range-foreground: #f0f0f0!default;
 
-
-
-
-.ngx-date-picker-input {
-  padding: 5px 10px;
-  font-size: 14px;
-  width: 200px;
-  outline: none;
-  border: 1px solid $border;
-}
 
 .ngx-date-picker-calendar-container {
   position: absolute;
   width: 300px;
   background: $container-background;
   box-shadow: $shadow;
-  border: 1px solid $border;
+  border: 1px solid $border-color;
   border-radius: $border-radius;
   z-index: 100;
 }
 
 .ngx-date-picker-navbar {
   height: 50px;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $border-color;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,0 +1,103 @@
+// Container
+$container-background: #ffffff !default;
+$container-foreground: #3d495c !default;
+$container-foreground-secondary: #cbcbcb !default;
+$border-radius: 4px !default;
+$border-color: #dfe3e9 !default;
+$shadow: 0px 10px 14px 10px rgba(0, 0, 0, 0.08) !default;
+
+// Selections
+$selection-background: #f0f0f0 !default;
+$selection-foreground: #333 !default;
+$selection-selected-background: rgb(255, 0, 0) !default;
+$selection-selected-foreground: #f0f0f0 !default;
+$selection-hover-background: rgba(255, 0, 0, 0.6) !default;
+$selection-hover-foreground: #f0f0f0 !default;
+$selection-range-background: rgba(255, 0, 0, 0.6) !default;
+$selection-range-foreground: #f0f0f0 !default;
+
+ngx-date-picker {
+    
+  .ngx-date-picker-calendar-container {
+    background: $container-background;
+    box-shadow: $shadow;
+    border-color: $border-color;
+    border-radius: $border-radius;
+  }
+
+  .ngx-date-picker-navbar {
+    border-bottom-color: $border-color;
+
+    .ngx-date-picker-navbar-item {
+      .arrow {
+        border-color: $container-foreground;
+      }
+    }
+  }
+
+  .ngx-date-picker-title {
+    color: $container-foreground;
+  }
+
+  .main-calendar-day-names {
+    color: $container-foreground-secondary;
+  }
+
+  .main-calendar-years {
+    &::-webkit-scrollbar-track {
+      background-color: $container-background;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: $container-background;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $container-foreground;
+    }
+  }
+
+  .day-background-upper {
+    background: $selection-background;
+    color: $selection-foreground;
+
+    &:hover {
+      background: $selection-hover-background;
+      color: $selection-hover-foreground;
+    }
+
+    &.is-prev-month {
+      color: $container-foreground-secondary;
+    }
+
+    &.is-disabled {
+      color: $container-foreground-secondary;
+    }
+
+    &.is-in-range {
+      background: $selection-range-background;
+      color: $selection-range-foreground;
+    }
+
+    &.is-selected {
+      background: $selection-selected-background;
+      color: $selection-selected-foreground;
+    }
+  }
+
+  .year-unit,
+  .month-unit {
+    border-radius: $border-radius;
+
+    &.is-selected {
+      background: $selection-selected-background;
+      color: $selection-selected-foreground;
+    }
+
+    &:hover {
+      background: $selection-hover-background;
+      color: $selection-hover-foreground;
+    }
+  }
+}

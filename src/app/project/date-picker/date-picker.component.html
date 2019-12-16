@@ -33,7 +33,7 @@ export class AppModule { }
             </ngx-code-highlight>
 
             <p>* <b>Note that the default locale for the <code>ngx-date-picker</code> is <code>en-US</code>. We would
-                recommend this gets specified for the target local.</b></p>
+                    recommend this gets specified for the target local.</b></p>
 
         </ngx-tab>
 
@@ -134,6 +134,7 @@ export class AppModule { }
 
             <h3>Options</h3>
             <p>Available Options on <code>ngx-date-picker</code> component.</p>
+            <p>@see DatePickerOptions in <code>ngx-date-picker</code></p>
             <table class="table-api">
                 <thead>
                     <tr>
@@ -160,6 +161,17 @@ export class AppModule { }
                         </td>
                     </tr>
                     <tr>
+                        <td>locale</td>
+                        <td><code>en-US</code></td>
+                        <td>
+                            <p>Type: <code>object</code></p>
+                            <p>Specify the Date-fns locale to be used.</p>
+                            <p>If you don't specify a locale in options, default locale is en-US.</p>
+                            <p>See <a href="https://date-fns.org/v2.8.1/docs/Locale"
+                                    target="_blank">https://date-fns.org/v2.8.1/docs/Locale</a></p>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>includeDays</td>
                         <td><code>all</code></td>
                         <td>
@@ -176,22 +188,7 @@ export class AppModule { }
                             <p>Ability to include a full week from the next month. </p>
                         </td>
                     </tr>
-                    <tr>
-                        <td>minYear</td>
-                        <td><code>1900</code></td>
-                        <td>
-                            <p>Type: <code>number</code></p>
-                            <p>Year Selection start</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>maxYear</td>
-                        <td><code>2050</code></td>
-                        <td>
-                            <p>Type: <code>number</code></p>
-                            <p>Year Selection end</p>
-                        </td>
-                    </tr>
+
                     <tr>
                         <td>displayFormat</td>
                         <td><code>MMM d, yyyy</code></td>
@@ -262,15 +259,21 @@ export class AppModule { }
                             <p>Start of the calendar day, 0 = Sunday (default), 1 = Monday, ..</p>
                         </td>
                     </tr>
+
                     <tr>
-                        <td>locale</td>
-                        <td><code>en-US</code></td>
+                        <td>minYear</td>
+                        <td><code>1900</code></td>
                         <td>
-                            <p>Type: <code>object</code></p>
-                            <p>Specify the Date-fns locale to be used.</p>
-                            <p>If you don't specify a locale in options, default locale is en-US.</p>
-                            <p>See <a href="https://date-fns.org/v2.8.1/docs/Locale"
-                                    target="_blank">https://date-fns.org/v2.8.1/docs/Locale</a></p>
+                            <p>Type: <code>number</code></p>
+                            <p>Year Selection start</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>maxYear</td>
+                        <td><code>2050</code></td>
+                        <td>
+                            <p>Type: <code>number</code></p>
+                            <p>Year Selection end</p>
                         </td>
                     </tr>
                     <tr>
@@ -282,7 +285,7 @@ export class AppModule { }
                         </td>
                     </tr>
                     <tr>
-                        <td>minDate</td>
+                        <td>maxDate</td>
                         <td><code>undefined</code></td>
                         <td>
                             <p>Type: <code>Date</code></p>

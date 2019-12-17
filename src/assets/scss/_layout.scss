@@ -60,6 +60,7 @@ body {
 
 .no-margin {
   margin: 0 !important;
+
   pre {
     margin: 0 !important;
   }
@@ -73,11 +74,52 @@ body {
   background-repeat: no-repeat;
 }
 
-.banner_1{
+.banner_1 {
   background-image: url('./assets/images/banner_1.png');
   background-color: #404040;
 }
 
-.pull-right{
+.pull-right {
   float: right;
+}
+
+.row {
+
+  display: inline;
+
+  .col-1 {
+    width: 10%;
+    display: inline-block;
+    padding: 0 10px 0 0;
+    box-sizing: border-box;
+  }
+
+  .col-2 {
+    width: 20%;
+    display: inline-block;
+    padding: 0 15px 0 0;
+    box-sizing: border-box;
+  }
+
+  .col-3 {
+    width: 30%;
+    display: inline-block;
+    padding: 0 15px 0 0;
+    box-sizing: border-box;
+  }
+
+  .col-4 {
+    width: 40%;
+    display: inline-block;
+    padding: 0 15px 0 0;
+    box-sizing: border-box;
+  }
+
+  .col-5 {
+    width: 50%;
+    display: inline-block;
+    padding: 0 15px 0 0;
+    box-sizing: border-box;
+  }
+
 }

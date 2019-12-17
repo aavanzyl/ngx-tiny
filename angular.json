@@ -35,10 +35,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -48,7 +50,8 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -275,6 +278,26 @@
           "configurations": {
             "production": {
               "project": "projects/ngx-clipboard/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "@ngx-tiny/date-picker": {
+      "root": "projects/ngx-date-picker",
+      "sourceRoot": "projects/ngx-date-picker/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-date-picker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-date-picker/ng-package.prod.json"
             }
           }
         }

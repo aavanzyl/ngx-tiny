@@ -1,0 +1,332 @@
+<div class="container">
+    <h1>ngx-date-picker</h1>
+    <br />
+
+    <ngx-tabs>
+        <ngx-tab [active]="true" name="Installation">
+
+            <h2>Installation</h2>
+            <p>To install this library, run:</p>
+            <!-- Terminal -->
+            <div class="terminal">
+                <pre>npm install @ngx-tiny/ngx-date-picker --save</pre>
+            </div>
+
+            <p>and then add <code><b>NgxDatePickerModule</b></code> to you <code><b>AppModule</b></code></p>
+
+            <ngx-code-highlight>
+                <![CDATA[
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxDatePickerModule } from '@ngx-tiny/date-picker';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+    imports: [BrowserModule, NgxDatePickerModule],
+    declarations: [AppComponent],
+    bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+]]>
+            </ngx-code-highlight>
+
+            <p>* <b>Note that the default locale for the <code>ngx-date-picker</code> is <code>en-US</code>. We would
+                    recommend this gets specified for the target local.</b></p>
+
+        </ngx-tab>
+
+        <ngx-tab name="Usage">
+
+
+            <h2>Usage</h2>
+
+            <app-demo-date-picker-simple></app-demo-date-picker-simple>
+            <app-demo-date-picker-forms></app-demo-date-picker-forms>
+            <app-demo-date-picker-inline></app-demo-date-picker-inline>
+
+
+        </ngx-tab>
+        <ngx-tab name="Styling">
+
+            <h2>Styling</h2>
+            <p>You can costomize the styling of the <code>ngx-date-picker</code> by inlcuding the style file and setting the required variables</p>
+            
+            <p>Load it from <code>./node_modules/ngx-date-picker/theme.scss</code> via package bundler like Angular CLI, if you're using one.</p>
+            <p>or</p>
+            <p>Include the <code>./node_modules/ngx-date-picker/theme.scss</code> as an import in your styles.scss file.</p>
+
+            <ngx-code-highlight>
+                <![CDATA[
+// Container
+$container-background: #ffffff !default;
+$container-foreground: #3d495c !default;
+$container-foreground-secondary: #cbcbcb !default;
+$border-radius: 4px !default;
+$border-color: #dfe3e9 !default;
+$shadow: 0px 10px 14px 10px rgba(0, 0, 0, 0.08) !default;
+
+// Selections
+$selection-background: #f0f0f0 !default;
+$selection-foreground: #333 !default;
+$selection-selected-background: rgb(255, 0, 0) !default;
+$selection-selected-foreground: #f0f0f0 !default;
+$selection-hover-background: rgba(255, 0, 0, 0.6) !default;
+$selection-hover-foreground: #f0f0f0 !default;
+$selection-range-background: rgba(255, 0, 0, 0.6) !default;
+$selection-range-foreground: #f0f0f0 !default;
+]]>
+            </ngx-code-highlight>
+
+        </ngx-tab>
+
+        <ngx-tab name="API">
+
+
+            <h2>API</h2>
+
+            <h3>Input</h3>
+            <p>Input specification on <code>ngx-date-picker</code> component.</p>
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Default</th>
+                        <th>Required</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td><code>new Date()</code></td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: <code>Date</code> or <code>DateRange</code></p>
+                            <p>Current value of date picker.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>options</td>
+                        <td><code>@see Options</code></td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: <code>DatePickerOptions</code></p>
+                            <p>Options of the Date Picker</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <p>Input specification on <code>ngx-date-picker</code> directive.</p>
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Default</th>
+                        <th>Required</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>value</td>
+                        <td><code>new Date()</code></td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: <code>Date</code> or <code>DateRange</code></p>
+                            <p>Current value of date picker.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Output</h3>
+            <p>Output specification on <code>ngx-date-picker</code> component.</p>
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Required</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>valueChange</td>
+                        <td>optional</td>
+                        <td>
+                            <p>Type: <code>EventEmitter</code></p>
+                            <p><code>Date</code> or <code>DateRange</code></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Options</h3>
+            <p>Available Options on <code>ngx-date-picker</code> component.</p>
+            <p>@see DatePickerOptions in <code>ngx-date-picker</code></p>
+            <table class="table-api">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Default</th>
+                        <th width="50%">Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>closeOnClickOutside</td>
+                        <td><code>true</code></td>
+                        <td>
+                            <p>Type: <code>boolean</code></p>
+                            <p>Close Date Picker when clicked outside of container.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>closeOnSelection</td>
+                        <td><code>true</code></td>
+                        <td>
+                            <p>Type: <code>boolean</code></p>
+                            <p>Close Date Picker value is selected or End Value is selected in range.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>locale</td>
+                        <td><code>en-US</code></td>
+                        <td>
+                            <p>Type: <code>object</code></p>
+                            <p>Specify the Date-fns locale to be used.</p>
+                            <p>If you don't specify a locale in options, default locale is en-US.</p>
+                            <p>See <a href="https://date-fns.org/v2.8.1/docs/Locale"
+                                    target="_blank">https://date-fns.org/v2.8.1/docs/Locale</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>includeDays</td>
+                        <td><code>all</code></td>
+                        <td>
+                            <p>Type: <code>string</code></p>
+                            <p>Options <code>'none' | 'previous-month' | 'next-month' | 'all'</code></p>
+                            <p>Specify if pre/post days need to be shown in the picked.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>includeNextMonthsFirstFullWeek</td>
+                        <td><code>false</code></td>
+                        <td>
+                            <p>Type: <code>boolean</code></p>
+                            <p>Ability to include a full week from the next month. </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>displayFormat</td>
+                        <td><code>MMM d, yyyy</code></td>
+                        <td>
+                            <p>Type: <code>date-fns format</code></p>
+                            <p>Format of display value of a date.</p>
+                            <p>See <a href="https://date-fns.org/docs/format"
+                                    target="_blank">https://date-fns.org/docs/format</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>barTitleFormat</td>
+                        <td><code>MMMM YYYY</code></td>
+                        <td>
+                            <p>Type: <code>date-fns format</code></p>
+                            <p>Format the date displayed on the top bar of the date picker.</p>
+                            <p>See <a href="https://date-fns.org/docs/format"
+                                    target="_blank">https://date-fns.org/docs/format</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>dayNamesFormat</td>
+                        <td><code>ddd</code></td>
+                        <td>
+                            <p>Type: <code>date-fns format</code></p>
+                            <p>Format the Names of the days shown on the date picker</p>
+                            <p>See <a href="https://date-fns.org/docs/format"
+                                    target="_blank">https://date-fns.org/docs/format</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>barTitleIfEmpty</td>
+                        <td><code>'Click to select a date'</code></td>
+                        <td>
+                            <p>Type: <code>date-fns format</code></p>
+                            <p>Title of the text on the top bar when no date specified.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>useEmptyBarTitle</td>
+                        <td><code>true</code></td>
+                        <td>
+                            <p>Type: <code>date-fns format</code></p>
+                            <p>If false, barTitleIfEmpty will be disregarded and a date will always be shown.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>selectRange</td>
+                        <td><code>false</code></td>
+                        <td>
+                            <p>Type: <code>boolean</code></p>
+                            <p>Specify if the Date Picker is single or range select</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>rangeSeparator</td>
+                        <td><code>-</code></td>
+                        <td>
+                            <p>Type: <code>string</code></p>
+                            <p>Separator between range date on display.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>firstCalendarDay</td>
+                        <td><code>0</code></td>
+                        <td>
+                            <p>Type: <code>number</code></p>
+                            <p>Start of the calendar day, 0 = Sunday (default), 1 = Monday, ..</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>minYear</td>
+                        <td><code>1900</code></td>
+                        <td>
+                            <p>Type: <code>number</code></p>
+                            <p>Year Selection start</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>maxYear</td>
+                        <td><code>2050</code></td>
+                        <td>
+                            <p>Type: <code>number</code></p>
+                            <p>Year Selection end</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>minDate</td>
+                        <td><code>undefined</code></td>
+                        <td>
+                            <p>Type: <code>Date</code></p>
+                            <p>The minimal date allowed for selection.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>maxDate</td>
+                        <td><code>undefined</code></td>
+                        <td>
+                            <p>Type: <code>Date</code></p>
+                            <p>The maximum date allowed for selection.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </ngx-tab>
+    </ngx-tabs>
+</div>

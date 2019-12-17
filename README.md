@@ -5,7 +5,7 @@ Production ready Angular components build for my personal project I am now open 
 * Light Weight Angular Component Library.
 * Angular 8 Implementation
 * Compatible with Angular SSR 
-* No Dependencies (Exception `ngx-code-highlight`)
+* Limited to no Dependencies. When ever possible and in most cases, zero dependencies are added to the modules.
 
 Documentation can be found here : [Read ngx-tiny Docs](https://aavanzyl.github.io/ngx-tiny)
 
@@ -16,6 +16,7 @@ Projects I use this:
 Inputs
 * [ngx-multi-select][ngx-multi-select]
 * [ngx-switch-input][ngx-switch-input]
+* [ngx-date-picker][ngx-date-picker]
 * [ngx-quill-editor][ngx-quill-editor]
 
 Components
@@ -27,7 +28,7 @@ Directives
 
 ## Development
 #### Build
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. This will run in Prod mode for distrubution building.
 
 #### Serve
 Run `ng serve` to serve the project for docs development.
@@ -50,5 +51,6 @@ See the [LICENSE][license] file.
 [ngx-code-highlight]: projects/ngx-code-highlight/README.md
 [ngx-quill-editor]: projects/ngx-quill-editor/README.md
 [ngx-switch-input]: projects/ngx-switch-input/README.md
+[ngx-date-picker]: projects/ngx-date-picker/README.md
 [ngx-clipboard]: projects/ngx-clipboard/README.md
 [ngx-tabs]: projects/ngx-tabs/README.md

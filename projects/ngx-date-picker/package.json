@@ -1,0 +1,36 @@
+{
+  "name": "@ngx-tiny/date-picker",
+  "version": "8.0.0",
+  "repository": "https://github.com/aavanzyl/ngx-tiny",
+  "author": "Anton Van Zyl <aavanzyl@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/aavanzyl/ngx-tiny/issues"
+  },
+  "homepage": "https://aavanzyl.github.io/ngx-tiny",
+  "keywords": [
+    "angular",
+    "ng",
+    "ng2",
+    "ngx",
+    "angular2",
+    "angular7",
+    "angular8",
+    "ngx-date-picker",
+    "ngx-date-select",
+    "date-picker",
+    "date-select",
+    "calandar-picker",
+    "calandar-select",
+    "picker",
+    "calandar",
+    "select",
+    "range",
+    "inline"
+  ],
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0",
+    "date-fns": "^2.8.1"
+  }
+}

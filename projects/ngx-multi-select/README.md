@@ -7,6 +7,7 @@ Angular multiple selection dropdown.
 * Works alone or with angular forms 
 * No Dependencies required
 * String or Object Array as options
+* Themeable to own requirements
 
 ## Installation
 
@@ -25,6 +26,7 @@ __Full Docs:__
 You can find the full documentation at https://aavanzyl.github.io/ngx-tiny which includes
 * Installation instructions
 * Usage and Demos
+* Styling Reference
 * API Reference
 
 __Quick Start:__

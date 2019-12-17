@@ -1,0 +1,225 @@
+
+// Container
+$container-background: #FFFFFF!default;
+$container-foreground: #3d495c!default;
+$container-foreground-secondary: #cbcbcb!default;
+$border-radius: 4px!default;
+$border-color: #dfe3e9!default;
+$shadow: 0px 10px 14px 10px rgba(0,0,0,.08)!default;
+
+// Selections
+$selection-background : #f0f0f0!default;
+$selection-foreground: #333!default;
+$selection-selected-background: rgb(255, 0, 0)!default;
+$selection-selected-foreground: #f0f0f0!default;
+$selection-hover-background: rgba(255, 0, 0, 0.6)!default;
+$selection-hover-foreground: #f0f0f0!default;
+$selection-range-background: rgba(255, 0, 0, 0.6)!default;
+$selection-range-foreground: #f0f0f0!default;
+
+
+.ngx-date-picker-calendar-container {
+  position: absolute;
+  width: 300px;
+  background: $container-background;
+  box-shadow: $shadow;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  z-index: 100;
+}
+
+.ngx-date-picker-navbar {
+  height: 50px;
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+
+  .ngx-date-picker-navbar-item {
+    padding: 16px;
+    cursor: pointer;
+
+    .arrow {
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+
+      &.right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+      }
+
+      &.left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }
+    }
+  }
+}
+
+.ngx-date-picker-title {
+  color: $container-foreground;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.main-calendar-container {
+  width: 100%;
+  height: 100%;
+  padding: 15px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  box-sizing: border-box;
+
+  .show {
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+.main-calendar-day-names {
+  color: $container-foreground-secondary;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.day-name-unit {
+  width: calc(100% / 7);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 5px 5px 0 0;
+}
+
+.main-calendar-days {
+  padding: 15px 0 0 0;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.main-calendar-years {
+  padding: 15px 0 0 0;
+  width: 100%;
+  display: inline-block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #000000;
+  }
+}
+
+.day-unit,
+.year-unit,
+.month-unit {
+  margin: 5px 5px 0 0;
+  position: relative;
+  width: calc(100% / 7 - 5px);
+  font-size: 14px;
+  font-weight: 400;
+  height: 35px;
+  display: inline-flex;
+  float: left;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.day-background-upper {
+  display: inline-flex;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: $border-radius;
+  align-items: center;
+  justify-content: center;
+
+  
+  background: $selection-background ;
+  color: $selection-foreground;
+
+  &:not(.is-visible) {
+    cursor: default;
+  }
+
+  &:hover {
+    background: $selection-hover-background;
+    color: $selection-hover-foreground;
+  }
+
+  &.is-prev-month {
+    color: $container-foreground-secondary;
+  }
+
+  &.is-disabled {
+    cursor: not-allowed;
+    color: $container-foreground-secondary;
+  }
+
+  &.is-in-range {
+    background: $selection-range-background;
+    color: $selection-range-foreground;
+  }
+
+  &.is-selected {
+    background: $selection-selected-background;
+    color: $selection-selected-foreground;
+  }
+
+}
+
+
+.main-calendar-years {
+  height: 210px;
+  display: block;
+  padding: 0;
+}
+
+.month-unit {
+  width: calc(100% / 4 - 5px);
+  height: 54px;
+}
+
+.year-unit {
+  width: calc(100% / 3 - 5px);
+}
+
+.year-unit,
+.month-unit {
+  border-radius: $border-radius;
+
+  &.is-selected {
+    background: $selection-selected-background;
+    color: $selection-selected-foreground;
+  }
+
+  &:hover {
+    background: $selection-hover-background;
+    color: $selection-hover-foreground;
+  }
+}
+
+.main-calendar-months {
+  padding-bottom: 10px;
+  display: inline-block;
+}

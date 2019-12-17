@@ -11,6 +11,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { DemoRouteAComponent } from './tabs/demo-route-a/demo-route-a.component';
 import { DemoRouteBComponent } from './tabs/demo-route-b/demo-route-b.component';
 import { ClipboardComponent } from './clipboard/clipboard.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 const routes: Routes = [
   { path: 'address-input', component: AddressInputComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'switch-input', component: SwitchInputComponent },
   { path: 'tag-input', component: TagInputComponent },
   { path: 'code-highlight', component: CodeHighlightComponent },
+  { path: 'date-picker', component: DatePickerComponent },
   { path: 'clipboard', component: ClipboardComponent },
   {
     path: 'tabs',

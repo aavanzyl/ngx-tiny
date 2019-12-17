@@ -1,0 +1,11 @@
+.example-wrapper {
+  padding: 50px 10%;
+  background: #404040;
+  position: relative;
+
+  .absolute-area {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

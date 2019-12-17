@@ -33,8 +33,10 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 #### Serve
 Run `ng serve` to serve the project for docs development.
 
-#### Docs
-Run `npm run docs` to build the docs for github pages.
+#### Publishing and Updating Docs
+
+* Run `npm publish` on the `dist` of the package.
+* Run `npm run docs` to build the docs for github pages.
 
 ## Support
 

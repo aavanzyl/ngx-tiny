@@ -41,6 +41,9 @@ MIT
 @angular/router
 MIT
 
+@ngx-tiny/clipboard
+MIT
+
 @ngx-tiny/code-highlight
 MIT
 
@@ -48,6 +51,9 @@ MIT
 MIT
 
 @ngx-tiny/quill-editor
+MIT
+
+@ngx-tiny/switch-input
 MIT
 
 @ngx-tiny/tabs
@@ -75,6 +81,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+ngx-gtag
+MIT
 
 prismjs
 MIT

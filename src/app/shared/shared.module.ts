@@ -8,19 +8,23 @@ import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
 import { NgxTabsModule } from '@ngx-tiny/tabs';
 import { NgxQuillEditorModule } from '@ngx-tiny/quill-editor';
 import { NgxSwitchInputModule } from '@ngx-tiny/switch-input';
-
+import { NgxClipboardModule } from '@ngx-tiny/clipboard';
+import { NgxDatePickerModule } from '@ngx-tiny/date-picker';
+import { ExampleAreaComponent } from './example-area/example-area.component';
 
 const modules = [
   NgxMultiSelectModule,
   NgxCodeHighlightModule,
   NgxTabsModule,
   NgxQuillEditorModule,
-  NgxSwitchInputModule
+  NgxSwitchInputModule,
+  NgxClipboardModule,
+  NgxDatePickerModule
 ];
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, ...modules],
-  exports: [CommonModule, ReactiveFormsModule, ...modules],
-  declarations: []
+  exports: [CommonModule, ReactiveFormsModule, ...modules, ExampleAreaComponent],
+  declarations: [ExampleAreaComponent]
 })
 export class SharedModule { }

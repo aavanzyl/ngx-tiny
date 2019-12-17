@@ -29,7 +29,7 @@ You can find the full documentation at https://aavanzyl.github.io/ngx-tiny which
 
 __Quick Start:__
 
-1. Install with [npm](https://www.npmjs.com): `npm install @ngx-tiny/quill-editor --save`
+1. Install with [npm](https://www.npmjs.com): `npm install @ngx-tiny/switch-input --save`
 
 2. Add __NgxSwitchInputModule__ to your __@NgModule__ like example below
     ```typescript

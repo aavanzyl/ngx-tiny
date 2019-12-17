@@ -16,6 +16,8 @@
     "package:multi-select": "ng build @ngx-tiny/multi-select",
     "package:switch-input": "ng build @ngx-tiny/switch-input",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
+    "package:clipboard": "ng build @ngx-tiny/clipboard",
+    "package:date-picker": "ng build @ngx-tiny/date-picker && scss-bundle -p projects/ngx-date-picker",
     "package:tabs": "ng build @ngx-tiny/tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
@@ -44,7 +46,9 @@
     "@angular/platform-browser": "~8.2.13",
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
+    "date-fns": "^2.8.1",
     "fs-extra": "^8.1.0",
+    "ngx-gtag": "^7.0.2",
     "prismjs": "^1.14.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
@@ -73,6 +77,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "scss-bundle": "^3.0.2"
   }
 }

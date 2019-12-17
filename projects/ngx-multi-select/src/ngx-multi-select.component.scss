@@ -9,12 +9,14 @@ $box-foreground-color: #FFFFFF;
 .select-dropdown-group {
   position: relative;
   box-sizing: content-box;
+  background-color: $background-color;
 
   .select-dropdown-control {
     display: flex;
     width: 100%;
     overflow: hidden;
     border: 1px solid $border-color;
+    background-color: $background-color;
     min-height: 39px;
 
     border-radius: 0;

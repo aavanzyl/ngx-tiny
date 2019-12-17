@@ -19,6 +19,11 @@ import { DemoQuillEditorFormComponent } from './quill-editor/demo-quill-editor-f
 import { DemoQuillEditorSimpleComponent } from './quill-editor/demo-quill-editor-simple/demo-quill-editor-simple.component';
 import { DemoSwitchInputSimpleComponent } from './switch-input/demo-switch-input-simple/demo-switch-input-simple.component';
 import { DemoSwitchInputFormComponent } from './switch-input/demo-switch-input-form/demo-switch-input-form.component';
+import { ClipboardComponent } from './clipboard/clipboard.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { DemoDatePickerSimpleComponent } from './date-picker/demo-date-picker-simple/demo-date-picker-simple.component';
+import { DemoDatePickerInlineComponent } from './date-picker/demo-date-picker-inline/demo-date-picker-inline.component';
+import { DemoDatePickerFormsComponent } from './date-picker/demo-date-picker-forms/demo-date-picker-forms.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
@@ -39,6 +44,11 @@ import { DemoSwitchInputFormComponent } from './switch-input/demo-switch-input-f
     DemoQuillEditorSimpleComponent,
     DemoSwitchInputSimpleComponent,
     DemoSwitchInputFormComponent,
+    ClipboardComponent,
+    DatePickerComponent,
+    DemoDatePickerSimpleComponent,
+    DemoDatePickerInlineComponent,
+    DemoDatePickerFormsComponent,
   ]
 })
 export class ProjectModule {}

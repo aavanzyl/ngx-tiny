@@ -13,14 +13,7 @@
     <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
             <![CDATA[
-<div class="form-group">
-    <label>Single Date</label>
-    <input class="form-control" placeholder="Select Date" 
-        [ngx-date-picker]="dateInstanceSingle" 
-        [value]="singleDate"
-        (valueChange)="onChangeSingle($event)">
-    <ngx-date-picker #dateInstanceSingle [options]="singleDatePickerOptions"></ngx-date-picker>
-</div>
+<ngx-date-picker [value]="rangeDate" [options]="rangeDatePickerOptions" ></ngx-date-picker>
 ]]>
         </ngx-code-highlight>
     </ngx-tab>

@@ -1,5 +1,9 @@
 # @ngx-tiny/tabs
 
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/tabs?style=for-the-badge)
+![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
+![licence](https://img.shields.io/npm/l/@ngx-tiny/tabs?style=for-the-badge)
+
 Angular Tabs Component.
 
 * Angular 8 implementation

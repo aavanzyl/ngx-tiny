@@ -14,17 +14,24 @@ Projects I use this:
 
 ### Libs:
 Inputs
-* [ngx-multi-select][ngx-multi-select]
-* [ngx-switch-input][ngx-switch-input]
-* [ngx-date-picker][ngx-date-picker]
-* [ngx-quill-editor][ngx-quill-editor]
+* [ngx-multi-select][ngx-multi-select]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=flat-square)
+* [ngx-switch-input][ngx-switch-input]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/switch-input?style=flat-square)
+* [ngx-date-picker][ngx-date-picker]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/date-picker?style=flat-square)
+* [ngx-quill-editor][ngx-quill-editor]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/quill-editor?style=flat-square)
 
 Components
-* [ngx-code-highlight][ngx-code-highlight]
-* [ngx-tabs][ngx-tabs]
+* [ngx-code-highlight][ngx-code-highlight]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/code-highlight?style=flat-square)
+* [ngx-tabs][ngx-tabs]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/tabs?style=flat-square)
 
 Directives
-* [ngx-clipboard][ngx-clipboard]
+* [ngx-clipboard][ngx-clipboard]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/clipboard?style=flat-square)
 
 ## Development
 #### Build

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateRange, DatePickerOptions } from "@ngx-tiny/date-picker"
+import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
 
 @Component({
   selector: 'app-demo-date-picker-inline',
@@ -9,8 +9,8 @@ import { DateRange, DatePickerOptions } from "@ngx-tiny/date-picker"
 })
 export class DemoDatePickerInlineComponent implements OnInit {
 
-  rangeDate: DateRange = { start: new Date("01/01/2020"), end: new Date("01/10/2020") };
-  
+  rangeDate: DateRange = { start: new Date('01/01/2020'), end: new Date('01/10/2020') };
+
   rangeDatePickerOptions: DatePickerOptions = {
     selectRange: true,
   };

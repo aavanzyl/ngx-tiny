@@ -27,10 +27,10 @@ export class DemoDatePickerFormsComponent implements OnInit {
 
   ngOnInit() {
     this.myFormSingle = this._formBuilder.group({
-      singleDate: [new Date("01/01/2020")]
+      singleDate: [new Date('01/01/2020')]
     });
     this.myFormRange = this._formBuilder.group({
-      rangeDate: [{ start: new Date("01/01/2020"), end: new Date("01/10/2020") }]
+      rangeDate: [{ start: new Date('01/01/2020'), end: new Date('01/10/2020') }]
     });
   }
 
@@ -40,8 +40,8 @@ export class DemoDatePickerFormsComponent implements OnInit {
 
   onSubmitRange() {
 
-    let _start = this.myFormRange.get('rangeDate').value.start;
-    let _end = this.myFormRange.get('rangeDate').value.end;
+    const _start = this.myFormRange.get('rangeDate').value.start;
+    const _end = this.myFormRange.get('rangeDate').value.end;
     alert(`${_start} - ${_end}`);
   }
 

@@ -13,7 +13,7 @@
     "docs": "npm run docs:build && npm run docs:after-build",
     "package": "run-s package:*",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",
-    "package:multi-select": "ng build @ngx-tiny/multi-select",
+    "package:multi-select": "ng build @ngx-tiny/multi-select && scss-bundle -p projects/ngx-multi-select",
     "package:switch-input": "ng build @ngx-tiny/switch-input",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:clipboard": "ng build @ngx-tiny/clipboard",

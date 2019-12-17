@@ -102,7 +102,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     private onTouchedCallback: () => void = () => { };
     private onChangeCallback: (_: Date | DateRange) => void = (_) => {
         this.valueChange.emit(_);
-    };
+    }
 
     public setDisabledState(isDisabled: boolean) {
         this.disabled = isDisabled;
@@ -193,7 +193,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     formatDay = (date: Date, isVisible: boolean = true): Day => (
         {
-            date: date,
+            date,
             day: getDate(date),
             month: getMonth(date),
             year: getYear(date),
@@ -223,7 +223,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     /**
      * Checks if specified date is in range of min and max dates
-     * @param date
      */
     private isDateSelectable(date: Date): boolean {
         const minDateSet = !isNull(this.currentOptions.minDate);
@@ -288,7 +287,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         const start = startOfMonth(this.viewingDate);
         const end = endOfMonth(this.viewingDate);
 
-        this.days = eachDayOfInterval({ start: start, end: end }).map((date) => this.formatDay(date));
+        this.days = eachDayOfInterval({ start, end }).map((date) => this.formatDay(date));
 
         const firstMonthDay = getDay(start) - this.currentOptions.firstCalendarDay;
         const prevDays = firstMonthDay < 0 ? 7 - this.currentOptions.firstCalendarDay : firstMonthDay;
@@ -387,17 +386,19 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     initYears(): void {
         const range = this.currentOptions.maxYear - this.currentOptions.minYear;
 
-        this.years = Array.from(new Array(range), (x, i) => { return { index: i, year: i + this.currentOptions.minYear } }).map(({ index, year }) => {
+        /* tslint:disable */
+        // Ignore the rule due to the uniqeness of the arrow chain.
+        this.years = Array.from(new Array(range), (x, i) => { return { index: i, year: i + this.currentOptions.minYear }; }).map(({ index, year }) => {
             return { index: index, year: year, isThisYear: year === getYear(this.viewingDate) };
         });
-
+        /* tslint:enable */
     }
 
     scrollYears(): void {
         setTimeout(() => {
-            let _heightOfYearElement = 40;
-            let _yearIndex = this.years.filter(item => item.isThisYear)[0];
-            let _scrollPosition = ((_yearIndex.index / 3) * _heightOfYearElement) - 30;
+            const _heightOfYearElement = 40;
+            const _yearIndex = this.years.filter(item => item.isThisYear)[0];
+            const _scrollPosition = ((_yearIndex.index / 3) * _heightOfYearElement) - 30;
             this.calendarYearsContainer.nativeElement.scroll(0, _scrollPosition);
         }, 100);
     }
@@ -413,7 +414,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     toggleView(): void {
         this.view = this.view === 'days' ? 'years' : 'days';
-        this.scrollYears()
+        this.scrollYears();
     }
 
     toggle(): void {
@@ -445,14 +446,14 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             return;
         }
 
-        if (((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))) {
+        if (((e.target as any).parentElement && (e.target as any).parentElement.classList.contains('day-unit'))) {
             return;
         }
 
         if (this.calendarContainerElement.nativeElement !== e.target &&
-            !this.calendarContainerElement.nativeElement.contains(<any>e.target) &&
-            !(<any>e.target).classList.contains('year-unit') &&
-            !(<any>e.target).classList.contains('month-unit')
+            !this.calendarContainerElement.nativeElement.contains(e.target as any) &&
+            !(e.target as any).classList.contains('year-unit') &&
+            !(e.target as any).classList.contains('month-unit')
         ) {
             this.close();
         }

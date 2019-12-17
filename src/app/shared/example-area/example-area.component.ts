@@ -20,7 +20,7 @@ export class ExampleAreaComponent implements AfterViewChecked {
   ngAfterViewChecked() {
 
     if (this.enableAbsolute) {
-      let _childElement = this.inner.nativeElement.children[0];
+      const _childElement = this.inner.nativeElement.children[0];
 
       this.inner.nativeElement.style.width = Number(_childElement.offsetWidth) + 'px';
       this.inner.nativeElement.style.height = Number(_childElement.offsetHeight) + 'px';

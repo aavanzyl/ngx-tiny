@@ -7,7 +7,7 @@
         <app-example-area addedHeight="140" [enableAbsolute]="false">
             <div class="form-group">
                 <label>Single Date</label>
-                <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceOne"
+                <input class="form-control" placeholder="Select Date" [ngxDatePicker]="dateInstanceOne"
                     [value]="singleDate" (valueChange)="onChangeSingle($event)" required>
                 <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
             </div>
@@ -19,7 +19,7 @@
 <div class="form-group">
     <label>Single Date</label>
     <input class="form-control" placeholder="Select Date" 
-        [ngx-date-picker]="dateInstanceSingle" 
+        [ngxDatePicker]="dateInstanceSingle" 
         [value]="singleDate"
         (valueChange)="onChangeSingle($event)">
     <ngx-date-picker #dateInstanceSingle [options]="singleDatePickerOptions"></ngx-date-picker>
@@ -61,7 +61,7 @@ export class DemoDatePickerSimpleComponent {
         <app-example-area addedHeight="140" [enableAbsolute]="false">
             <div class="form-group">
                 <label>Range Date</label>
-                <input class="form-control" placeholder="Select Date" [ngx-date-picker]="dateInstanceTwo"
+                <input class="form-control" placeholder="Select Date" [ngxDatePicker]="dateInstanceTwo"
                     [value]="rangeDate" (valueChange)="onChangeRange($event)" required>
                 <ngx-date-picker #dateInstanceTwo [options]="rangeDatePickerOptions"></ngx-date-picker>
             </div>
@@ -73,7 +73,7 @@ export class DemoDatePickerSimpleComponent {
 <div class="form-group">
     <label>Range Date</label>
     <input class="form-control" placeholder="Select Date" 
-        [ngx-date-picker]="dateInstanceRange" 
+        [ngxDatePicker]="dateInstanceRange" 
         [value]="rangeDate"
         (valueChange)="onChangeRange($event)">
     <ngx-date-picker #dateInstanceRange [options]="rangeDatePickerOptions"></ngx-date-picker>

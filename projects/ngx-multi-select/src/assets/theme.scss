@@ -1,0 +1,63 @@
+// General Variables
+$font-size: 14px!default;
+$foreground-color: #333!default;
+$background-color: #ffffff!default;
+$background-disabled-color: #d1d1d1!default;
+$border-color: #d1d1d1!default;
+$border-radius: 0!default;
+
+// Checkbox Variables
+$box-background-color: #862237!default;
+$box-foreground-color: $background-color!default;
+
+.select-dropdown-group {
+  background-color: $background-color;
+
+  .select-dropdown-control {
+    background-color: $background-color;
+    border-color: $border-color;
+    border-radius: $border-radius;
+
+    button {
+      color: $foreground-color;
+      span {
+        font-size: $font-size;
+      }
+    }
+
+    .arrow {
+      &:before,
+      &:after {
+        background-color: $foreground-color;
+      }
+    }
+  }
+
+  &[disabled="true"] {
+    background-color: $background-disabled-color;
+  }
+
+  .select-dropdown {
+    border-color: $border-color;
+    border-radius: $border-radius;
+    background: $background-color;
+
+    .select-dropdown-items-content {
+      .select-dropdown-items {
+        input {
+          color: $foreground-color;
+        }
+
+        input[type="checkbox"]:after {
+          background-color: $background-color;
+          border-color: $border-color;
+        }
+
+        input[type="checkbox"]:checked:after {
+          background-color: $box-background-color;
+          color: $box-foreground-color;
+        }
+      }
+    }
+  }
+}

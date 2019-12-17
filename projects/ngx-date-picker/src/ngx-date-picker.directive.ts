@@ -7,7 +7,7 @@ import { createDateRange } from './helpers';
 
 
 @Directive({
-    selector: '[ngx-date-picker]',
+    selector: '[ngxDatePicker]',
     providers: [
         { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxDatePickerDirective), multi: true }
     ]
@@ -16,10 +16,10 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
 
     onChangeSubscription: Subscription;
 
-    @Input('ngx-date-picker') private datePickerInstance: NgxDatePickerComponent;
+    @Input('ngxDatePicker') private datePickerInstance: NgxDatePickerComponent;
 
-    @Input('value') value: Date | DateRange;
-    @Output('valueChange') valueChange: EventEmitter<Date | DateRange> = new EventEmitter();
+    @Input() value: Date | DateRange;
+    @Output() valueChange: EventEmitter<Date | DateRange> = new EventEmitter();
 
     onChange = (_value: Date | DateRange) => { };
     onTouched = () => { };
@@ -99,14 +99,14 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
             return;
         }
 
-        if (((<any>e.target).parentElement && (<any>e.target).parentElement.classList.contains('day-unit'))) {
+        if (((e.target as any).parentElement && (e.target as any).parentElement.classList.contains('day-unit'))) {
             return;
         }
 
         if (this._el.nativeElement !== e.target &&
-            !this.datePickerInstance.calendarContainerElement.nativeElement.contains(<any>e.target) &&
-            !(<any>e.target).classList.contains('year-unit') &&
-            !(<any>e.target).classList.contains('month-unit')
+            !this.datePickerInstance.calendarContainerElement.nativeElement.contains(e.target as any) &&
+            !(e.target as any).classList.contains('year-unit') &&
+            !(e.target as any).classList.contains('month-unit')
         ) {
             this.datePickerInstance.close();
         }

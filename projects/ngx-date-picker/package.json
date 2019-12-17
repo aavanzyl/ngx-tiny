@@ -13,6 +13,7 @@
     "ng2",
     "ngx",
     "angular2",
+    "angular7",
     "angular8",
     "ngx-date-picker",
     "ngx-date-select",
@@ -22,7 +23,9 @@
     "calandar-select",
     "picker",
     "calandar",
-    "select"
+    "select",
+    "range",
+    "inline"
   ],
   "private": false,
   "peerDependencies": {

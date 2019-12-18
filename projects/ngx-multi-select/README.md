@@ -4,6 +4,8 @@
 ![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
 ![licence](https://img.shields.io/npm/l/@ngx-tiny/multi-select?style=for-the-badge)
 
+![Multi Select](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
+
 Angular multiple selection dropdown.
 
 * Angular 8 implementation
@@ -19,10 +21,6 @@ Angular multiple selection dropdown.
 $ npm i @ngx-tiny/multi-select
 ```
 
-
-## Example
-
-![Drag Racing](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
 ## Documentation
 
 __Full Docs:__

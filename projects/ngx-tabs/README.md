@@ -11,6 +11,7 @@ Angular Tabs Component.
 * No Dependencies required
 * Support Router routes
 * Lightweight
+* Themeable to own requirements
 
 ## Installation
 

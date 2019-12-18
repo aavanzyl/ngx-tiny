@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/quill-editor",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -27,6 +27,11 @@
   "private": false,
   "peerDependencies": {
     "@angular/core": "^8.0.0",
-    "@angular/common": "^8.0.0"
+    "@angular/common": "^8.0.0",
+    "@angular/forms": "^8.0.0"
+  },
+  "funding" : {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/bePatron?u=27640996"
   }
 }

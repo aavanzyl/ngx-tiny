@@ -1,0 +1,19 @@
+$color-handle: #fff!default;
+$color-background: #ccc!default;
+$color-selected: #3d3d3d!default;
+
+ngx-switch-input {
+  .ngx-switch-input {
+    &-handle {
+      background: $color-handle;
+    }
+
+    &-background {
+      background: $color-background;
+    }
+  }
+
+  .ngx-switch-input-checked .ngx-switch-input-background {
+    background: $color-selected;
+  }
+}

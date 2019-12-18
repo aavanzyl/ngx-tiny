@@ -22,7 +22,9 @@ $ npm i @ngx-tiny/date-picker
 
 ## Example
 
-![Date Picker](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-date-picker.png)
+![Date Picker Input](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-date-picker-input.png) |
+![Date Picker Inline](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-date-picker.png)
+
 ## Documentation
 
 __Full Docs:__

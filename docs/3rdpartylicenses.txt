@@ -48,6 +48,7 @@ MIT
 MIT
 
 @ngx-tiny/date-picker
+MIT
 
 @ngx-tiny/multi-select
 MIT

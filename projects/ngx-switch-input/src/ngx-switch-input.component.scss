@@ -4,9 +4,6 @@ $color-selected: #3d3d3d;
 
 ngx-switch-input {
   display: inline-block;
-  --color-handle: #{$color-handle};
-  --color-background: #{$color-background};
-  --color-selected: #{$color-selected};
 }
 
 .ngx-switch-input {
@@ -37,7 +34,6 @@ ngx-switch-input {
     width: 16px;
     height: 16px;
     background: $color-handle;
-    background: var(--color-handle);
     border-radius: 100%;
     transition: left 0.15s ease-out;
   }
@@ -58,7 +54,6 @@ ngx-switch-input {
     font-weight: normal;
     text-transform: uppercase;
     background: $color-background;
-    background: var(--color-background);
     transition: 0.15s ease-out;
     transition-property: opacity background;
     border-radius: 15px;
@@ -76,7 +71,6 @@ ngx-switch-input {
 
 .ngx-switch-input-checked .ngx-switch-input-background {
   background: $color-selected;
-  background: var(--color-selected);
 }
 
 .ngx-switch-input-checked .ngx-switch-input-background::before {

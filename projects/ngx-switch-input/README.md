@@ -11,6 +11,7 @@ Angular Switch Input.
 * Works with SSR
 * No Dependencies
 * Works with Angular Forms and Standalone
+* Themeable to own requirements
 
 ## Installation
 

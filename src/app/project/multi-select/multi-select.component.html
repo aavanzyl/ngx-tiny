@@ -1,6 +1,12 @@
 <div class="container">
   <h1>ngx-multi-select</h1>
-  <br />
+
+  <div class="badge-wrapper">
+    <img alt="package version" src="https://img.shields.io/npm/v/@ngx-tiny/multi-select?style=for-the-badge">
+    <img alt="minzipped size" src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=for-the-badge">
+    <img alt="last commit" src="https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge">
+    <img alt="licence" src="https://img.shields.io/npm/l/@ngx-tiny/multi-select?style=for-the-badge">
+  </div>
 
   <ngx-tabs>
     <ngx-tab [active]="true" name="Installation">
@@ -46,14 +52,16 @@ export class AppModule { }
     <ngx-tab name="Styling">
 
       <h2>Styling</h2>
-      <p>You can costomize the styling of the <code>ngx-multi-select</code> by inlcuding the style file and setting the required variables</p>
-      
-      <p>Load it from <code>./node_modules/ngx-multi-select/theme.scss</code> via package bundler like Angular CLI, if you're using one.</p>
+      <p>You can costomize the styling of the <code>ngx-multi-select</code> by inlcuding the style file and setting the
+        required variables</p>
+
+      <p>Load it from <code>./node_modules/ngx-multi-select/theme.scss</code> via package bundler like Angular CLI, if
+        you're using one.</p>
       <p>or</p>
       <p>Include the <code>./node_modules/ngx-multi-select/theme.scss</code> as an import in your styles.scss file.</p>
 
       <ngx-code-highlight>
-          <![CDATA[
+        <![CDATA[
 // General Variables
 $font-size: 14px!default;
 $foreground-color: #333!default;
@@ -68,7 +76,7 @@ $box-foreground-color: $background-color!default;
 ]]>
       </ngx-code-highlight>
 
-  </ngx-tab>
+    </ngx-tab>
     <ngx-tab name="API">
 
 

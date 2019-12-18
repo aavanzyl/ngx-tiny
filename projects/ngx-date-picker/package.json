@@ -32,6 +32,11 @@
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
+    "@angular/forms": "^8.0.0",
     "date-fns": "^2.8.1"
+  },
+  "funding" : {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/bePatron?u=27640996"
   }
 }

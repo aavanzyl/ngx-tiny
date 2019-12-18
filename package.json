@@ -14,11 +14,11 @@
     "package": "run-s package:*",
     "package:code-highlight": "ng build @ngx-tiny/code-highlight",
     "package:multi-select": "ng build @ngx-tiny/multi-select && scss-bundle -p projects/ngx-multi-select",
-    "package:switch-input": "ng build @ngx-tiny/switch-input",
+    "package:switch-input": "ng build @ngx-tiny/switch-input && scss-bundle -p projects/ngx-switch-input",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:clipboard": "ng build @ngx-tiny/clipboard",
     "package:date-picker": "ng build @ngx-tiny/date-picker && scss-bundle -p projects/ngx-date-picker",
-    "package:tabs": "ng build @ngx-tiny/tabs"
+    "package:tabs": "ng build @ngx-tiny/tabs && scss-bundle -p projects/ngx-tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",

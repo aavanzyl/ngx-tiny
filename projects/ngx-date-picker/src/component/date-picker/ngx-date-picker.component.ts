@@ -118,6 +118,11 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     ngOnInit() {
+
+        if (typeof startOfMonth === 'undefined') {
+            throw new Error('module date-fns is required by <ngx-date-picker> to function.');
+        }
+
         this.view = 'days';
         this.range = this.range || {
             start: new Date(),
@@ -267,7 +272,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     private getValueToEmit(range: DateRange): DateRange | Date {
         if (!this.currentOptions.selectRange) {
-            return new Date(range.start.getTime());
+            return range.start ? new Date(range.start.getTime()) : null;
         }
 
         if (range.end) {

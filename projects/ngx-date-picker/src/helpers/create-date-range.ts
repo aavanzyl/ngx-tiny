@@ -1,6 +1,6 @@
 import { DateRange } from '../models';
 
 export const createDateRange = (start: Date, end: Date): DateRange => ({
-  start: new Date(start.getTime()),
-  end: new Date(end.getTime()),
+  start: start ? new Date(start.getTime()) : null,
+  end: end ? new Date(end.getTime()) : null,
 });

@@ -29,6 +29,10 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
 
     ngOnInit(): void {
 
+        if (!this.datePickerInstance) {
+            throw new Error('Instance of <ngx-date-picker> is required for directive.');
+        }
+
         this.datePickerInstance.isOpened = false;
         this.datePickerInstance.currentOptions.closeOnSelection = true;
         this.datePickerInstance.currentOptions.closeOnClickOutside = false;

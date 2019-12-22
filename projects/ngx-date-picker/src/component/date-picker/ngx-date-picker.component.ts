@@ -271,8 +271,13 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     private getValueToEmit(range: DateRange): DateRange | Date {
+
+        if (!range || !range.start) {
+            return null;
+        }
+
         if (!this.currentOptions.selectRange) {
-            return range.start ? new Date(range.start.getTime()) : null;
+            return new Date(range.start.getTime());
         }
 
         if (range.end) {

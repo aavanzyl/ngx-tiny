@@ -1,7 +1,9 @@
 # Changelog
 
-## 8.0.2
+## 8.0.3
 - Fixed a bug around accepting null values on init. 
+
+## 8.0.2
 - Improved feedback when date-fns is missing.
 - Improved feedback using ngxDatePicker directive and wrong instance is passed in.
 

@@ -239,11 +239,11 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     private isDateSelected(date: Date): boolean {
-        return isSameDate(date, this.range.start) || isSameDate(date, this.range.end);
+        return this.range && this.range.start ? isSameDate(date, this.range.start) || isSameDate(date, this.range.end) : false;
     }
 
     private isInRange(date: Date): boolean {
-        return this.isDateSelected(date) || (isAfter(date, this.range.start) && isBefore(date, this.range.end));
+        return this.isDateSelected(date) || this.range && this.range.start ? (isAfter(date, this.range.start) && isBefore(date, this.range.end)) : false;
     }
 
     public formatDisplay(): string {
@@ -267,7 +267,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     private isRangeBoundary(date: Date, boundary: 'start' | 'end'): boolean {
-        return !this.range[boundary] || isSameDate(date, this.range[boundary]);
+        return this.range ? !this.range[boundary] || isSameDate(date, this.range[boundary]) : false;
     }
 
     private getValueToEmit(range: DateRange): DateRange | Date {
@@ -332,22 +332,27 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     setDate(i: number): void {
         const date = this.days[i].date;
 
+        const _range: any = {};
+
         if (this.currentOptions.selectRange) {
-            if (!this.range.start && !this.range.end) {
-                this.range.start = date;
+            if (!this.range || (!this.range.start && !this.range.end)) {
+                _range.start = date;
             } else if (this.range.start && !this.range.end && isAfter(date, this.range.start)) {
-                this.range.end = date;
+                _range.end = date;
             } else {
-                this.range.end = undefined;
-                this.range.start = date;
+                _range.end = undefined;
+                _range.start = date;
             }
         } else {
-            this.range.start = this.range.end = date;
+            _range.start = _range.end = date;
         }
+
+        this.range = _range;
 
         this.init();
         this.onChangeCallback(this.getValueToEmit(this.range));
 
+        // Close if last value is selected
         if (this.currentOptions.closeOnSelection && this.range.end) {
             this.close();
         }
@@ -435,7 +440,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         }
 
         if (this.isOpened && this.view === 'days') {
-            this.viewingDate = this.range.start || this.viewingDate || new Date();
+            this.viewingDate = this.range && this.range.start ? this.range.start : this.viewingDate || new Date();
             this.init();
         }
     }

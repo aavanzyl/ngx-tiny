@@ -1,6 +1,6 @@
 # Changelog
 
-## 8.0.3
+## 8.0.4
 - Fixed a bug around accepting null values on init. 
 
 ## 8.0.2

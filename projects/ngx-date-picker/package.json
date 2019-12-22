@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/date-picker",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {

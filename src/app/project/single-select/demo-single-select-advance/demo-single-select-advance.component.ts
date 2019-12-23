@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-demo-multi-select-advance',
-  templateUrl: './demo-multi-select-advance.component.html',
-  styleUrls: ['./demo-multi-select-advance.component.scss'],
+  selector: 'app-demo-single-select-advance',
+  templateUrl: './demo-single-select-advance.component.html',
+  styleUrls: ['./demo-single-select-advance.component.scss'],
   preserveWhitespaces: true
 })
-export class DemoMultiSelectAdvanceComponent {
+export class DemoSingleSelectAdvanceComponent {
 
   selected = [];
   options = [{ id: '1', value: 'South Africa' }, { id: '2', value: 'United States' }, { id: '3', value: 'United Kingdom' }];

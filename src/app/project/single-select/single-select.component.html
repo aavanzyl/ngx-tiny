@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>ngx-multi-select</h1>
+  <h1>ngx-single-select</h1>
 
   <div class="badge-wrapper">
-    <img alt="package version" src="https://img.shields.io/npm/v/@ngx-tiny/multi-select?style=for-the-badge">
-    <img alt="minzipped size" src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=for-the-badge">
+    <img alt="package version" src="https://img.shields.io/npm/v/@ngx-tiny/single-select?style=for-the-badge">
+    <img alt="minzipped size" src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/single-select?style=for-the-badge">
     <img alt="last commit" src="https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge">
-    <img alt="licence" src="https://img.shields.io/npm/l/@ngx-tiny/multi-select?style=for-the-badge">
+    <img alt="licence" src="https://img.shields.io/npm/l/@ngx-tiny/single-select?style=for-the-badge">
   </div>
 
   <ngx-tabs>
@@ -15,21 +15,21 @@
       <p>To install this library, run:</p>
       <!-- Terminal -->
       <div class="terminal">
-        <pre>npm install @ngx-tiny/multi-select --save</pre>
+        <pre>npm install @ngx-tiny/single-select --save</pre>
       </div>
 
-      <p>and then add <code><b>NgxMultiSelectModule</b></code> to you <code><b>AppModule</b></code></p>
+      <p>and then add <code><b>NgxSingleSelectModule</b></code> to you <code><b>AppModule</b></code></p>
 
       <ngx-code-highlight>
         <![CDATA[
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxMultiSelectModule } from '@ngx-tiny/multi-select';
+import { NgxSingleSelectModule } from '@ngx-tiny/single-select';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
-  imports: [BrowserModule, NgxMultiSelectModule],
+  imports: [BrowserModule, NgxSingleSelectModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
@@ -43,22 +43,22 @@ export class AppModule { }
 
       <h2>Usage</h2>
 
-      <app-demo-multi-select-simple></app-demo-multi-select-simple>
-      <app-demo-multi-select-advance></app-demo-multi-select-advance>
-      <app-demo-multi-select-form></app-demo-multi-select-form>
+      <app-demo-single-select-simple></app-demo-single-select-simple>
+      <app-demo-single-select-advance></app-demo-single-select-advance>
+      <app-demo-single-select-form></app-demo-single-select-form>
 
 
     </ngx-tab>
     <ngx-tab name="Styling">
 
       <h2>Styling</h2>
-      <p>You can costomize the styling of the <code>ngx-multi-select</code> by inlcuding the style file and setting the
+      <p>You can costomize the styling of the <code>ngx-single-select</code> by inlcuding the style file and setting the
         required variables</p>
 
-      <p>Load it from <code>./node_modules/ngx-multi-select/theme.scss</code> via package bundler like Angular CLI, if
+      <p>Load it from <code>./node_modules/ngx-single-select/theme.scss</code> via package bundler like Angular CLI, if
         you're using one.</p>
       <p>or</p>
-      <p>Include the <code>./node_modules/ngx-multi-select/theme.scss</code> as an import in your styles.scss file.</p>
+      <p>Include the <code>./node_modules/ngx-single-select/theme.scss</code> as an import in your styles.scss file.</p>
 
       <ngx-code-highlight>
         <![CDATA[
@@ -84,7 +84,7 @@ $box-foreground-color: $background-color!default;
 
 
       <h3>Input</h3>
-      <p>Input specification on <code>ngx-multi-select</code> component.</p>
+      <p>Input specification on <code>ngx-single-select</code> component.</p>
       <table class="table-api">
         <thead>
           <tr>
@@ -100,7 +100,7 @@ $box-foreground-color: $background-color!default;
             <td><code>[]</code></td>
             <td>optional</td>
             <td>
-              <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
+              <p>Type: <code>SingleSelectOption</code> or <code>string</code></p>
               <p>Array of selected options. Only required when not using forms.</p>
             </td>
           </tr>
@@ -109,7 +109,7 @@ $box-foreground-color: $background-color!default;
             <td><code>[]</code></td>
             <td>required</td>
             <td>
-              <p>Type: <code>MultiSelectOption</code> or <code>string</code></p>
+              <p>Type: <code>SingleSelectOption</code> or <code>string</code></p>
               <p>Array of options to select from</p>
             </td>
           </tr>
@@ -117,7 +117,7 @@ $box-foreground-color: $background-color!default;
       </table>
 
       <h3>Output</h3>
-      <p>Output specification on <code>ngx-multi-select</code> component.</p>
+      <p>Output specification on <code>ngx-single-select</code> component.</p>
       <table class="table-api">
         <thead>
           <tr>
@@ -132,14 +132,14 @@ $box-foreground-color: $background-color!default;
             <td>optional</td>
             <td>
               <p>Type: <code>EventEmitter</code></p>
-              <p><code>MultiSelectOption</code> or <code>string</code></p>
+              <p><code>SingleSelectOption</code> or <code>string</code></p>
             </td>
           </tr>
         </tbody>
       </table>
 
       <h3>Properties</h3>
-      <p>Available Properties on <code>ngx-multi-select</code></p>
+      <p>Available Properties on <code>ngx-single-select</code></p>
       <table class="table-api">
         <thead>
           <tr>
@@ -155,14 +155,6 @@ $box-foreground-color: $background-color!default;
             <td>
               <p>Type: <code>string</code></p>
               <p>String placed when no options is selected.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>deliminator</td>
-            <td><code>', '</code></td>
-            <td>
-              <p>Type: <code>string</code></p>
-              <p>Deliminator between selected options.</p>
             </td>
           </tr>
         </tbody>

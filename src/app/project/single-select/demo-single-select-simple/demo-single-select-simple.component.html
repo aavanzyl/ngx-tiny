@@ -1,43 +1,40 @@
 <h3>Simple</h3>
 <p>Use of a value array as selection options</p>
-<br/>
+<br />
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
         <app-example-area addedHeight="140" [enableAbsolute]="false">
-            <ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
-            </ngx-multi-select>
+            <ngx-single-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
+            </ngx-single-select>
         </app-example-area>
 
-        <br/>
+        <br />
         <p><b>Output:</b></p>
 
         <div style="border-width: 1;">
-           {{output}}
+            {{output}}
         </div>
     </ngx-tab>
-    <ngx-tab  name="Template">
+    <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
             <![CDATA[
-<ngx-multi-select 
-    placeholder="Select a Country" 
-    [options]="options" 
-    (valueChange)="onChange($event)">
-</ngx-multi-select>
+<ngx-single-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
+</ngx-single-select>
 ]]>
         </ngx-code-highlight>
     </ngx-tab>
     <ngx-tab name="Component">
         <ngx-code-highlight class="no-margin">
-<![CDATA[
+            <![CDATA[
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-demo-multi-select-simple',
-    templateUrl: './demo-multi-select-simple.component.html',
+    selector: 'app-demo-single-select-simple',
+    templateUrl: './demo-single-select-simple.component.html',
     preserveWhitespaces: true
 })
-export class DemoMultiSelectSimpleComponent {
+export class DemoSingleSelectSimpleComponent {
 
     selected = [];
     options = ['South Africa', 'United States', 'United Kingdom'];

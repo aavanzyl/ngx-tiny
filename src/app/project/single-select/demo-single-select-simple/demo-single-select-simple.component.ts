@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-demo-multi-select-simple',
-  templateUrl: './demo-multi-select-simple.component.html',
+  selector: 'app-demo-single-select-simple',
+  templateUrl: './demo-single-select-simple.component.html',
   preserveWhitespaces: true
 })
-export class DemoMultiSelectSimpleComponent {
+export class DemoSingleSelectSimpleComponent {
 
   selected = [];
   options = ['South Africa', 'United States', 'United Kingdom'];
@@ -17,6 +17,5 @@ export class DemoMultiSelectSimpleComponent {
   onChange(selection) {
     this.selected = selection;
   }
-
 
 }

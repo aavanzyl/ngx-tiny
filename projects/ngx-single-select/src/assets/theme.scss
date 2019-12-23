@@ -1,0 +1,61 @@
+$font-size: 14px !default;
+
+$foreground-color: #333 !default;
+$background-color: #ffffff !default;
+$background-disabled-color: #d1d1d1 !default;
+$active-background-color: #862238 !default;
+$active-foreground-color: $background-color !default;
+$border-color: #d1d1d1 !default;
+$border-radius: 0 !default;
+
+
+.single-select-dropdown-group {
+  background-color: $background-color;
+
+  .select-dropdown-control {
+
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: $background-color;
+
+    button {
+      color: $foreground-color;
+
+      span {
+        font-size: $font-size
+      }
+    }
+
+    .arrow {
+
+      &:before,
+      &:after {
+        background-color: $foreground-color;
+      }
+    }
+  }
+
+  &[disabled='true'] {
+    background-color: $background-disabled-color;
+  }
+
+  .select-dropdown {
+
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+
+    background: $background-color;
+
+    .select-dropdown-items-content {
+
+      .select-dropdown-items {
+        border-bottom: 1px solid $border-color;
+
+        &.active {
+          background-color: $active-background-color;
+          color: $active-foreground-color;
+        }
+      }
+    }
+  }
+}

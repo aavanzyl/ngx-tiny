@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-tiny/multi-select",
-  "version": "8.0.3",
+  "name": "@ngx-tiny/single-select",
+  "version": "8.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -14,10 +14,10 @@
     "ngx",
     "angular2",
     "angular8",
-    "ngx-multi-select",
-    "multi-select",
+    "ngx-single-select",
+    "single-select",
     "select",
-    "multi"
+    "single"
   ],
   "license": "MIT",
   "private": false,

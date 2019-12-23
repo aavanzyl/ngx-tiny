@@ -56,6 +56,9 @@ MIT
 @ngx-tiny/quill-editor
 MIT
 
+@ngx-tiny/single-select
+MIT
+
 @ngx-tiny/switch-input
 MIT
 

@@ -14,6 +14,8 @@ Projects I use this:
 
 ### Libs:
 Inputs
+* [ngx-single-select][ngx-single-select]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/single-select?style=flat-square)
 * [ngx-multi-select][ngx-multi-select]      
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=flat-square)
 * [ngx-switch-input][ngx-switch-input]      
@@ -56,6 +58,7 @@ See the [LICENSE][license] file.
 [contributing]: /CONTRIBUTING.md
 [docs]: /DOCUMENTATION.md 
 
+[ngx-single-select]: projects/ngx-single-select/README.md 
 [ngx-multi-select]: projects/ngx-multi-select/README.md 
 [ngx-code-highlight]: projects/ngx-code-highlight/README.md
 [ngx-quill-editor]: projects/ngx-quill-editor/README.md

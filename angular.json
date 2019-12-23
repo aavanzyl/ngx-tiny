@@ -163,6 +163,26 @@
         }
       }
     },
+    "@ngx-tiny/single-select": {
+      "root": "projects/ngx-single-select",
+      "sourceRoot": "projects/ngx-single-select/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-single-select/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-single-select/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
     "@ngx-tiny/multi-select": {
       "root": "projects/ngx-multi-select",
       "sourceRoot": "projects/ngx-multi-select/src",

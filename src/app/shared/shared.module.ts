@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // NGX Tiny Modules
+import { NgxSingleSelectModule } from '@ngx-tiny/single-select';
 import { NgxMultiSelectModule } from '@ngx-tiny/multi-select';
 import { NgxCodeHighlightModule } from '@ngx-tiny/code-highlight';
 import { NgxTabsModule } from '@ngx-tiny/tabs';
@@ -13,6 +14,7 @@ import { NgxDatePickerModule } from '@ngx-tiny/date-picker';
 import { ExampleAreaComponent } from './example-area/example-area.component';
 
 const modules = [
+  NgxSingleSelectModule,
   NgxMultiSelectModule,
   NgxCodeHighlightModule,
   NgxTabsModule,

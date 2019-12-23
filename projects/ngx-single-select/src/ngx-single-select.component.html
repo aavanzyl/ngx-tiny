@@ -1,11 +1,10 @@
-<div [id]="instanceId" class="multi-select-dropdown-group">
+<div [id]="instanceId" class="single-select-dropdown-group">
   <div class="select-dropdown-control" [ngClass]="{'active':isOpen}">
     <button (click)="toggleButtonDropDown()" type="button"><span>{{displayText}} </span> <span class="arrow"></span></button>
   </div>
   <div class="select-dropdown" [@openDropdown]="isOpen ? 'open' : 'closed'">
     <div class="select-dropdown-items-content">
-      <span *ngFor="let option of options" class="select-dropdown-items" (click)="selectOption(option);">
-        <input type="checkbox" tabindex="-1" [name]="getId(option)" [value]="getValue(option)"  [checked]="isSelected(option)" />
+      <span *ngFor="let option of options" class="select-dropdown-items" [class.active]="isSelected(option)" (click)="selectOption(option);">
         <div>{{getValue(option)}}</div>
       </span>
     </div>

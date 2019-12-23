@@ -332,7 +332,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
     setDate(i: number): void {
         const date = this.days[i].date;
 
-        const _range: any = {};
+        const _range: any = this.range || {};
 
         if (this.currentOptions.selectRange) {
             if (!this.range || (!this.range.start && !this.range.end)) {

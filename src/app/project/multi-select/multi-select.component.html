@@ -52,6 +52,20 @@ export class AppModule { }
     <ngx-tab name="Styling">
 
       <h2>Styling</h2>
+
+      <p>To correctly style the component to fit your validation requirements, follow the example below to get started:</p>
+      <ngx-code-highlight>
+        <![CDATA[
+ngx-multi-select {        
+  &.ng-touched.ng-dirty.ng-invalid {
+    .multi-select-dropdown-group {
+      border: 1px solid red;
+    }
+  }
+}
+]]>
+      </ngx-code-highlight>
+
       <p>You can costomize the styling of the <code>ngx-multi-select</code> by inlcuding the style file and setting the
         required variables</p>
 

@@ -3,10 +3,18 @@
     <button (click)="toggleButtonDropDown()" type="button"><span>{{displayText}} </span> <span class="arrow"></span></button>
   </div>
   <div class="select-dropdown" [@openDropdown]="isOpen ? 'open' : 'closed'">
+
+    <div *ngIf="isSearchVisible()" class="select-dropdown-search">
+      <i class="search {{config.searchIconClass}}"></i>
+      <input #search type="search" placeholder="Search.." [(ngModel)]="searchText" />
+    </div>
+
     <div class="select-dropdown-items-content">
-      <span *ngFor="let option of options" class="select-dropdown-items" [class.active]="isSelected(option)" (click)="selectOption(option);">
-        <div>{{getValue(option)}}</div>
-      </span>
+
+      <ngx-single-select-list class="select-dropdown-items" [onKeyDown]="onKeyDownSubject.asObservable()">
+        <ngx-single-select-list-item class="select-dropdown-item" *ngFor="let option of filteredOptions" [option]="option" [class.active]="isSelected(option)" (click)="selectOption(option);" (focusChange)="onFocusChange($event)" ></ngx-single-select-list-item>
+      </ngx-single-select-list>
+
     </div>
   </div>
 </div>

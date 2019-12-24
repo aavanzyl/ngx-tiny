@@ -1,7 +1,9 @@
 import { state, style, trigger } from '@angular/animations';
-import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef, ViewChild, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SingleSelectOption } from './ngx-single-select.options';
+import { SingleSelectOption, SingleSelectConfiguration, SearchBoxOption } from './ngx-single-select.options';
+import { Subject } from 'rxjs';
+
 
 let instanceId = 0;
 
@@ -39,15 +41,26 @@ let instanceId = 0;
 export class NgxSingleSelectComponent implements ControlValueAccessor {
 
   instanceId = `ngx-single-select-${instanceId++}`;
-
   public isOpen = false;
   public isDisabled = false;
+  public focusedItem = null;
   private clickedInside = false;
+
+  @ViewChild('search', { static: false }) searchInput: ElementRef;
+  public searchText = '';
 
   // tslint:disable-next-line:no-input-rename
   @Input('selected') _selected: SingleSelectOption | string = null;
   @Input() options: SingleSelectOption[] | string[] = [];
   @Input() placeholder = '';
+
+  @Input() config: SingleSelectConfiguration = {
+    searchIconClass: 'default-icon',
+    searchBox: SearchBoxOption.DYNAMIC,
+    searchBoxDynamicLimit: 5
+  };
+
+  onKeyDownSubject: Subject<any> = new Subject<any>();
 
   // When not using forms
   @Output() valueChange: EventEmitter<SingleSelectOption | string> = new EventEmitter();
@@ -61,6 +74,24 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
     this.onChange(val);
     this.onTouched();
     this.valueChange.emit(val);
+  }
+
+  get filteredOptions(): any {
+
+    if (this.searchText === undefined
+      || this.searchText === null
+      || this.searchText.trim() === '') {
+
+      return this.options;
+    }
+
+    return (this.options as any[]).filter((option) => {
+      if (typeof option === 'string') {
+        return option.toLowerCase().indexOf(this.searchText.toLowerCase()) >= 0;
+      } else if (typeof option === 'object') {
+        return option.value.toLowerCase().indexOf(this.searchText.toLowerCase()) >= 0;
+      }
+    });
   }
 
   onChange = (_value: SingleSelectOption | string) => { };
@@ -93,22 +124,6 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
     return this.selected ? this.selected === option : false;
   }
 
-  getId(option: any) {
-    if (typeof option === 'string') {
-      return option;
-    } else if (typeof option === 'object') {
-      return option.id || option.value;
-    }
-  }
-
-  getValue(option: any) {
-    if (typeof option === 'string') {
-      return option;
-    } else if (typeof option === 'object') {
-      return option.value;
-    }
-  }
-
   writeValue(selected: SingleSelectOption | string): void {
     if (selected !== this.selected) {
       this.selected = selected;
@@ -127,8 +142,35 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
+  isSearchVisible() {
+    switch (this.config.searchBox) {
+      case SearchBoxOption.ALWAYS:
+        return true;
+      case SearchBoxOption.DYNAMIC:
+        return this.options && this.options.length > this.config.searchBoxDynamicLimit;
+      case SearchBoxOption.NEVER:
+      default:
+        return false;
+    }
+  }
+
+  onFocusChange(item) {
+    this.focusedItem = item;
+  }
+
   // -------- Click Listeners --------
 
+  @HostListener('keydown', ['$event'])
+  onKeydown(event) {
+    if (event.key === 'Enter') {
+      if (this.filteredOptions.length > 0) {
+        this.selectOption(this.focusedItem);
+        this.focusedItem = null;
+      }
+    } else {
+      this.onKeyDownSubject.next(event);
+    }
+  }
 
   @HostListener('click')
   clickInsideComponent() {
@@ -148,6 +190,14 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
       this.isOpen = false;
     }
     this.isOpen = !this.isOpen;
+    this.searchText = '';
+
+    if (this.isOpen && this.isSearchVisible()) {
+      setTimeout(() => {
+        // this will make the execution after the above boolean has changed
+        this.searchInput.nativeElement.focus();
+      }, 0);
+    }
   }
 
 }

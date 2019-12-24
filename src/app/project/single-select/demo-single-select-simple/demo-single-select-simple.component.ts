@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class DemoSingleSelectSimpleComponent {
 
   selected = [];
-  options = ['South Africa', 'United States', 'United Kingdom'];
+  options = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria'];
 
   get output() {
     return JSON.stringify(this.selected);

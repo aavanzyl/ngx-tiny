@@ -6,7 +6,7 @@
 
     <div *ngIf="isSearchVisible()" class="select-dropdown-search">
       <i class="search {{config.searchIconClass}}"></i>
-      <input #search type="search" placeholder="Search.." [(ngModel)]="searchText" />
+      <input #search type="search" placeholder="{{config.searchPlaceholder}}" [(ngModel)]="searchText" />
     </div>
 
     <div class="select-dropdown-items-content">

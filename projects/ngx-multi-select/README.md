@@ -10,6 +10,8 @@ Angular multiple selection dropdown.
 
 * Angular 8 implementation
 * Works with SSR
+* Dynamic filtering of items
+* Supports Keyboard navigation (arrow, space and enter keys)
 * Works alone or with angular forms 
 * No Dependencies required
 * String or Object Array as options

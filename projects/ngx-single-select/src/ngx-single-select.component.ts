@@ -41,6 +41,7 @@ let instanceId = 0;
 export class NgxSingleSelectComponent implements ControlValueAccessor {
 
   instanceId = `ngx-single-select-${instanceId++}`;
+
   public isOpen = false;
   public isDisabled = false;
   public focusedItem = null;
@@ -52,9 +53,9 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
   // tslint:disable-next-line:no-input-rename
   @Input('selected') _selected: SingleSelectOption | string = null;
   @Input() options: SingleSelectOption[] | string[] = [];
-  @Input() placeholder = '';
 
   @Input() config: SingleSelectConfiguration = {
+    placeholder: 'Select Option',
     searchIconClass: 'default-icon',
     searchBox: SearchBoxOption.DYNAMIC,
     searchBoxDynamicLimit: 5
@@ -109,7 +110,7 @@ export class NgxSingleSelectComponent implements ControlValueAccessor {
       }
 
     } else {
-      _displayText = this.placeholder;
+      _displayText = this.config.placeholder;
     }
 
     return _displayText;

@@ -1,5 +1,9 @@
 # Changelog
 
+## 8.0.4
+- Added Keyboard Navigation
+- Added Search for listed items
+
 ## 8.0.3
 - improved styling styling
 

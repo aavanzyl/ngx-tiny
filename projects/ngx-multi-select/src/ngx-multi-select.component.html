@@ -1,13 +1,24 @@
 <div [id]="instanceId" class="multi-select-dropdown-group">
   <div class="select-dropdown-control" [ngClass]="{'active':isOpen}">
-    <button (click)="toggleButtonDropDown()" type="button"><span>{{displayText}} </span> <span class="arrow"></span></button>
+    <button (click)="toggleButtonDropDown()" type="button">
+      <span>{{displayText}}</span>
+      <span class="arrow"></span>
+    </button>
   </div>
   <div class="select-dropdown" [@openDropdown]="isOpen ? 'open' : 'closed'">
-    <div class="select-dropdown-items-content">
-      <span *ngFor="let option of options" class="select-dropdown-items" (click)="selectOption(option);">
-        <input type="checkbox" tabindex="-1" [name]="getId(option)" [value]="getValue(option)"  [checked]="isSelected(option)" />
-        <div>{{getValue(option)}}</div>
-      </span>
+
+    <div *ngIf="isSearchVisible()" class="select-dropdown-search">
+      <i class="search {{config.searchIconClass}}"></i>
+      <input #search type="search" placeholder="{{config.searchPlaceholder}}" [(ngModel)]="searchText" />
     </div>
+
+    <div class="select-dropdown-items-content">
+      <ngx-multi-select-list class="select-dropdown-items" [onKeyDown]="onKeyDownSubject.asObservable()">
+        <ngx-multi-select-list-item class="select-dropdown-item" *ngFor="let option of filteredOptions"
+          [option]="option" [checked]="isSelected(option)" (click)="selectOption(option);"
+          (focusChange)="onFocusChange($event)"></ngx-multi-select-list-item>
+      </ngx-multi-select-list>
+    </div>
+
   </div>
 </div>

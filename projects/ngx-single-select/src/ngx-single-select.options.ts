@@ -9,10 +9,30 @@ export interface SingleSelectOption {
 
 
 export interface SingleSelectConfiguration {
+  /**
+   * Placeholder text on option dropdown
+   */
+  placeholder?: string;
 
-  searchIconClass: string;
-  searchBox: SearchBoxOption;
-  searchBoxDynamicLimit: number;
+  /**
+   * Placeholder text on the search input
+   */
+  searchPlaceholder?: string;
+
+  /**
+   * Search Icon class, interchangeable with font-awesome icons or other icon sets.
+   */
+  searchIconClass?: string;
+
+  /**
+   * Show or hide the search box
+   */
+  searchBox?: SearchBoxOption;
+
+  /**
+   *  Break point at which the search box need to display when search box is DYNAMIC.
+   */
+  searchBoxDynamicLimit?: number;
 
 }
 

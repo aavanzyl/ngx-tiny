@@ -78,6 +78,9 @@ MIT
 @ngx-tiny/multi-select
 MIT
 
+@ngx-tiny/nav-drawer
+MIT
+
 @ngx-tiny/quill-editor
 MIT
 

@@ -16,6 +16,7 @@
     "package:single-select": "ng build @ngx-tiny/single-select && scss-bundle -p projects/ngx-single-select",
     "package:multi-select": "ng build @ngx-tiny/multi-select && scss-bundle -p projects/ngx-multi-select",
     "package:switch-input": "ng build @ngx-tiny/switch-input && scss-bundle -p projects/ngx-switch-input",
+    "package:nav-drawer": "ng build @ngx-tiny/nav-drawer && scss-bundle -p projects/ngx-nav-drawer",
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:clipboard": "ng build @ngx-tiny/clipboard",
     "package:date-picker": "ng build @ngx-tiny/date-picker && scss-bundle -p projects/ngx-date-picker",

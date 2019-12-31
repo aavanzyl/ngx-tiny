@@ -1,0 +1,52 @@
+<h3>Simple</h3>
+<p>Date selection of a single date</p>
+<p>Create a normal form input as require and add the <code>ngx-date-picker</code>. Link the component via an <code>ID</code> and <code>ngx-date-picker</code> directive.</p>
+<br />
+
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <div class="form-group">
+                <label>What time is it:</label>
+                <input class="form-control" placeholder="Select Time" [ngxTimePicker]="timeInstanceOne"
+                    [value]="singleTime" (valueChange)="onChangeSingle($event)" required>
+                <ngx-time-picker #timeInstanceOne ></ngx-time-picker>
+            </div>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<div class="form-group">
+    <label>What time is it:</label>
+    <input class="form-control" placeholder="Select Time" [ngxTimePicker]="timeInstanceOne"
+        [value]="singleTime" (valueChange)="onChangeSingle($event)" required>
+    <ngx-time-picker #timeInstanceOne [options]="singleDatePickerOptions"></ngx-time-picker>
+</div>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-demo-time-picker-simple',
+    templateUrl: './demo-time-picker-simple.component.html',
+    styleUrls: ['./demo-time-picker-simple.component.scss']
+})
+export class DemoTimePickerSimpleComponent {
+
+    singleDate: Date = new Date("10/10/1988");
+
+    onChangeSingle(value: Date) {
+        this.singleDate = value;
+        console.log(this.singleDate);
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

@@ -10,6 +10,8 @@ import { NgxQuillEditorModule } from '@ngx-tiny/quill-editor';
 import { NgxSwitchInputModule } from '@ngx-tiny/switch-input';
 import { NgxClipboardModule } from '@ngx-tiny/clipboard';
 import { NgxDatePickerModule } from '@ngx-tiny/date-picker';
+import { NgxTimePickerModule } from '@ngx-tiny/time-picker';
+import { NgxNavDrawerModule } from '@ngx-tiny/nav-drawer';
 import { ExampleAreaComponent } from './example-area/example-area.component';
 
 const modules = [
@@ -19,7 +21,9 @@ const modules = [
   NgxQuillEditorModule,
   NgxSwitchInputModule,
   NgxClipboardModule,
-  NgxDatePickerModule
+  NgxDatePickerModule,
+  NgxTimePickerModule,
+  NgxNavDrawerModule
 ];
 
 @NgModule({

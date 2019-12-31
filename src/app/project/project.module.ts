@@ -24,6 +24,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { DemoDatePickerSimpleComponent } from './date-picker/demo-date-picker-simple/demo-date-picker-simple.component';
 import { DemoDatePickerInlineComponent } from './date-picker/demo-date-picker-inline/demo-date-picker-inline.component';
 import { DemoDatePickerFormsComponent } from './date-picker/demo-date-picker-forms/demo-date-picker-forms.component';
+import { TimePickerComponent } from './time-picker/time-picker.component';
+import { DemoTimePickerSimpleComponent } from './time-picker/demo-time-picker-simple/demo-time-picker-simple.component';
+import { DemoTimePickerFormsComponent } from './time-picker/demo-time-picker-forms/demo-time-picker-forms.component';
 
 @NgModule({
   imports: [SharedModule, ProjectRoutingModule],
@@ -49,6 +52,9 @@ import { DemoDatePickerFormsComponent } from './date-picker/demo-date-picker-for
     DemoDatePickerSimpleComponent,
     DemoDatePickerInlineComponent,
     DemoDatePickerFormsComponent,
+    TimePickerComponent,
+    DemoTimePickerSimpleComponent,
+    DemoTimePickerFormsComponent,
   ]
 })
 export class ProjectModule {}

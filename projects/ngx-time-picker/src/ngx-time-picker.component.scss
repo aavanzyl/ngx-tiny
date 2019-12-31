@@ -1,0 +1,62 @@
+$ngx-time-picker-background: #FFFFFF;
+$ngx-time-picker-font-size: 14px;
+$ngx-time-picker-color: #3d495c;
+
+$ngx-time-picker-button-color: rgb(24, 117, 210);
+$ngx-time-picker-border-radius: 5px;
+$ngx-time-picker-border-color: #dfe3e9;
+
+ngx-time-picker {
+  display: block;
+}
+
+.ngx-time-picker-container {
+
+  padding: 10px;
+  background-color: $ngx-time-picker-background;
+  width: 160px;
+  margin-top: 5px;
+  border-radius: $ngx-time-picker-border-radius;
+  border: 1px solid $ngx-time-picker-border-color;
+
+  .ngx-time-picker {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    font-size: $ngx-time-picker-font-size;
+    align-items: center;
+    color: $ngx-time-picker-color;
+
+    &-btn {
+      border: 0;
+      background: 0 0;
+      color: $ngx-time-picker-button-color;
+      cursor: pointer;
+      padding: 5px 10px;
+
+      .arrow {
+        border: solid $ngx-time-picker-button-color;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+      }
+
+      .up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+      }
+
+      .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+    }
+
+    &-selection {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+}

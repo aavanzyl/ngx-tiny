@@ -1,0 +1,7 @@
+{
+    "bundlerOptions": {
+        "rootDir": "./projects/ngx-time-picker/src/assets/",
+        "entryFile": "./projects/ngx-time-picker/src/assets/theme.scss",
+        "outFile": "./dist/ngx-time-picker/theme.scss"
+    }
+}

@@ -1,0 +1,210 @@
+<h3>Angular Forms - Single Date</h3>
+<p>Date selection of a single date</p>
+<p>Create a normal form input as require and add the <code>ngx-date-picker</code>. Link the component via an
+    <code>ID</code> and <code>ngx-date-picker</code> directive.</p>
+<br />
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <form [formGroup]="myFormSingle" (ngSubmit)="onSubmitSingle()">
+                <div class="form-group">
+                    <label>Single Date</label>
+                    <input class="form-control" placeholder="Select Date" formControlName="singleDate"
+                        [ngxDatePicker]="dateInstanceOne">
+                    <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myFormSingle" (ngSubmit)="onSubmitSingle()">
+    <div class="form-group">
+        <label>Single Date</label>
+        <input class="form-control" placeholder="Select Date" 
+            formControlName="singleDate"
+            [ngxDatePicker]="dateInstanceOne" >
+        <ngx-date-picker #dateInstanceOne [options]="singleDatePickerOptions"></ngx-date-picker>
+        <button class="btn" type="submit">Submit</button>
+    </div>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+    selector: 'app-demo-date-picker-forms',
+    templateUrl: './demo-date-picker-forms.component.html',
+    styleUrls: ['./demo-date-picker-forms.component.scss']
+})
+export class DemoDatePickerFormsComponent implements OnInit {
+
+    myFormSingle: FormGroup;
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myFormSingle = this._formBuilder.group({
+            singleDate: [new Date()]
+        });
+    }
+
+    onSubmitSingle() {
+        alert(JSON.stringify(this.myFormSingle.value.toUTCString()));
+    }
+}            
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>
+
+<br/>
+<p>Date illustrating null value</p>
+<p>Date selection with a fetch emulation returning a null value after initialization.</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <form [formGroup]="myFormNull" (ngSubmit)="onSubmitNull()">
+                <div class="form-group">
+                    <label>Single Date</label>
+                    <input class="form-control" placeholder="Select Date" formControlName="nullDate"
+                        [ngxDatePicker]="dateInstanceNull">
+                    <ngx-date-picker #dateInstanceNull [options]="singleDatePickerOptions"></ngx-date-picker>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myFormNull" (ngSubmit)="onSubmitNull()">
+    <div class="form-group">
+        <label>Single Date</label>
+        <input class="form-control" placeholder="Select Date" 
+            formControlName="nullDate"
+            [ngxDatePicker]="dateInstanceNull" >
+        <ngx-date-picker #dateInstanceNull [options]="singleDatePickerOptions"></ngx-date-picker>
+        <button class="btn" type="submit">Submit</button>
+    </div>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+    selector: 'app-demo-date-picker-forms',
+    templateUrl: './demo-date-picker-forms.component.html',
+    styleUrls: ['./demo-date-picker-forms.component.scss']
+})
+export class DemoDatePickerFormsComponent implements OnInit {
+
+    myFormNull: FormGroup;
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myFormNull = this._formBuilder.group({
+            singleDate: [new Date()]
+        });
+    }
+
+    onSubmitNull() {
+        alert(JSON.stringify(this.myFormNull.value.toUTCString()));
+    }
+}            
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>
+
+
+<br />
+<h3>Simple - Date Range</h3>
+<p>Date range selection between a start and end date</p>
+
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <form [formGroup]="myFormRange" (ngSubmit)="onSubmitRange()">
+                <div class="form-group">
+                    <label>Date Range</label>
+                    <input class="form-control" placeholder="Select Date" formControlName="rangeDate"
+                        [ngxDatePicker]="dateInstanceRange">
+                    <ngx-date-picker #dateInstanceRange [options]="rangeDatePickerOptions"></ngx-date-picker>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myFormRange" (ngSubmit)="onSubmitRange()">
+    <div class="form-group">
+        <label>Date Range</label>
+        <input class="form-control" placeholder="Select Date" formControlName="rangeDate"
+            [ngxDatePicker]="dateInstanceRange">
+        <ngx-date-picker #dateInstanceRange [options]="rangeDatePickerOptions"></ngx-date-picker>
+        <button class="btn" type="submit">Submit</button>
+    </div>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component } from '@angular/core';
+import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
+
+@Component({
+    selector: 'app-demo-date-picker-simple',
+    templateUrl: './demo-date-picker-simple.component.html',
+    styleUrls: ['./demo-date-picker-simple.component.scss']
+})
+export class DemoDatePickerFormsComponent {
+
+    rangeDate: DateRange = { start: new Date(), end: new Date() };
+    
+    rangeDatePickerOptions: DatePickerOptions = {
+        selectRange: true,
+    };
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myFormRange = this._formBuilder.group({
+        rangeDate: [{ start: new Date("01/01/2020"), end: new Date("01/10/2020") }]
+        });
+    }
+
+
+    onChangeRange(value: DateRange) {
+        this.rangeDate = value;
+        console.log(this.rangeDate);
+    }
+
+}
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

@@ -18,7 +18,8 @@
     "package:quill-editor": "ng build @ngx-tiny/quill-editor",
     "package:clipboard": "ng build @ngx-tiny/clipboard",
     "package:date-picker": "ng build @ngx-tiny/date-picker && scss-bundle -p projects/ngx-date-picker",
-    "package:tabs": "ng build @ngx-tiny/tabs"
+    "package:time-picker": "ng build @ngx-tiny/time-picker && scss-bundle -p projects/ngx-time-picker",
+    "package:tabs": "ng build @ngx-tiny/tabs && scss-bundle -p projects/ngx-tabs"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",

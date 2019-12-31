@@ -302,6 +302,46 @@
           }
         }
       }
+    },
+    "@ngx-tiny/time-picker": {
+      "root": "projects/ngx-time-picker",
+      "sourceRoot": "projects/ngx-time-picker/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-time-picker/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-time-picker/ng-package.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "@ngx-tiny/nav-drawer": {
+      "root": "projects/ngx-nav-drawer",
+      "sourceRoot": "projects/ngx-nav-drawer/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-nav-drawer/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-nav-drawer/ng-package.prod.json"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-tiny-docs"

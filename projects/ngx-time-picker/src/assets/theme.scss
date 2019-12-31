@@ -1,0 +1,35 @@
+$ngx-time-picker-background: #FFFFFF!default;
+$ngx-time-picker-font-size: 14px!default;
+$ngx-time-picker-color: #3d495c!default;
+
+$ngx-time-picker-button-color: rgb(24, 117, 210)!default;
+$ngx-time-picker-border-radius: 5px!default;
+$ngx-time-picker-border-color: #dfe3e9!default;
+
+ngx-time-picker {
+    display: block;
+}
+
+.ngx-time-picker-container {
+
+    background-color: $ngx-time-picker-background;
+    border-radius: $ngx-time-picker-border-radius;
+    border: 1px solid $ngx-time-picker-border-color;
+
+    .ngx-time-picker {
+        font-size: $ngx-time-picker-font-size;
+        color: $ngx-time-picker-color;
+
+        &-btn {
+            border: 0;
+            background: 0 0;
+            color: $ngx-time-picker-button-color;
+            cursor: pointer;
+            padding: 5px 10px;
+
+            .arrow {
+                border: solid $ngx-time-picker-button-color;
+            }
+        }
+    }
+}

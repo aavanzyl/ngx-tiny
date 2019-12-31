@@ -40,6 +40,12 @@
       "@ngx-tiny/date-picker": [
         "dist/ngx-date-picker"
       ],
+      "@ngx-tiny/time-picker": [
+        "dist/ngx-time-picker"
+      ],
+      "@ngx-tiny/nav-drawer": [
+        "dist/ngx-nav-drawer"
+      ],
     }
   },
   "angularCompilerOptions": {

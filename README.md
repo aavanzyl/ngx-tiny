@@ -22,6 +22,8 @@ Inputs
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/switch-input?style=flat-square)
 * [ngx-date-picker][ngx-date-picker]        
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/date-picker?style=flat-square)
+* [ngx-time-picker][ngx-time-picker]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/time-picker?style=flat-square)
 * [ngx-quill-editor][ngx-quill-editor]      
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/quill-editor?style=flat-square)
 
@@ -37,7 +39,7 @@ Directives
 
 ## Development
 #### Build
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. This will run in Prod mode for distrubution building.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. This will run in Prod mode for distribution building.
 
 #### Serve
 Run `ng serve` to serve the project for docs development.
@@ -64,5 +66,6 @@ See the [LICENSE][license] file.
 [ngx-quill-editor]: projects/ngx-quill-editor/README.md
 [ngx-switch-input]: projects/ngx-switch-input/README.md
 [ngx-date-picker]: projects/ngx-date-picker/README.md
+[ngx-time-picker]: projects/ngx-time-picker/README.md
 [ngx-clipboard]: projects/ngx-clipboard/README.md
 [ngx-tabs]: projects/ngx-tabs/README.md

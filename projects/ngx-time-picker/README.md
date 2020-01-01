@@ -62,7 +62,7 @@ __Quick Start:__
             [ngxTimePicker]="timeInstanceSingle" 
             [value]="singleDate"
             (valueChange)="onChangeSingle($event)">
-        <ngx-time-picker #timeInstanceSingle [options]="singleDatePickerOptions"></ngx-time-picker>
+        <ngx-time-picker #timeInstanceSingle></ngx-time-picker>
     </div>
     ```
     or for Angular forms
@@ -73,7 +73,7 @@ __Quick Start:__
             <input class="form-control" placeholder="Select Date" 
                 formControlName="singleDate"
                 [ngxTimePicker]="timeInstanceOne" >
-            <ngx-time-picker #timeInstanceOne [options]="singleDatePickerOptions"></ngx-time-picker>
+            <ngx-time-picker #timeInstanceOne></ngx-time-picker>
             <button class="btn" type="submit">Submit</button>
         </div>
     </form>

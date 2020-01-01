@@ -93,6 +93,9 @@ MIT
 @ngx-tiny/tabs
 MIT
 
+@ngx-tiny/time-picker
+MIT
+
 core-js
 MIT
 Copyright (c) 2014-2019 Denis Pushkarev
@@ -176,6 +179,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+undefined
 
 rxjs
 Apache-2.0
@@ -382,8 +387,6 @@ Apache-2.0
  limitations under the License.
  
 
-
-undefined
 
 zone.js
 MIT

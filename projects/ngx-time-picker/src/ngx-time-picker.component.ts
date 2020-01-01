@@ -56,7 +56,7 @@ export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
 
   isOpened = true;
   disabled = false;
-  private _options: TimePickerOptions = {};// Computed options after input
+  private _options: TimePickerOptions = {}; // Computed options after input
 
   @Input()
   set options(input: TimePickerOptions) {
@@ -84,11 +84,11 @@ export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   set value(val) {
-    this._value = val;
+    this._value = val || new Date();
     this.resetSeconds();
-    this.onChange(val);
+    this.onChange(this._value);
     this.onTouched();
-    this.valueChange.emit(val);
+    this.valueChange.emit(this._value);
   }
 
   constructor() {
@@ -154,8 +154,10 @@ export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   resetSeconds() {
-    this._value.setSeconds(0);
-    this._value.setMilliseconds(0);
+    if (this._value) {
+      this._value.setSeconds(0);
+      this._value.setMilliseconds(0);
+    }
   }
 
   public formatDisplay(): string {

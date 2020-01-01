@@ -2,7 +2,8 @@
     <h1>ngx-time-picker</h1>
     <div class="badge-wrapper">
         <img alt="package version" src="https://img.shields.io/npm/v/@ngx-tiny/time-picker?style=for-the-badge">
-        <img alt="minzipped size" src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/time-picker?style=for-the-badge">
+        <img alt="minzipped size"
+            src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/time-picker?style=for-the-badge">
         <img alt="last commit" src="https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge">
         <img alt="licence" src="https://img.shields.io/npm/l/@ngx-tiny/time-picker?style=for-the-badge">
     </div>
@@ -55,11 +56,11 @@ export class AppModule { }
         <ngx-tab name="Styling">
 
             <h2>Styling</h2>
-            <p>You can costomize the styling of the <code>ngx-time-picker</code> by inlcuding the style file and setting the required variables</p>
-            
-            <p>Load it from <code>./node_modules/ngx-time-picker/theme.scss</code> via package bundler like Angular CLI, if you're using one.</p>
-            <p>or</p>
-            <p>Include the <code>./node_modules/ngx-time-picker/theme.scss</code> as an import in your styles.scss file.</p>
+            <p>You can customize the styling of the <code>ngx-time-picker</code> by including the style file and setting
+                the required variables</p>
+
+            <p>Include the <code>./node_modules/ngx-time-picker/theme.scss</code> as an import in your styles.scss file.
+            </p>
 
             <ngx-code-highlight>
                 <![CDATA[
@@ -70,6 +71,8 @@ $ngx-time-picker-color: #3d495c!default;
 $ngx-time-picker-button-color: rgb(24, 117, 210)!default;
 $ngx-time-picker-border-radius: 5px!default;
 $ngx-time-picker-border-color: #dfe3e9!default;
+
+@import '~@ngx-tiny/ngx-time-picker/theme.scss';
 ]]>
             </ngx-code-highlight>
 
@@ -97,8 +100,8 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                         <td><code>new Date()</code></td>
                         <td>optional</td>
                         <td>
-                            <p>Type: <code>Date</code> or <code>DateRange</code></p>
-                            <p>Current value of date picker.</p>
+                            <p>Type: <code>Date</code></p>
+                            <p>Current value of time picker.</p>
                         </td>
                     </tr>
                     <tr>
@@ -106,35 +109,15 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                         <td><code>@see Options</code></td>
                         <td>optional</td>
                         <td>
-                            <p>Type: <code>DatePickerOptions</code></p>
-                            <p>Options of the Date Picker</p>
+                            <p>Type: <code>TimePickerOptions</code></p>
+                            <p>Options of the Time Picker</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <br />
-            <p>Input specification on <code>ngx-time-picker</code> directive.</p>
-            <table class="table-api">
-                <thead>
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Default</th>
-                        <th>Required</th>
-                        <th width="50%">Specification</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>value</td>
-                        <td><code>new Date()</code></td>
-                        <td>optional</td>
-                        <td>
-                            <p>Type: <code>Date</code> or <code>DateRange</code></p>
-                            <p>Current value of date picker.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <br/>
+            <br/>
+
 
             <h3>Output</h3>
             <p>Output specification on <code>ngx-time-picker</code> component.</p>
@@ -157,6 +140,8 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                     </tr>
                 </tbody>
             </table>
+            <br/>
+            <br/>
 
             <h3>Options</h3>
             <p>Available Options on <code>ngx-time-picker</code> component.</p>
@@ -179,14 +164,6 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                         </td>
                     </tr>
                     <tr>
-                        <td>closeOnSelection</td>
-                        <td><code>true</code></td>
-                        <td>
-                            <p>Type: <code>boolean</code></p>
-                            <p>Close Date Picker value is selected or End Value is selected in range.</p>
-                        </td>
-                    </tr>
-                    <tr>
                         <td>locale</td>
                         <td><code>en-US</code></td>
                         <td>
@@ -198,24 +175,6 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                         </td>
                     </tr>
                     <tr>
-                        <td>includeDays</td>
-                        <td><code>all</code></td>
-                        <td>
-                            <p>Type: <code>string</code></p>
-                            <p>Options <code>'none' | 'previous-month' | 'next-month' | 'all'</code></p>
-                            <p>Specify if pre/post days need to be shown in the picked.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>includeNextMonthsFirstFullWeek</td>
-                        <td><code>false</code></td>
-                        <td>
-                            <p>Type: <code>boolean</code></p>
-                            <p>Ability to include a full week from the next month. </p>
-                        </td>
-                    </tr>
-
-                    <tr>
                         <td>displayFormat</td>
                         <td><code>MMM d, yyyy</code></td>
                         <td>
@@ -226,98 +185,30 @@ $ngx-time-picker-border-color: #dfe3e9!default;
                         </td>
                     </tr>
                     <tr>
-                        <td>barTitleFormat</td>
-                        <td><code>MMMM YYYY</code></td>
+                        <td>hoursStep</td>
+                        <td><code>1</code></td>
                         <td>
-                            <p>Type: <code>date-fns format</code></p>
-                            <p>Format the date displayed on the top bar of the date picker.</p>
-                            <p>See <a href="https://date-fns.org/docs/format"
-                                    target="_blank">https://date-fns.org/docs/format</a></p>
+                            <p>Type: <code>number</code></p>
+                            <p>Number of hours to step on click</p>
                         </td>
                     </tr>
                     <tr>
-                        <td>dayNamesFormat</td>
-                        <td><code>ddd</code></td>
+                        <td>minutesStep</td>
+                        <td><code>1</code></td>
                         <td>
-                            <p>Type: <code>date-fns format</code></p>
-                            <p>Format the Names of the days shown on the date picker</p>
-                            <p>See <a href="https://date-fns.org/docs/format"
-                                    target="_blank">https://date-fns.org/docs/format</a></p>
+                            <p>Type: <code>number</code></p>
+                            <p>Number of minutes to step on click</p>
                         </td>
                     </tr>
                     <tr>
-                        <td>barTitleIfEmpty</td>
-                        <td><code>'Click to select a date'</code></td>
-                        <td>
-                            <p>Type: <code>date-fns format</code></p>
-                            <p>Title of the text on the top bar when no date specified.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>useEmptyBarTitle</td>
-                        <td><code>true</code></td>
-                        <td>
-                            <p>Type: <code>date-fns format</code></p>
-                            <p>If false, barTitleIfEmpty will be disregarded and a date will always be shown.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>selectRange</td>
+                        <td>military</td>
                         <td><code>false</code></td>
                         <td>
                             <p>Type: <code>boolean</code></p>
-                            <p>Specify if the Date Picker is single or range select</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>rangeSeparator</td>
-                        <td><code>-</code></td>
-                        <td>
-                            <p>Type: <code>string</code></p>
-                            <p>Separator between range date on display.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>firstCalendarDay</td>
-                        <td><code>0</code></td>
-                        <td>
-                            <p>Type: <code>number</code></p>
-                            <p>Start of the calendar day, 0 = Sunday (default), 1 = Monday, ..</p>
+                            <p>Choose to use 24h display or 12h display</p>
                         </td>
                     </tr>
 
-                    <tr>
-                        <td>minYear</td>
-                        <td><code>1900</code></td>
-                        <td>
-                            <p>Type: <code>number</code></p>
-                            <p>Year Selection start</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>maxYear</td>
-                        <td><code>2050</code></td>
-                        <td>
-                            <p>Type: <code>number</code></p>
-                            <p>Year Selection end</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>minDate</td>
-                        <td><code>undefined</code></td>
-                        <td>
-                            <p>Type: <code>Date</code></p>
-                            <p>The minimal date allowed for selection.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>maxDate</td>
-                        <td><code>undefined</code></td>
-                        <td>
-                            <p>Type: <code>Date</code></p>
-                            <p>The maximum date allowed for selection.</p>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
 

@@ -29,9 +29,9 @@ enum KeyCodes {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgxNavDrawerComponent implements OnDestroy, OnInit {
-  
+
   @Output() openChange = new EventEmitter<boolean>();
-  
+
   @Input()
   set open(value: boolean) {
     this.show = value;

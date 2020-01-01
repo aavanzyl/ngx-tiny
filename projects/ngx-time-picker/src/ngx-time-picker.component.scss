@@ -18,6 +18,7 @@ ngx-time-picker {
   margin-top: 5px;
   border-radius: $ngx-time-picker-border-radius;
   border: 1px solid $ngx-time-picker-border-color;
+  position: absolute;
 
   .ngx-time-picker {
     display: flex;

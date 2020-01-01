@@ -25,6 +25,8 @@ export class ExampleAreaComponent implements AfterViewChecked {
       this.inner.nativeElement.style.width = Number(_childElement.offsetWidth) + 'px';
       this.inner.nativeElement.style.height = Number(_childElement.offsetHeight) + 'px';
       this.outer.nativeElement.style.height = (Number(this.inner.nativeElement.offsetHeight) + Number(this.addedHeight)) + 'px';
+    } else {
+      this.outer.nativeElement.style.height = (Number(this.inner.nativeElement.offsetHeight) + Number(this.addedHeight)) + 'px';
     }
   }
 

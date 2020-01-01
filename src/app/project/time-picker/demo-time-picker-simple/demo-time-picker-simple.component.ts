@@ -9,16 +9,16 @@ import { DateRange, DatePickerOptions } from '@ngx-tiny/date-picker';
 })
 export class DemoTimePickerSimpleComponent implements OnInit {
 
-  singleDate: Date = new Date();
- 
+  singleTime: Date = new Date();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   onChangeSingle(value: Date) {
-    this.singleDate = value;
-    console.log(this.singleDate);
-  }Î
+    this.singleTime = value;
+    console.log(this.singleTime);
+  }
 
 }

@@ -1,11 +1,11 @@
 <h3>Simple</h3>
-<p>Date selection of a single date</p>
-<p>Create a normal form input as require and add the <code>ngx-date-picker</code>. Link the component via an <code>ID</code> and <code>ngx-date-picker</code> directive.</p>
+<p>Time selection example using value change output</p>
+<p>Create a normal form input as require and add the <code>ngx-time-picker</code>. Link the component via an <code>ID</code> and <code>ngx-time-picker</code> directive.</p>
 <br />
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area addedHeight="100" [enableAbsolute]="false">
             <div class="form-group">
                 <label>What time is it:</label>
                 <input class="form-control" placeholder="Select Time" [ngxTimePicker]="timeInstanceOne"

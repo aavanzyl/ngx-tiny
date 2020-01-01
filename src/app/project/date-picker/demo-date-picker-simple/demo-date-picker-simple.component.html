@@ -4,7 +4,7 @@
 <br />
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area [enableAbsolute]="false">
             <div class="form-group">
                 <label>Single Date</label>
                 <input class="form-control" placeholder="Select Date" [ngxDatePicker]="dateInstanceOne"
@@ -58,7 +58,7 @@ export class DemoDatePickerSimpleComponent {
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area [enableAbsolute]="false">
             <div class="form-group">
                 <label>Range Date</label>
                 <input class="form-control" placeholder="Select Date" [ngxDatePicker]="dateInstanceTwo"

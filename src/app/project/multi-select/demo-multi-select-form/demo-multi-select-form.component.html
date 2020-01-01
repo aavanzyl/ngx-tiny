@@ -5,7 +5,7 @@
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area addedHeight="50" [enableAbsolute]="false">
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                 <ngx-multi-select formControlName="country" [options]="options" placeholder="Select a Country">
                 </ngx-multi-select>

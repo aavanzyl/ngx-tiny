@@ -5,7 +5,7 @@
 <br />
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area [enableAbsolute]="false">
             <form [formGroup]="myFormSingle" (ngSubmit)="onSubmitSingle()">
                 <div class="form-group">
                     <label>Single Date</label>
@@ -72,7 +72,7 @@ export class DemoDatePickerFormsComponent implements OnInit {
 <p>Date selection with a fetch emulation returning a null value after initialization.</p>
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area [enableAbsolute]="false">
             <form [formGroup]="myFormNull" (ngSubmit)="onSubmitNull()">
                 <div class="form-group">
                     <label>Single Date</label>
@@ -141,7 +141,7 @@ export class DemoDatePickerFormsComponent implements OnInit {
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
-        <app-example-area addedHeight="140" [enableAbsolute]="false">
+        <app-example-area [enableAbsolute]="false">
             <form [formGroup]="myFormRange" (ngSubmit)="onSubmitRange()">
                 <div class="form-group">
                     <label>Date Range</label>

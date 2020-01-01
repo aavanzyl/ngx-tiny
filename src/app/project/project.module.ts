@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { AddressInputComponent } from './address-input/address-input.component';
+import { SingleSelectComponent } from './single-select/single-select.component';
+import { DemoSingleSelectSimpleComponent } from './single-select/demo-single-select-simple/demo-single-select-simple.component';
+import { DemoSingleSelectFormComponent } from './single-select/demo-single-select-form/demo-single-select-form.component';
+import { DemoSingleSelectAdvanceComponent } from './single-select/demo-single-select-advance/demo-single-select-advance.component';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
+import { DemoMultiSelectSimpleComponent } from './multi-select/demo-multi-select-simple/demo-multi-select-simple.component';
+import { DemoMultiSelectFormComponent } from './multi-select/demo-multi-select-form/demo-multi-select-form.component';
+import { DemoMultiSelectAdvanceComponent } from './multi-select/demo-multi-select-advance/demo-multi-select-advance.component';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 import { SwitchInputComponent } from './switch-input/switch-input.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { ProjectRoutingModule } from './project-routing.module';
-import { DemoMultiSelectSimpleComponent } from './multi-select/demo-multi-select-simple/demo-multi-select-simple.component';
-import { DemoMultiSelectFormComponent } from './multi-select/demo-multi-select-form/demo-multi-select-form.component';
-import { DemoMultiSelectAdvanceComponent } from './multi-select/demo-multi-select-advance/demo-multi-select-advance.component';
 import { CodeHighlightComponent } from './code-highlight/code-highlight.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { DemoRouteAComponent } from './tabs/demo-route-a/demo-route-a.component';
@@ -32,13 +36,17 @@ import { DemoTimePickerFormsComponent } from './time-picker/demo-time-picker-for
   imports: [SharedModule, ProjectRoutingModule],
   declarations: [
     AddressInputComponent,
+    SingleSelectComponent,
+    DemoSingleSelectSimpleComponent,
+    DemoSingleSelectFormComponent,
+    DemoSingleSelectAdvanceComponent,
     MultiSelectComponent,
-    QuillEditorComponent,
-    SwitchInputComponent,
-    TagInputComponent,
     DemoMultiSelectSimpleComponent,
     DemoMultiSelectFormComponent,
     DemoMultiSelectAdvanceComponent,
+    QuillEditorComponent,
+    SwitchInputComponent,
+    TagInputComponent,
     CodeHighlightComponent,
     TabsComponent,
     DemoRouteAComponent,
@@ -57,4 +65,4 @@ import { DemoTimePickerFormsComponent } from './time-picker/demo-time-picker-for
     DemoTimePickerFormsComponent,
   ]
 })
-export class ProjectModule {}
+export class ProjectModule { }

@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/tabs",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -15,6 +15,7 @@
     "angular2",
     "angular8",
     "ngx-tabs",
+    "ngx-router-tabs",
     "tabs",
     "router",
     "navigate"
@@ -25,5 +26,9 @@
     "@angular/core": "^8.0.0",
     "@angular/common": "^8.0.0",
     "@angular/router": "^8.0.0"
+  },
+  "funding" : {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/bePatron?u=27640996"
   }
 }

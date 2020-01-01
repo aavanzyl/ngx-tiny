@@ -8,6 +8,13 @@
             <ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
             </ngx-multi-select>
         </app-example-area>
+
+        <br/>
+        <p><b>Output:</b></p>
+
+        <div style="border-width: 1;">
+           {{output}}
+        </div>
     </ngx-tab>
     <ngx-tab  name="Template">
         <ngx-code-highlight language="html" class="no-margin">

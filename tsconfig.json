@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths" : {
+      "@ngx-tiny/single-select": [
+        "dist/ngx-single-select"
+      ],
       "@ngx-tiny/multi-select": [
         "dist/ngx-multi-select"
       ],

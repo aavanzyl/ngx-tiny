@@ -1,5 +1,9 @@
 # @ngx-tiny/quill-editor
 
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/quill-editor?style=for-the-badge)
+![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
+![licence](https://img.shields.io/npm/l/@ngx-tiny/quill-editor?style=for-the-badge)
+
 Angular Quill Editor.
 
 * Angular 8 implementation

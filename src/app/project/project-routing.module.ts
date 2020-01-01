@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AddressInputComponent } from './address-input/address-input.component';
+import { SingleSelectComponent } from './single-select/single-select.component';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { QuillEditorComponent } from './quill-editor/quill-editor.component';
 import { SwitchInputComponent } from './switch-input/switch-input.component';
@@ -16,6 +17,7 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
 
 const routes: Routes = [
   { path: 'address-input', component: AddressInputComponent },
+  { path: 'single-select', component: SingleSelectComponent },
   { path: 'multi-select', component: MultiSelectComponent },
   { path: 'quill-editor', component: QuillEditorComponent },
   { path: 'switch-input', component: SwitchInputComponent },

@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/date-picker",
-  "version": "8.0.0",
+  "version": "8.0.4",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -28,9 +28,15 @@
     "inline"
   ],
   "private": false,
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
+    "@angular/forms": "^8.0.0",
     "date-fns": "^2.8.1"
+  },
+  "funding" : {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/bePatron?u=27640996"
   }
 }

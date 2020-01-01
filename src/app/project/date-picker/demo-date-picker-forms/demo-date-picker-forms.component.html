@@ -67,6 +67,73 @@ export class DemoDatePickerFormsComponent implements OnInit {
     </ngx-tab>
 </ngx-tabs>
 
+<br/>
+<p>Date illustrating null value</p>
+<p>Date selection with a fetch emulation returning a null value after initialization.</p>
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <form [formGroup]="myFormNull" (ngSubmit)="onSubmitNull()">
+                <div class="form-group">
+                    <label>Single Date</label>
+                    <input class="form-control" placeholder="Select Date" formControlName="nullDate"
+                        [ngxDatePicker]="dateInstanceNull">
+                    <ngx-date-picker #dateInstanceNull [options]="singleDatePickerOptions"></ngx-date-picker>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myFormNull" (ngSubmit)="onSubmitNull()">
+    <div class="form-group">
+        <label>Single Date</label>
+        <input class="form-control" placeholder="Select Date" 
+            formControlName="nullDate"
+            [ngxDatePicker]="dateInstanceNull" >
+        <ngx-date-picker #dateInstanceNull [options]="singleDatePickerOptions"></ngx-date-picker>
+        <button class="btn" type="submit">Submit</button>
+    </div>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+    selector: 'app-demo-date-picker-forms',
+    templateUrl: './demo-date-picker-forms.component.html',
+    styleUrls: ['./demo-date-picker-forms.component.scss']
+})
+export class DemoDatePickerFormsComponent implements OnInit {
+
+    myFormNull: FormGroup;
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myFormNull = this._formBuilder.group({
+            singleDate: [new Date()]
+        });
+    }
+
+    onSubmitNull() {
+        alert(JSON.stringify(this.myFormNull.value.toUTCString()));
+    }
+}            
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>
+
 
 <br />
 <h3>Simple - Date Range</h3>

@@ -1,6 +1,6 @@
 {
     "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "../../dist/ngx-address-input",
+    "dest": "../../dist/ngx-single-select",
     "deleteDestPath": false,
     "lib": {
       "entryFile": "src/public_api.ts"

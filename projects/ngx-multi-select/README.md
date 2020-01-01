@@ -1,9 +1,17 @@
 # @ngx-tiny/multi-select
 
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=for-the-badge)
+![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
+![licence](https://img.shields.io/npm/l/@ngx-tiny/multi-select?style=for-the-badge)
+
+![Multi Select](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
+
 Angular multiple selection dropdown.
 
 * Angular 8 implementation
 * Works with SSR
+* Dynamic filtering of items
+* Supports Keyboard navigation (arrow, space and enter keys)
 * Works alone or with angular forms 
 * No Dependencies required
 * String or Object Array as options
@@ -15,10 +23,6 @@ Angular multiple selection dropdown.
 $ npm i @ngx-tiny/multi-select
 ```
 
-
-## Example
-
-![Drag Racing](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-multi-select.png)
 ## Documentation
 
 __Full Docs:__

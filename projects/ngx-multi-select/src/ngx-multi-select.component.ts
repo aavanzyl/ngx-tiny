@@ -1,7 +1,8 @@
 import { state, style, trigger } from '@angular/animations';
-import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MultiSelectOption } from './ngx-multi-select.options';
+import { Component, Input, Output, EventEmitter, HostListener, ChangeDetectionStrategy, ViewEncapsulation, forwardRef, ViewChild, ElementRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MultiSelectOption, SearchBoxOption, MultiSelectConfiguration } from './ngx-multi-select.options';
+import { Subject } from 'rxjs';
 
 let instanceId = 0;
 
@@ -42,13 +43,27 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
 
   public isOpen = false;
   public isDisabled = false;
+  public focusedItem = null;
   private clickedInside = false;
+
+  @ViewChild('search', { static: false }) searchInput: ElementRef;
+  public searchText = '';
 
   // tslint:disable-next-line:no-input-rename
   @Input('selected') _selected: MultiSelectOption[] | string[] = [];
   @Input() options: MultiSelectOption[] | string[] = [];
   @Input() placeholder = '';
-  @Input() deliminator = ', ';
+
+  @Input() config: MultiSelectConfiguration = {
+    searchPlaceholder: 'Search...',
+    searchIconClass: 'default-icon',
+    searchBox: SearchBoxOption.DYNAMIC,
+    searchBoxDynamicLimit: 5,
+    deliminator: ', ',
+    placeholder: 'Select Option'
+  };
+
+  onKeyDownSubject: Subject<any> = new Subject<any>();
 
   // When not using forms
   @Output() valueChange: EventEmitter<MultiSelectOption[] | string[]> = new EventEmitter();
@@ -78,12 +93,30 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
         } else if (typeof item === 'object') {
           return item.value;
         }
-      }).join(this.deliminator);
+      }).join(this.config.deliminator);
     } else {
       _displayText = this.placeholder;
     }
 
     return _displayText;
+  }
+
+  get filteredOptions(): any {
+
+    if (this.searchText === undefined
+      || this.searchText === null
+      || this.searchText.trim() === '') {
+
+      return this.options;
+    }
+
+    return (this.options as any[]).filter((option) => {
+      if (typeof option === 'string') {
+        return option.toLowerCase().indexOf(this.searchText.toLowerCase()) >= 0;
+      } else if (typeof option === 'object') {
+        return option.value.toLowerCase().indexOf(this.searchText.toLowerCase()) >= 0;
+      }
+    });
   }
 
   selectOption(option: any) {
@@ -138,8 +171,34 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  // -------- Click Listeners --------
+  isSearchVisible() {
+    switch (this.config.searchBox) {
+      case SearchBoxOption.ALWAYS:
+        return true;
+      case SearchBoxOption.DYNAMIC:
+        return this.options && this.options.length > this.config.searchBoxDynamicLimit;
+      case SearchBoxOption.NEVER:
+      default:
+        return false;
+    }
+  }
 
+  onFocusChange(item) {
+    this.focusedItem = item;
+  }
+
+  // -------- Click Listeners --------
+  @HostListener('keydown', ['$event'])
+  onKeydown(event) {
+    if (event.key === 'Enter') {
+      if (this.filteredOptions.length > 0) {
+        this.selectOption(this.focusedItem);
+        this.focusedItem = null;
+      }
+    } else {
+      this.onKeyDownSubject.next(event);
+    }
+  }
 
   @HostListener('click')
   clickInsideComponent() {
@@ -159,10 +218,12 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
       this.isOpen = false;
     }
     this.isOpen = !this.isOpen;
+
+    if (this.isOpen && this.isSearchVisible()) {
+      setTimeout(() => {
+        // this will make the execution after the above boolean has changed
+        this.searchInput.nativeElement.focus();
+      }, 0);
+    }
   }
-
 }
-
-
-
-

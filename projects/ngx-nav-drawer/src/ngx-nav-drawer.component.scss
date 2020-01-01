@@ -1,0 +1,76 @@
+$ngx-nav-drawer-overlay: rgba(0, 0, 0, 0.5);
+$ngx-nav-drawer-background: #fff;
+$ngx-nav-drawer-item-background: $ngx-nav-drawer-background;
+$ngx-nav-drawer-item-foreground: #333;
+$ngx-nav-drawer-item-active: darken($ngx-nav-drawer-background, 5%);
+$ngx-nav-drawer-color-border: #dbdbdb;
+
+.ngx-nav-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: $ngx-nav-drawer-overlay;
+  display: none;
+}
+
+.ngx-nav-drawer {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  left: -110%;
+  position: fixed;
+  z-index: 4;
+  background-color: $ngx-nav-drawer-background;
+  overflow-y: auto;
+  transition: left 0.3s;
+  will-change: left;
+  border-right: 1px solid $ngx-nav-drawer-color-border;
+
+  a,
+  button {
+    display: block;
+    padding: 18px 13px 16px 26px;
+    font-size: 1em;
+    text-decoration: none;
+    font-weight: 300;
+    color: $ngx-nav-drawer-item-foreground;
+    position: relative;
+    font-weight: bold;
+    width: 100%;
+    border: 0;
+    background: $ngx-nav-drawer-item-background;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: $ngx-nav-drawer-item-active;
+    }
+  }
+}
+
+.ngx-nav-drawer-open {
+  .ngx-nav-drawer {
+    left: 0;
+  }
+
+  .ngx-nav-drawer-overlay {
+    display: block;
+  }
+}
+
+.ngx-nav-drawer-fixed {
+  .ngx-nav-drawer {
+    left: 0;
+  }
+
+  .ngx-nav-drawer-overlay {
+    display: none;
+  }
+}

@@ -12,7 +12,6 @@ import { AboutComponent } from './view/about/about.component';
 import { SupportComponent } from './view/support/support.component';
 import { GettingStartedComponent } from './view/getting-started/getting-started.component';
 
-
 import { NgxGtagModule } from 'ngx-gtag';
 
 @NgModule({

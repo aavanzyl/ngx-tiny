@@ -1,0 +1,22 @@
+.form-group {
+  position: relative;
+
+  label {
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+    display: block;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+
+  .form-control {
+    padding: 10px 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    border-radius: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

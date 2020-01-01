@@ -13,9 +13,15 @@ export class DemoMultiSelectFormComponent implements OnInit {
 
   myForm: FormGroup;
 
+
+  get output() {
+    return JSON.stringify(this.myForm.get('country').value);
+  }
+
+
   constructor(
     private _formBuilder: FormBuilder
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.myForm = this._formBuilder.group({

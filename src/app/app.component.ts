@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  isOpenNavigation: boolean;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.isOpenNavigation = false;
+  }
+
+  toggleNavigation() {
+    this.isOpenNavigation = !this.isOpenNavigation;
+  }
 
 }

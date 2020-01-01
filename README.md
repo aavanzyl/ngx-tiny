@@ -14,17 +14,26 @@ Projects I use this:
 
 ### Libs:
 Inputs
-* [ngx-multi-select][ngx-multi-select]
-* [ngx-switch-input][ngx-switch-input]
-* [ngx-date-picker][ngx-date-picker]
-* [ngx-quill-editor][ngx-quill-editor]
+* [ngx-single-select][ngx-single-select]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/single-select?style=flat-square)
+* [ngx-multi-select][ngx-multi-select]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/multi-select?style=flat-square)
+* [ngx-switch-input][ngx-switch-input]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/switch-input?style=flat-square)
+* [ngx-date-picker][ngx-date-picker]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/date-picker?style=flat-square)
+* [ngx-quill-editor][ngx-quill-editor]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/quill-editor?style=flat-square)
 
 Components
-* [ngx-code-highlight][ngx-code-highlight]
-* [ngx-tabs][ngx-tabs]
+* [ngx-code-highlight][ngx-code-highlight]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/code-highlight?style=flat-square)
+* [ngx-tabs][ngx-tabs]      
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/tabs?style=flat-square)
 
 Directives
-* [ngx-clipboard][ngx-clipboard]
+* [ngx-clipboard][ngx-clipboard]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/clipboard?style=flat-square)
 
 ## Development
 #### Build
@@ -33,8 +42,10 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 #### Serve
 Run `ng serve` to serve the project for docs development.
 
-#### Docs
-Run `npm run docs` to build the docs for github pages.
+#### Publishing and Updating Docs
+
+* Run `npm publish` on the `dist` of the package.
+* Run `npm run docs` to build the docs for github pages.
 
 ## Support
 
@@ -47,6 +58,7 @@ See the [LICENSE][license] file.
 [contributing]: /CONTRIBUTING.md
 [docs]: /DOCUMENTATION.md 
 
+[ngx-single-select]: projects/ngx-single-select/README.md 
 [ngx-multi-select]: projects/ngx-multi-select/README.md 
 [ngx-code-highlight]: projects/ngx-code-highlight/README.md
 [ngx-quill-editor]: projects/ngx-quill-editor/README.md

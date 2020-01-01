@@ -1,0 +1,53 @@
+$foreground-color-active: #db0b37!default;
+$background-color-active: #fff!default;
+$foreground-color-hover: #a5a5a5!default;
+$background-color-hover: #fff!default;
+
+$border: 1px solid #ccc!default;
+
+ngx-tabs,
+ngx-tab-routes {
+  .ngx-tabs {
+
+    &__nav {
+
+      & > button,
+      & > a {
+
+        &.active,
+        &.active:hover,
+        &.active:focus {
+          cursor: default;
+          color: $foreground-color-active;
+        }
+
+        &:hover,
+        &:focus {
+          color: $foreground-color-hover;
+          background: $background-color-hover;
+        }
+
+        &:nth-child(-n + 3) {
+          border-bottom: $border;
+        }
+
+        &:nth-child(even) {
+          border-right: $border;
+        }
+
+        @media (min-width: 300px) {
+          &.active {
+            background-color: $background-color-active;
+            border: $border;
+          }
+        }
+      }
+    }
+  }
+
+  .ngx-tab {
+    &__content {
+      border-top: $border;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@ngx-tiny/address-input",
+  "name": "@ngx-tiny/nav-drawer",
   "version": "8.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
@@ -14,15 +14,20 @@
     "ngx",
     "angular2",
     "angular8",
-    "ngx-address-input",
-    "address-input",
-    "address",
-    "input"
+    "ngx-nav-drawer",
+    "nav-drawer",
+    "navigation",
+    "drawer"
   ],
   "license": "MIT",
   "private": false,
   "peerDependencies": {
+    "@angular/animations": "^8.0.0",
     "@angular/core": "^8.0.0",
     "@angular/common": "^8.0.0"
+  },
+  "funding" : {
+    "type" : "patreon",
+    "url" : "https://www.patreon.com/bePatron?u=27640996"
   }
 }

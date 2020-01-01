@@ -1,5 +1,9 @@
 # @ngx-tiny/clipboard
 
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/clipboard?style=for-the-badge)
+![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
+![licence](https://img.shields.io/npm/l/@ngx-tiny/clipboard?style=for-the-badge)
+
 Angular Copy Paste Clipboard Directive. Copy content on a click.
 
 * Angular 8 implementation

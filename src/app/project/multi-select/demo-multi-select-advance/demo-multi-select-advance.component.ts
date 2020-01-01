@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class DemoMultiSelectAdvanceComponent {
 
   selected = [];
-  options = [{id: '1', value: 'South Africa'}, {id: '2', value: 'United States'}, {id: '3', value: 'United Kingdom'}];
+  options = [{ id: '1', value: 'South Africa' }, { id: '2', value: 'United States' }, { id: '3', value: 'United Kingdom' }];
+
+  get output() {
+    return JSON.stringify(this.selected);
+  }
 
   onChange(selection) {
     this.selected = selection;

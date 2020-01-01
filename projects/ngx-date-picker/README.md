@@ -1,5 +1,11 @@
 # @ngx-tiny/date-picker
 
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/date-picker?style=for-the-badge)
+![last commit](https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge)
+![licence](https://img.shields.io/npm/l/@ngx-tiny/date-picker?style=for-the-badge)
+
+![Date Picker Inline](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-date-picker.png)
+
 Angular Date Picker.
 
 * Angular 8 implementation
@@ -9,6 +15,9 @@ Angular Date Picker.
 * Single Or Range Selection
 * Themeable to own requirements
 
+
+
+
 ## Installation
 
 ```sh
@@ -16,9 +25,6 @@ $ npm i @ngx-tiny/date-picker
 ```
 
 
-## Example
-
-![Date Picker](https://raw.githubusercontent.com/aavanzyl/ngx-tiny/master/projects/assets/ngx-date-picker.png)
 ## Documentation
 
 __Full Docs:__

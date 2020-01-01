@@ -1,0 +1,70 @@
+<h3>Angular Forms</h3>
+<p>Use of selection component with angular forms implementation</p>
+<br />
+
+
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area addedHeight="140" [enableAbsolute]="false">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <ngx-single-select formControlName="country" [options]="options" placeholder="Select a Country">
+                </ngx-single-select>
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </app-example-area>
+        <br/>
+        <p><b>Output:</b></p>
+        <div style="border-width: 1;">
+            {{output}}
+         </div>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ngx-single-select 
+        formControlName="country" 
+        [options]="options" 
+        placeholder="Select a Country" >
+    </ngx-single-select>
+    <button class="btn" type="submit">Submit</button>
+</form>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+@Component({
+    selector: 'app-demo-single-select-form',
+    templateUrl: './demo-single-select-form.component.html',
+    styleUrls: ['./demo-single-select-form.component.scss']
+})
+export class DemoSingleSelectFormComponent implements OnInit {
+
+    options = ['South Africa', 'United States', 'United Kingdom'];
+
+    myForm: FormGroup;
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) { }
+
+    ngOnInit() {
+        this.myForm = this._formBuilder.group({
+            country: [[]]
+        });
+    }
+
+    onSubmit() {
+        alert(JSON.stringify(this.myForm.value));
+    }
+
+}
+    ]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

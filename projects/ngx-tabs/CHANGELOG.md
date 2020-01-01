@@ -1,6 +1,9 @@
 # Changelog
 
-## 8.0.1
+## 8.0.3
+- theme customization
+
+## 8.0.2
 - Added more info to package.json
 
 ## 8.0.1

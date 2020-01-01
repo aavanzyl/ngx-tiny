@@ -1,29 +1,12 @@
-$color-primary: #3d3d3d;
-$color-secondary: #db0b37;
-$color-grey: #ccc;
-$color-grey-light: #f2f2f2;
-$color-grey-dark: #2d2d2d;
-$color-white: #fff;
-$color-off-white: #f5f5f5;
-$color-type: #2d2d2d;
-$color-border: #dbdbdb;
-$color-transparent-grey: rgba(0, 0, 0, 0.5);
-$drop-shadow-z1: 0 2px 1px -2px rgba(0, 0, 0, 0.2),
-  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 
-$color-active: $color-secondary;
-$color-hover: #a5a5a5;
-$border: 1px solid $color-grey;
+$foreground-color-active: #db0b37;
+$background-color-active: #fff;
+$foreground-color-hover: #a5a5a5;
+$background-color-hover: #fff;
+
+$border: 1px solid #ccc;
 $tab-breakpoint: 480px;
 
-ngx-tabs,
-ngx-tab-routes {
-  --color-active: #{$color-active};
-  --color-hover: #{$color-hover};
-  --border: #{$border};
-  --tab-breakpoint: #{$tab-breakpoint};
-  display: block;
-}
 
 .ngx-tabs {
   display: block;
@@ -61,24 +44,21 @@ ngx-tab-routes {
       &.active:hover,
       &.active:focus {
         cursor: default;
-        color: $color-active;
-        color: var(--color-active);
+        color: $foreground-color-active;
       }
 
       &:hover,
       &:focus {
-        color: $color-hover;
-        color: var(--color-hover);
+        color: $foreground-color-hover;
+        background: $background-color-hover;
       }
 
       &:nth-child(-n + 3) {
         border-bottom: $border;
-        border-bottom: var(--border);
       }
 
       &:nth-child(even) {
         border-right: $border;
-        border-right: var(--border);
       }
 
       @media (min-width: 300px) {
@@ -97,9 +77,8 @@ ngx-tab-routes {
         }
 
         &.active {
-          background-color: $color-white;
+          background-color: $background-color-active;
           border: $border;
-          border: var(--border);
           border-bottom: 3px solid transparent;
         }
       }
@@ -117,6 +96,5 @@ ngx-tab-routes {
     overflow: visible;
     min-height: 225px;
     border-top: $border;
-    border-top: var(--border);
   }
 }

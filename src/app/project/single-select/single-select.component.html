@@ -1,0 +1,248 @@
+<div class="container">
+  <h1>ngx-single-select</h1>
+
+  <div class="badge-wrapper">
+    <img alt="package version" src="https://img.shields.io/npm/v/@ngx-tiny/single-select?style=for-the-badge">
+    <img alt="minzipped size"
+      src="https://img.shields.io/bundlephobia/minzip/@ngx-tiny/single-select?style=for-the-badge">
+    <img alt="last commit" src="https://img.shields.io/github/last-commit/aavanzyl/ngx-tiny?style=for-the-badge">
+    <img alt="licence" src="https://img.shields.io/npm/l/@ngx-tiny/single-select?style=for-the-badge">
+  </div>
+
+  <h2>Angular modern single selection dropdown.</h2>
+
+  <ul>
+    <li> Angular 8 implementation</li>
+    <li> Works with SSR</li>
+    <li> Dynamic filtering of items</li>
+    <li> Supports Keyboard navigation (arrow, space and enter keys)</li>
+    <li> Works alone or with angular forms </li>
+    <li> No Dependencies required</li>
+    <li> String or Object Array as options</li>
+    <li> Themeable to own requirements</li>
+  </ul>
+
+  <ngx-tabs>
+    <ngx-tab [active]="true" name="Installation">
+
+
+
+      <h2>Installation</h2>
+      <p>To install this library, run:</p>
+      <!-- Terminal -->
+      <div class="terminal">
+        <pre>npm install @ngx-tiny/single-select --save</pre>
+      </div>
+
+      <p>and then add <code><b>NgxSingleSelectModule</b></code> to you <code><b>AppModule</b></code></p>
+
+      <ngx-code-highlight>
+        <![CDATA[
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxSingleSelectModule } from '@ngx-tiny/single-select';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  imports: [BrowserModule, NgxSingleSelectModule],
+  declarations: [AppComponent],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
+      ]]>
+      </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Usage">
+
+
+      <h2>Usage</h2>
+
+      <app-demo-single-select-simple></app-demo-single-select-simple>
+      <app-demo-single-select-advance></app-demo-single-select-advance>
+      <app-demo-single-select-form></app-demo-single-select-form>
+
+
+    </ngx-tab>
+    <ngx-tab name="Styling">
+
+      <h2>Styling</h2>
+
+      <p>To correctly style the component to fit your validation requirements, follow the example below to get started:
+      </p>
+      <ngx-code-highlight>
+        <![CDATA[
+ngx-single-select {        
+  &.ng-touched.ng-dirty.ng-invalid {
+    .multi-single-dropdown-group {
+      border: 1px solid red;
+    }
+  }
+}
+]]>
+      </ngx-code-highlight>
+
+      <p>You can costomize the styling of the <code>ngx-single-select</code> by inlcuding the style file and setting the
+        required variables</p>
+
+      <p>Include the <code>./node_modules/ngx-single-select/theme.scss</code> as an import in your styles.scss file.</p>
+
+      <ngx-code-highlight>
+        <![CDATA[
+// General Variables
+$font-size: 14px;
+
+$foreground-color: #333;
+$background-color: #ffffff;
+$background-disabled-color: #d1d1d1;
+$active-background-color: #862238;
+$active-foreground-color: $background-color;
+$focus-background-color: #862238b4;
+$focus-foreground-color: $background-color;
+$border-color: #d1d1d1;
+$border-radius: 0;
+$search-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAAB...');
+$search-shadow : 0px 5px 30px 0px rgba(0, 0, 0, 0.3);
+
+@import '~@ngx-tiny/ngx-single-select/theme.scss';
+
+]]>
+      </ngx-code-highlight>
+
+    </ngx-tab>
+    <ngx-tab name="API">
+
+
+      <h2>API</h2>
+
+
+      <h3>Input</h3>
+      <p>Input specification on <code>ngx-single-select</code> component.</p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th>Required</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>selected</td>
+            <td><code>[]</code></td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>SingleSelectOption</code> or <code>string</code></p>
+              <p>Array of selected options. Only required when not using forms.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>options</td>
+            <td><code>[]</code></td>
+            <td>required</td>
+            <td>
+              <p>Type: <code>SingleSelectOption</code> or <code>string</code></p>
+              <p>Array of options to select from</p>
+            </td>
+          </tr>
+          <tr>
+            <td>config</td>
+            <td><code></code></td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>SingleSelectConfiguration</code></p>
+              <p>Configuration for the dropdown</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br/>
+      <br/>
+
+      <h3>Output</h3>
+      <p>Output specification on <code>ngx-single-select</code> component.</p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Required</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>valueChange</td>
+            <td>optional</td>
+            <td>
+              <p>Type: <code>EventEmitter</code></p>
+              <p><code>SingleSelectOption</code> or <code>string</code></p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br/>
+      <br/>
+
+      <h3>Properties</h3>
+      <p>Available Properties on <code>ngx-single-select</code></p>
+      <table class="table-api">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Default</th>
+            <th width="50%">Specification</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>placeholder</td>
+            <td><code>''</code></td>
+            <td>
+              <p>Type: <code>string</code></p>
+              <p>String placed when no options is selected.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>searchPlaceholder</td>
+            <td><code>Search...</code></td>
+            <td width="50%">
+              <p>Type: <code>string</code></p>
+              <p>Placeholder text for search input field</p>
+            </td>
+          </tr>
+          <tr>
+            <td>searchIconClass</td>
+            <td><code>default-icon</code></td>
+            <td width="50%">
+              <p>Type: <code>string</code></p>
+              <p>Option to replace with font-awesome or other icon lib than one built in</p>
+            </td>
+          </tr>
+          <tr>
+            <td>searchBox</td>
+            <td><code>SearchBoxOption.DYNAMIC</code></td>
+            <td width="50%">
+              <p>Type: <code>SearchBoxOption</code></p>
+              <p>Choose when to display the searchbox of the dropdown. <code>DYNAMIC</code> looks at
+                <code>searchBoxDynamicLimit</code> to determine if it should be visible.</p>
+            </td>
+          </tr>
+          <tr>
+            <td>searchBoxDynamicLimit</td>
+            <td><code>5</code></td>
+            <td width="50%">
+              <p>Type: <code>number</code></p>
+              <p>Breaking point at which the searchbox should show or hide based on number of options. </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </ngx-tab>
+  </ngx-tabs>
+</div>

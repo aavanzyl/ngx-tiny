@@ -1,7 +1,7 @@
-<h3>Advance</h3>
+<h3>Key/Value Usage</h3>
 
 <p>Use of a key/value object as options and selections</p>
-<br/>
+<br />
 
 <ngx-tabs>
     <ngx-tab [active]="true" name="Example">
@@ -9,6 +9,12 @@
             <ngx-multi-select placeholder="Select a Country" [options]="options" (valueChange)="onChange($event)">
             </ngx-multi-select>
         </app-example-area>
+        <br />
+        <p><b>Output:</b></p>
+
+        <div style="border-width: 1;">
+            {{output}}
+        </div>
     </ngx-tab>
     <ngx-tab name="Template">
         <ngx-code-highlight language="html" class="no-margin">
@@ -23,7 +29,7 @@
     </ngx-tab>
     <ngx-tab name="Component">
         <ngx-code-highlight class="no-margin">
-<![CDATA[
+            <![CDATA[
 import { Component } from '@angular/core';
 
 @Component({

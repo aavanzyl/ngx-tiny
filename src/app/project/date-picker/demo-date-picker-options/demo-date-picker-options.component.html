@@ -1,0 +1,54 @@
+<h3>Available Options</h3>
+<p>Min/Max Selection of date</p>
+<br />
+<ngx-tabs>
+    <ngx-tab [active]="true" name="Example">
+        <app-example-area [enableAbsolute]="true">
+
+                <ngx-date-picker [value]="singleDate" [options]="datePickerOptions" ></ngx-date-picker>
+
+        </app-example-area>
+    </ngx-tab>
+    <ngx-tab name="Template">
+        <ngx-code-highlight language="html" class="no-margin">
+            <![CDATA[
+<ngx-date-picker [value]="singleDate" [options]="datePickerOptions" ></ngx-date-picker>
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+    <ngx-tab name="Component">
+        <ngx-code-highlight class="no-margin">
+            <![CDATA[
+import { Component, OnInit } from '@angular/core';
+import { DatePickerOptions } from '@ngx-tiny/date-picker';
+
+@Component({
+    selector: 'app-demo-date-picker-options',
+    templateUrl: './demo-date-picker-options.component.html',
+    styleUrls: ['./demo-date-picker-options.component.scss']
+})
+export class DemoDatePickerOptionsComponent implements OnInit {
+
+    singleDate: Date = new Date();
+
+    datePickerOptions: DatePickerOptions = {
+        selectRange: true,
+        minDate: new Date(new Date().setDate(new Date().getDate() - 7)), // Minimum is selecting a week ago
+        maxDate: new Date() // Maximum date is selecting today
+    };
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    onChangeRange(value: Date) {
+        this.singleDate = value;
+        console.log(this.singleDate);
+    }
+
+}         
+]]>
+        </ngx-code-highlight>
+    </ngx-tab>
+</ngx-tabs>

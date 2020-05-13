@@ -28,6 +28,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { DemoDatePickerSimpleComponent } from './date-picker/demo-date-picker-simple/demo-date-picker-simple.component';
 import { DemoDatePickerInlineComponent } from './date-picker/demo-date-picker-inline/demo-date-picker-inline.component';
 import { DemoDatePickerFormsComponent } from './date-picker/demo-date-picker-forms/demo-date-picker-forms.component';
+import { DemoDatePickerOptionsComponent } from './date-picker/demo-date-picker-options/demo-date-picker-options.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { DemoTimePickerSimpleComponent } from './time-picker/demo-time-picker-simple/demo-time-picker-simple.component';
 import { DemoTimePickerFormsComponent } from './time-picker/demo-time-picker-forms/demo-time-picker-forms.component';
@@ -60,6 +61,7 @@ import { DemoTimePickerFormsComponent } from './time-picker/demo-time-picker-for
     DemoDatePickerSimpleComponent,
     DemoDatePickerInlineComponent,
     DemoDatePickerFormsComponent,
+    DemoDatePickerOptionsComponent,
     TimePickerComponent,
     DemoTimePickerSimpleComponent,
     DemoTimePickerFormsComponent,

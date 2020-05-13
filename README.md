@@ -38,16 +38,25 @@ Directives
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/clipboard?style=flat-square)
 
 ## Development
-#### Build
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. This will run in Prod mode for distribution building.
 
-#### Serve
-Run `ng serve` to serve the project for docs development.
+#### Local Development
+1. Run `npm run build` to build all the packages, after this, to build a single package run `npm run package:<package-name>
+2. Run `ng serve` to serve the documentation where the usage of the packages will be pulled in
 
-#### Publishing and Updating Docs
+#### Adding a new package
+1. Create a new `nxg-<package-name>` under `dist`
+2. Update `paths` in `tsconfig.json` to include the new package
+3. Add new script to `package.json` under `package:<package-name>` that will enable compilation of package during build
+4. Update `angular.js` to include the package as part of its build cycle
+5. Add new package to `app/shared/shared.module.ts` for angular to import the components
+6. Update the `app-routing`, `side-menu` with your new component section following other component sections patterns
 
-* Run `npm publish` on the `dist` of the package.
-* Run `npm run docs` to build the docs for github pages.
+#### Package Deployment
+1. Update the `version` in the package being updated
+2. Run `npm run build` to build all the packages ready for production
+3. Commit the changes before running `npm run docs` to separate the commits from each other
+4. Run `npm run docs` to compile the docs for github pages and commit changes.
+5. Navigate to `dist/<package-name>` and run `npm publish` to publish the packages that was updated.
 
 ## Support
 

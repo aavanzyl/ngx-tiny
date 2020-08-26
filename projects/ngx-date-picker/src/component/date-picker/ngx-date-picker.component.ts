@@ -110,7 +110,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     set range(val: DateRange | undefined) {
         this._range = val;
-        this.onChangeCallback(this.getValueToEmit(this._range));
     }
 
     get range(): DateRange | undefined {

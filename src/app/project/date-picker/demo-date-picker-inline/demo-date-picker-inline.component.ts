@@ -13,6 +13,7 @@ export class DemoDatePickerInlineComponent implements OnInit {
 
   rangeDatePickerOptions: DatePickerOptions = {
     selectRange: true,
+    closeOnSelection: false,
   };
 
   constructor() { }

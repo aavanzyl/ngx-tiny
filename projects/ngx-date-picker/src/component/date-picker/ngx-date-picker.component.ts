@@ -69,7 +69,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     currentOptions: DatePickerOptions = {
         closeOnClickOutside: false,
-        closeOnSelection: false,
+        closeOnSelection: true,
         includeDays: 'all',
         includeNextMonthsFirstFullWeek: false,
         minYear: 1900,

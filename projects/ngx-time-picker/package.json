@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/time-picker",
-  "version": "8.0.0",
+  "version": "10.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -26,15 +26,16 @@
   "private": false,
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/forms": "^8.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@angular/forms": "^10.0.0",
     "date-fns": "^2.8.1"
   },
   "funding" : {
     "type" : "patreon",
     "url" : "https://www.patreon.com/bePatron?u=27640996"
-  },
+  }
+,
   "dependencies": {
     "tslib": "^2.0.0"
   }

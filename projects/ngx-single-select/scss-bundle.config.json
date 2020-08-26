@@ -1,7 +1,8 @@
 {
     "bundlerOptions": {
-        "rootDir": "./projects/ngx-single-select/src/assets/",
         "entryFile": "./projects/ngx-single-select/src/assets/theme.scss",
-        "outFile": "./dist/ngx-single-select/theme.scss"
+        "rootDir": "./projects/ngx-single-select/src/assets/",
+        "outFile": "./dist/ngx-single-select/theme.scss",
+        "logLevel": "debug"
     }
 }

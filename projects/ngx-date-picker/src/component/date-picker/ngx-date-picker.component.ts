@@ -53,8 +53,8 @@ let instanceID = 0;
 })
 export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnChanges {
 
-    @ViewChild('container', { static: false }) calendarContainerElement: ElementRef;
-    @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
+    @ViewChild('container') calendarContainerElement: ElementRef;
+    @ViewChild('calendarYearsContainer') calendarYearsContainer: ElementRef;
 
 
     @Input() value: Date | DateRange;

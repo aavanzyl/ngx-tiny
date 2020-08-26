@@ -40,7 +40,7 @@ export class NgxNavDrawerComponent implements OnDestroy, OnInit {
 
   @Input() fixed = false;
   @Input() fixedAtWidth = '1024px';
-  @ViewChild('nav', { static: false }) nav: ElementRef;
+  @ViewChild('nav') nav: ElementRef;
 
   show = false;
   fixedMode = false;

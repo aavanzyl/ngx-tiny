@@ -6,7 +6,7 @@
 
 Angular Quill Editor.
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * Lazy Loads `quill` script and styling when init the first time on a view 
 * Works with Angular Forms and Standalone

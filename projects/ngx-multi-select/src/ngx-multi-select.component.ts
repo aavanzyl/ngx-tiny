@@ -46,7 +46,7 @@ export class NgxMultiSelectComponent implements ControlValueAccessor {
   public focusedItem = null;
   private clickedInside = false;
 
-  @ViewChild('search', { static: false }) searchInput: ElementRef;
+  @ViewChild('search') searchInput: ElementRef;
   public searchText = '';
 
   // tslint:disable-next-line:no-input-rename

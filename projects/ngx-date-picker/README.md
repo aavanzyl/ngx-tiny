@@ -8,7 +8,7 @@
 
 Angular Date Picker.
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * Works alone or with angular forms 
 * Only Depends on date-fns for localization

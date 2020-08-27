@@ -1,6 +1,6 @@
 {
   "name": "@ngx-tiny/code-highlight",
-  "version": "8.0.3",
+  "version": "10.0.0",
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
   "bugs": {
@@ -24,12 +24,16 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "prismjs": "^1.14.0"
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "prismjs": "^1.21.0"
   },
   "funding" : {
     "type" : "patreon",
     "url" : "https://www.patreon.com/bePatron?u=27640996"
+  }
+,
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

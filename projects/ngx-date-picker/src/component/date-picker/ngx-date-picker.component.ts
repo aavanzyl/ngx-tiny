@@ -53,8 +53,8 @@ let instanceID = 0;
 })
 export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnChanges {
 
-    @ViewChild('container', { static: false }) calendarContainerElement: ElementRef;
-    @ViewChild('calendarYearsContainer', { static: false }) calendarYearsContainer: ElementRef;
+    @ViewChild('container') calendarContainerElement: ElementRef;
+    @ViewChild('calendarYearsContainer') calendarYearsContainer: ElementRef;
 
 
     @Input() value: Date | DateRange;
@@ -69,7 +69,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     currentOptions: DatePickerOptions = {
         closeOnClickOutside: false,
-        closeOnSelection: false,
+        closeOnSelection: true,
         includeDays: 'all',
         includeNextMonthsFirstFullWeek: false,
         minYear: 1900,
@@ -110,7 +110,6 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
 
     set range(val: DateRange | undefined) {
         this._range = val;
-        this.onChangeCallback(this.getValueToEmit(this._range));
     }
 
     get range(): DateRange | undefined {

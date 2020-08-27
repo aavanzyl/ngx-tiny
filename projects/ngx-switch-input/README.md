@@ -7,7 +7,7 @@
 
 Angular Switch Input.
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * No Dependencies
 * Works with Angular Forms and Standalone

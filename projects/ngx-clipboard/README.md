@@ -6,7 +6,7 @@
 
 Angular Copy Paste Clipboard Directive. Copy content on a click.
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * No Dependencies required
 

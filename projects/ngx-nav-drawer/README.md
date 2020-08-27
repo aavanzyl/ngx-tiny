@@ -6,7 +6,7 @@
 
 Angular Side Navigation Overlay Drawer
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * No Dependencies required
 

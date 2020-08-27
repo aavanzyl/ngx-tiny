@@ -22,7 +22,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -35,20 +35,22 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
+              "budgets": [
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
@@ -174,7 +176,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-single-select/ng-package.prod.json"
+              "project": "projects/ngx-single-select/ng-package.prod.json",
+              "tsConfig": "projects/ngx-single-select/tsconfig.lib.prod.json"
             }
           }
         }
@@ -194,7 +197,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-multi-select/ng-package.prod.json"
+              "project": "projects/ngx-multi-select/ng-package.prod.json",
+              "tsConfig": "projects/ngx-multi-select/tsconfig.lib.prod.json"
             }
           }
         }
@@ -214,7 +218,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-code-highlight/ng-package.prod.json"
+              "project": "projects/ngx-code-highlight/ng-package.prod.json",
+              "tsConfig": "projects/ngx-code-highlight/tsconfig.lib.prod.json"
             }
           }
         }
@@ -234,7 +239,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-tabs/ng-package.prod.json"
+              "project": "projects/ngx-tabs/ng-package.prod.json",
+              "tsConfig": "projects/ngx-tabs/tsconfig.lib.prod.json"
             }
           }
         }
@@ -254,7 +260,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-quill-editor/ng-package.prod.json"
+              "project": "projects/ngx-quill-editor/ng-package.prod.json",
+              "tsConfig": "projects/ngx-quill-editor/tsconfig.lib.prod.json"
             }
           }
         }
@@ -274,7 +281,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-switch-input/ng-package.prod.json"
+              "project": "projects/ngx-switch-input/ng-package.prod.json",
+              "tsConfig": "projects/ngx-switch-input/tsconfig.lib.prod.json"
             }
           }
         }
@@ -294,7 +302,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-clipboard/ng-package.prod.json"
+              "project": "projects/ngx-clipboard/ng-package.prod.json",
+              "tsConfig": "projects/ngx-clipboard/tsconfig.lib.prod.json"
             }
           }
         }
@@ -314,7 +323,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-date-picker/ng-package.prod.json"
+              "project": "projects/ngx-date-picker/ng-package.prod.json",
+              "tsConfig": "projects/ngx-date-picker/tsconfig.lib.prod.json"
             }
           }
         }
@@ -334,7 +344,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-time-picker/ng-package.prod.json"
+              "project": "projects/ngx-time-picker/ng-package.prod.json",
+              "tsConfig": "projects/ngx-time-picker/tsconfig.lib.prod.json"
             }
           }
         }
@@ -354,7 +365,8 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-nav-drawer/ng-package.prod.json"
+              "project": "projects/ngx-nav-drawer/ng-package.prod.json",
+              "tsConfig": "projects/ngx-nav-drawer/tsconfig.lib.prod.json"
             }
           }
         }

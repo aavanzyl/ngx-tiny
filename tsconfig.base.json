@@ -1,0 +1,59 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths" : {
+      "@ngx-tiny/single-select": [
+        "dist/ngx-single-select"
+      ],
+      "@ngx-tiny/multi-select": [
+        "dist/ngx-multi-select"
+      ],
+      "@ngx-tiny/code-highlight": [
+        "dist/ngx-code-highlight"
+      ],
+      "@ngx-tiny/tabs": [
+        "dist/ngx-tabs"
+      ],
+      "@ngx-tiny/quill-editor": [
+        "dist/ngx-quill-editor"
+      ],
+      "@ngx-tiny/switch-input": [
+        "dist/ngx-switch-input"
+      ],
+      "@ngx-tiny/clipboard": [
+        "dist/ngx-clipboard"
+      ],
+      "@ngx-tiny/date-picker": [
+        "dist/ngx-date-picker"
+      ],
+      "@ngx-tiny/time-picker": [
+        "dist/ngx-time-picker"
+      ],
+      "@ngx-tiny/nav-drawer": [
+        "dist/ngx-nav-drawer"
+      ],
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "enableIvy": false,
+    "strictInjectionParameters": true
+  }
+}

@@ -6,7 +6,7 @@
 
 Angular Code Formatter.
 
-* Angular 8 implementation
+* Angular 10 implementation
 * Works with SSR
 * Depends on `prismjs`
 

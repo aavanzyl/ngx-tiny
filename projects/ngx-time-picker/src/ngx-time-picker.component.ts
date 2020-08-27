@@ -52,7 +52,7 @@ import {
 export class NgxTimePickerComponent implements OnInit, ControlValueAccessor {
 
 
-  @ViewChild('container', { static: false }) containerElement: ElementRef;
+  @ViewChild('container') containerElement: ElementRef;
 
   isOpened = true;
   disabled = false;

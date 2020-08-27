@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'support', component: SupportComponent },
   { path: 'getting-started', component: GettingStartedComponent },
-  { path: 'project', loadChildren: './project/project.module#ProjectModule' }
+  { path: 'project', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule) }
 ];
 
 @NgModule({

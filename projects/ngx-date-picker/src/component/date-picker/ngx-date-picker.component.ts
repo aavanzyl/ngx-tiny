@@ -233,8 +233,11 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         const maxDateSet = !isNull(this.currentOptions.maxDate);
         const timestamp = date.valueOf();
 
-        return (!(minDateSet && timestamp < this.currentOptions.minDate.valueOf()) ||
-            (!(maxDateSet && timestamp > this.currentOptions.maxDate.valueOf())));
+        // Check if the date range is set and between min and max
+        const _isAboveMinDate = minDateSet ? timestamp >= this.currentOptions.minDate.valueOf() : true;
+        const _isBelowMaxDate = maxDateSet ? timestamp <= this.currentOptions.maxDate.valueOf() : true;
+
+        return _isAboveMinDate && _isBelowMaxDate;
     }
 
     private isDateSelected(date: Date): boolean {

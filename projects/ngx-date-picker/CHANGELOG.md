@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.0.0
+- Update to Angular 10
+- Improved Hover styling on days
+- Fixed issue of double emit of date change
+- Fixed issue with closeOnSelection not accepting false
+
 ## 8.0.4
 - Fixed a bug around accepting null values on init. 
 

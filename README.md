@@ -3,7 +3,7 @@
 Production ready Angular components build for my personal project I am now open sourcing for use by the community. 
 
 * Light Weight Angular Component Library.
-* Angular 8 Implementation
+* Angular 10 Implementation
 * Compatible with Angular SSR 
 * Limited to no Dependencies. When ever possible and in most cases, zero dependencies are added to the modules.
 

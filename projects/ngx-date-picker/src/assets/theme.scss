@@ -69,6 +69,11 @@ ngx-date-picker {
 
     &.is-prev-month {
       color: $container-foreground-secondary;
+  
+      &:hover {
+        background: $selection-hover-background;
+        color: $selection-hover-foreground;
+      }
     }
 
     &.is-disabled {

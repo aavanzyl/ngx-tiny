@@ -42,6 +42,7 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
             this.valueChange.emit(value);
             this.onChange(value);
         });
+
     }
 
     ngAfterViewInit(): void {
@@ -55,6 +56,8 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
         } else {
             this.datePickerInstance.range = this.value;
         }
+
+        this.datePickerInstance.valueChange.emit(this.datePickerInstance.getValueToEmit(this.datePickerInstance.range));
     }
 
     ngOnDestroy(): void {
@@ -74,7 +77,7 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
             this.datePickerInstance.range = value;
         }
 
-        this.datePickerInstance.init();
+        this.datePickerInstance.valueChange.emit(this.datePickerInstance.getValueToEmit(this.datePickerInstance.range));
     }
 
     registerOnChange(fn: any): void {

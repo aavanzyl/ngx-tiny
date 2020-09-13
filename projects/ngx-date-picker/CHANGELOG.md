@@ -1,5 +1,8 @@
 # Changelog
 
+## 10.0.1
+- Fixed issue with loading of date value 
+
 ## 10.0.0
 - Update to Angular 10
 - Improved Hover styling on days

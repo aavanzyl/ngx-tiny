@@ -272,7 +272,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         return this.range ? !this.range[boundary] || isSameDate(date, this.range[boundary]) : false;
     }
 
-    private getValueToEmit(range: DateRange): DateRange | Date {
+    public getValueToEmit(range: DateRange): DateRange | Date {
 
         if (!range || !range.start) {
             return null;

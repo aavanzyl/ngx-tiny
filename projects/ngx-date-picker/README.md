@@ -83,6 +83,18 @@ __Quick Start:__
     ```
     The examples above are quite basic. The picker has much more features and configurations. 
     
+## Check Out Ngx-Tiny Other Projects
+
+- [@ngx-tiny/single-select](https://www.npmjs.com/package/@ngx-tiny/single-select)
+- [@ngx-tiny/multi-select](https://www.npmjs.com/package/@ngx-tiny/multi-select)
+- [@ngx-tiny/quill-editor](https://www.npmjs.com/package/@ngx-tiny/quill-editor)
+- [@ngx-tiny/switch-input](https://www.npmjs.com/package/@ngx-tiny/switch-input)
+- [@ngx-tiny/date-picker](https://www.npmjs.com/package/@ngx-tiny/date-picker)
+- [@ngx-tiny/ngx-time-picker](https://www.npmjs.com/package/@ngx-tiny/ngx-time-picker)
+- [@ngx-tiny/code-highlight](https://www.npmjs.com/package/@ngx-tiny/code-highlight)
+- [@ngx-tiny/tabs](https://www.npmjs.com/package/@ngx-tiny/tabs)
+- [@ngx-tiny/clipboard](https://www.npmjs.com/package/@ngx-tiny/clipboard)
+
 ## Support
 
 Support me by [becoming a patron](https://www.patreon.com/bePatron?u=27640996) and buying me a beer :) 

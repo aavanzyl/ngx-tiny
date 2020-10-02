@@ -84,7 +84,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         locale: {},
         fieldId: this.defaultFieldId,
         useEmptyBarTitle: true,
-        mobileStyle: "dialog"
+        mobileStyle: 'dialog'
     };
 
     isInline: boolean;

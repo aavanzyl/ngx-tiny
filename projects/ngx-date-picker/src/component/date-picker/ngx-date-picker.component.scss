@@ -1,31 +1,62 @@
-
 // Container
-$container-background: #FFFFFF!default;
-$container-foreground: #3d495c!default;
-$container-foreground-secondary: #cbcbcb!default;
-$border-radius: 4px!default;
-$border-color: #dfe3e9!default;
-$shadow: 0px 10px 14px 10px rgba(0,0,0,.08)!default;
+$container-background: #ffffff !default;
+$container-foreground: #3d495c !default;
+$container-foreground-secondary: #cbcbcb !default;
+$border-radius: 4px !default;
+$border-color: #dfe3e9 !default;
+$shadow: 0px 10px 14px 10px rgba(0, 0, 0, 0.08) !default;
 
 // Selections
-$selection-background : #f0f0f0!default;
-$selection-foreground: #333!default;
-$selection-selected-background: rgb(255, 0, 0)!default;
-$selection-selected-foreground: #f0f0f0!default;
-$selection-hover-background: rgba(255, 0, 0, 0.6)!default;
-$selection-hover-foreground: #f0f0f0!default;
-$selection-range-background: rgba(255, 0, 0, 0.6)!default;
-$selection-range-foreground: #f0f0f0!default;
-
+$selection-background: #f0f0f0 !default;
+$selection-foreground: #333 !default;
+$selection-selected-background: rgb(255, 0, 0) !default;
+$selection-selected-foreground: #f0f0f0 !default;
+$selection-hover-background: rgba(255, 0, 0, 0.6) !default;
+$selection-hover-foreground: #f0f0f0 !default;
+$selection-range-background: rgba(255, 0, 0, 0.6) !default;
+$selection-range-foreground: #f0f0f0 !default;
 
 .ngx-date-picker-calendar-container {
   position: absolute;
   width: 300px;
+  max-width: 100vw;
   background: $container-background;
   box-shadow: $shadow;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   z-index: 100;
+}
+
+// Mobile Version
+@media (max-width: 768px) {
+  .ngx-date-picker-calendar-wrapper.form-date {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: rgba(200, 200, 200, 0.5);
+
+    .ngx-date-picker-calendar-container {
+      top: 50%;
+      left: 50%;
+      width: 90vw;
+      max-width: 100vw;
+      transform: translate(-50%, -50%);
+    }
+
+    .ngx-date-picker-title {
+      font-size: 1rem;
+    }
+
+    .day-unit,
+    .month-unit,
+    .year-unit {
+      font-size: 1rem;
+      height: 2rem;
+    }
+  }
 }
 
 .ngx-date-picker-navbar {
@@ -154,8 +185,7 @@ $selection-range-foreground: #f0f0f0!default;
   align-items: center;
   justify-content: center;
 
-  
-  background: $selection-background ;
+  background: $selection-background;
   color: $selection-foreground;
 
   &:not(.is-visible) {
@@ -190,9 +220,7 @@ $selection-range-foreground: #f0f0f0!default;
     background: $selection-selected-background;
     color: $selection-selected-foreground;
   }
-
 }
-
 
 .main-calendar-years {
   height: 210px;

@@ -2,6 +2,9 @@
 $container-background: #ffffff !default;
 $container-foreground: #3d495c !default;
 $container-foreground-secondary: #cbcbcb !default;
+$container-width: 300px;
+
+
 $border-radius: 4px !default;
 $border-color: #dfe3e9 !default;
 $shadow: 0px 10px 14px 10px rgba(0, 0, 0, 0.08) !default;
@@ -23,6 +26,7 @@ ngx-date-picker {
     box-shadow: $shadow;
     border-color: $border-color;
     border-radius: $border-radius;
+    width: $container-width;
   }
 
   .ngx-date-picker-navbar {

@@ -19,6 +19,11 @@ export interface DatePickerOptions {
     fieldId?: string;
     /** If false, barTitleIfEmpty will be disregarded and a date will always be shown. Default: true */
     useEmptyBarTitle?: boolean;
+    /**
+     * Mobile display style
+     * Note, exclude inline date picker
+     */
+    mobileStyle?: 'dialog' | 'normal';
 }
 
 export type AddClass = string | string[] | { [k: string]: boolean } | null;

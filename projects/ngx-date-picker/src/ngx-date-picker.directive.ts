@@ -34,6 +34,7 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
         }
 
         this.datePickerInstance.isOpened = false;
+        this.datePickerInstance.isInline = false;
         // this.datePickerInstance.currentOptions.closeOnSelection = true;
         this.datePickerInstance.currentOptions.closeOnClickOutside = false;
 

@@ -84,8 +84,10 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         locale: {},
         fieldId: this.defaultFieldId,
         useEmptyBarTitle: true,
+        mobileStyle: "dialog"
     };
 
+    isInline: boolean;
     displayValue: string;
     viewingDate: Date;
     barTitle: string;
@@ -116,6 +118,16 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
         return this._range;
     }
 
+    get wrapperStyle() {
+        switch (this.currentOptions.mobileStyle) {
+            case 'dialog':
+                return this.isInline === false ? 'form-date' : 'inline-date';
+            case 'normal':
+            default:
+                return '';
+        }
+    }
+
     ngOnInit() {
 
         if (typeof startOfMonth === 'undefined') {
@@ -137,6 +149,7 @@ export class NgxDatePickerComponent implements ControlValueAccessor, OnInit, OnC
             this.viewingDate = this.range.start;
         }
 
+        this.updateOptions(this.options);
         this.initDayNames();
         this.initYears();
         this.initMonths();

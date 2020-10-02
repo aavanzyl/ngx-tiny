@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.0.2
+- Fixed issue with loading options on init
+- Improved Mobile compatibility
+
 ## 10.0.1
 - Fixed issue with loading of date value 
 

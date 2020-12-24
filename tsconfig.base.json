@@ -49,6 +49,9 @@
       "@ngx-tiny/nav-drawer": [
         "dist/ngx-nav-drawer"
       ],
+      "@ngx-tiny/gtag": [
+        "dist/ngx-gtag"
+      ],
     }
   },
   "angularCompilerOptions": {

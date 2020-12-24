@@ -37,6 +37,10 @@ Directives
 * [ngx-clipboard][ngx-clipboard]        
 ![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/clipboard?style=flat-square)
 
+Services
+* [ngx-gtag][ngx-gtag]        
+![minzipped size](https://img.shields.io/bundlephobia/minzip/@ngx-tiny/gtag?style=flat-square)
+
 ## Development
 
 #### Local Development
@@ -77,4 +81,5 @@ See the [LICENSE][license] file.
 [ngx-date-picker]: projects/ngx-date-picker/README.md
 [ngx-time-picker]: projects/ngx-time-picker/README.md
 [ngx-clipboard]: projects/ngx-clipboard/README.md
+[ngx-gtag]: projects/ngx-gtag/README.md
 [ngx-tabs]: projects/ngx-tabs/README.md

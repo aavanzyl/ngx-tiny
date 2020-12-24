@@ -22,7 +22,8 @@
     "package:clipboard": "ng build @ngx-tiny/clipboard",
     "package:date-picker": "ng build @ngx-tiny/date-picker && scss-bundle -c projects/ngx-date-picker -p projects/ngx-date-picker",
     "package:time-picker": "ng build @ngx-tiny/time-picker && scss-bundle -c projects/ngx-time-picker -p projects/ngx-time-picker",
-    "package:tabs": "ng build @ngx-tiny/tabs && scss-bundle -p projects/ngx-tabs -c projects/ngx-tabs"
+    "package:tabs": "ng build @ngx-tiny/tabs && scss-bundle -p projects/ngx-tabs -c projects/ngx-tabs",
+    "package:gtag": "ng build @ngx-tiny/gtag"
   },
   "repository": "https://github.com/aavanzyl/ngx-tiny",
   "author": "Anton Van Zyl <aavanzyl@gmail.com>",
@@ -43,7 +44,7 @@
   "private": false,
   "dependencies": {
     "@angular/animations": "~10.0.12",
-    "@angular/cdk": "~8.2.3",
+    "@angular/cdk": "~10.0.2",
     "@angular/common": "~10.0.12",
     "@angular/compiler": "~10.0.12",
     "@angular/core": "~10.0.12",

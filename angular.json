@@ -371,6 +371,27 @@
           }
         }
       }
+    },
+    "@ngx-tiny/gtag": {
+      "root": "projects/ngx-gtag",
+      "sourceRoot": "projects/ngx-gtag/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tsconfig.lib.json",
+            "project": "projects/ngx-gtag/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-gtag/ng-package.prod.json",
+              "tsConfig": "projects/ngx-gtag/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-tiny-docs"

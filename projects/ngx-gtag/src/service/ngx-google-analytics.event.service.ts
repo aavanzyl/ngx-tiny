@@ -10,11 +10,9 @@ export class GtagEventService {
   constructor(@Inject(PLATFORM_ID) private platform) { }
 
   /**
-   * Event tracking is an advanced Google Analytics feature that allows you to track a specific user's interaction/activity with a web page element. 
+   * Event tracking is an advanced Google Analytics feature that allows you to track a specific user's interaction/activity with a web page element.
    * The user's interaction/activity with a web page element that you track in Google Analytics is called an 'event'.
-   * 
-   * @param {NgxGtagEvent} event 
-   * 
+   *
    * @example
    * this.gtagEventService.event({
    *  action: "newsletter sign up",
@@ -26,7 +24,7 @@ export class GtagEventService {
       try {
         gtag('event', event.action, event.options);
       } catch (err) {
-        console.error('Error occurred with google analytics event', err);
+        console.error('Error occurred with googleÎ analytics event', err);
       }
     }
   }

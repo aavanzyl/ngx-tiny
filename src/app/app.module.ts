@@ -28,7 +28,7 @@ import { GtagModule } from '@ngx-tiny/gtag';
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
-    GtagModule.forRoot( {trackingId : "UA-153776925-1"})
+    GtagModule.forRoot( {trackingId : `UA-153776925-1`})
   ],
   providers: [],
   bootstrap: [AppComponent]

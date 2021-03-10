@@ -13,6 +13,8 @@ export class DemoDatePickerOptionsComponent implements OnInit {
 
   datePickerOptions: DatePickerOptions = {
     selectRange: true,
+    closeOnClickOutside: false,
+    closeOnSelection: false,
     minDate: new Date(new Date().setDate(new Date().getDate() - 7)), // Minimum is selecting a week ago
     maxDate: new Date() // Maximum date is selecting today
   };

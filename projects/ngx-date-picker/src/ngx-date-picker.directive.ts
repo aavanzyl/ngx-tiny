@@ -16,7 +16,7 @@ export class NgxDatePickerDirective implements OnInit, AfterViewInit, OnDestroy,
 
     onChangeSubscription: Subscription;
 
-    @Input('ngxDatePicker') private datePickerInstance: NgxDatePickerComponent;
+    @Input('ngxDatePicker') datePickerInstance: NgxDatePickerComponent;
 
     @Input() value: Date | DateRange;
     @Output() valueChange: EventEmitter<Date | DateRange> = new EventEmitter();
